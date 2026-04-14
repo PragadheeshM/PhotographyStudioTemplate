@@ -124,7 +124,7 @@
       <!-- Left: Logo -->
       <a href="index.html" class="nav-logo flex items-center gap-2.5">
         <img src="logo.svg" alt="HEPS" class="h-7 w-auto" style="transform:translateY(-2px);">
-        HEPS<span>.</span>
+        HEPS
       </a>
 
       <!-- Right: Nav, Actions & Hamburger -->
@@ -170,6 +170,8 @@
             </div>
           </div>
 
+          <a href="contact.html" class="nav-link">Contact</a>
+
           <!-- Dashboard dropdown -->
           <div class="dropdown">
             <a href="#" class="nav-link flex items-center gap-1">
@@ -180,8 +182,6 @@
               <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
             </div>
           </div>
-
-          <a href="contact.html" class="nav-link">Contact</a>
         </div>
 
         <!-- Toggles & Auth buttons -->
@@ -218,7 +218,7 @@
     <div class="flex items-center justify-between mb-10">
       <a href="index.html" class="nav-logo text-2xl flex items-center gap-2.5 text-[var(--text-primary)]">
         <img src="logo.svg" alt="HEPS" class="h-7 w-auto">
-        HEPS<span>.</span>
+        HEPS
       </a>
       <button id="close-menu" class="text-3xl p-2 text-[var(--text-primary)] hover:text-accent transition-colors">
         <i class="fa-solid fa-xmark"></i>
@@ -265,6 +265,9 @@
         </div>
       </div>
 
+      <!-- Contact -->
+      <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
+
       <!-- Dashboard Section -->
       <div class="mobile-dropdown">
         <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
@@ -275,9 +278,6 @@
           <a href="admin-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Admin Dashboard</a>
         </div>
       </div>
-
-      <!-- Contact -->
-      <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
 
       <!-- Auth Links (Mobile only) -->
       <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
@@ -295,28 +295,27 @@
       <div class="hero-overlay"></div>
     </div>
     <div class="parallax-shape w-80 h-80 bg-accent" style="top:-10%;right:5%;"></div>
-    <div class="hero-content container">
-      <div class="max-w-3xl">
+    <div class="hero-content container text-center">
+      <div class="max-w-3xl mx-auto">
         <!-- Breadcrumb -->
-        <div class="flex items-center gap-2 text-sm mb-6 slide-up" style="color:var(--text-muted);">
+        <div class="flex items-center justify-center gap-2 text-sm mb-6 slide-up" style="color:var(--text-muted);">
           <a href="index.html" class="hover:text-accent transition-colors">Home</a>
           <i class="fa-solid fa-chevron-right text-xs"></i>
           <a href="blog.html" class="hover:text-accent transition-colors">Blog</a>
           <i class="fa-solid fa-chevron-right text-xs"></i>
-          <span style="color:var(--text-secondary);">Business</span>
+          <span style="color:var(--text-secondary);">Pricing Guide</span>
         </div>
-        <span class="blog-tag slide-up">Business</span>
-        <h1 class="slide-up delay-100 mt-4 mb-6" style="font-size:clamp(2rem,5vw,3.5rem);">
-          How to Price Your Photography Services in <span class="gradient-text">2025</span>
-        </h1>
-        <div class="slide-up delay-200 flex flex-wrap items-center gap-6">
+        <div class="section-label slide-up mx-auto w-fit mb-5"><i class="fa-solid fa-newspaper"></i> Business of Photography</div>
+        <h1 class="slide-up delay-100 mt-4 mb-8 text-4xl lg:text-6xl">How to Price Your <span
+            class="gradient-text">Photography Services</span> in 2025</h1>
+
+        <div class="slide-up delay-200 flex flex-wrap justify-center items-center gap-6 mt-10 p-6 glass-card rounded-2xl">
           <div class="flex items-center gap-3">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
-              onerror="this.src='https://ui-avatars.com/api/?name=Marcus+Ellison&background=E11D48&color=fff'"
-              class="w-10 h-10 rounded-full object-cover border-2 border-white/20" alt="Marcus Ellison" />
-            <div>
-              <div class="font-semibold text-sm text-white">Marcus Ellison</div>
-              <div class="text-[10px] uppercase tracking-wider text-white/60">Founder & Creative Director</div>
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80"
+              class="w-12 h-12 rounded-full object-cover border-2 border-accent" alt="Marcus Ellison" />
+            <div class="text-left">
+              <div class="font-bold text-white">Marcus Ellison</div>
+              <div class="text-xs" style="color:var(--text-muted);">Founder & Creative Director</div>
             </div>
           </div>
           <div class="flex items-center gap-5">
@@ -586,7 +585,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
         <div class="lg:col-span-2">
           <a href="index.html" class="nav-logo text-2xl mb-4 flex items-center gap-3"><img src="logo.svg" alt="HEPS"
-              class="h-8 w-auto" style="transform:translateY(-2px);"> HEPS<span>.</span></a>
+              class="h-8 w-auto" style="transform:translateY(-2px);"> HEPS</a>
           <p class="text-sm mb-6 max-w-xs" style="color:var(--text-muted);">
             New York's premier photography studio rental destination. 14 studios, world-class equipment, unforgettable
             results.
