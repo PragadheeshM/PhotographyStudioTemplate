@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 â€” Page Not Found | HEPS</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .error-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, #E11D48 0%, #FB7185 50%, #E11D48 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.15;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fixed top-5 right-5 z-50 flex gap-2">
+    <button class="theme-toggle" data-theme-toggle data-theme-icon><i class="fa-solid fa-sun"></i></button>
+    <button class="rtl-toggle" data-rtl-toggle><i class="fa-solid fa-globe"></i></button>
+  </div>
+
+  <div class="error-page">
+    <!-- Bg -->
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=60" alt=""
+        class="w-full h-full object-cover opacity-10" />
+      <div style="position:absolute;inset:0;background:var(--primary);opacity:0.7;"></div>
+    </div>
+
+    <!-- Parallax Shapes -->
+    <div class="parallax-shape w-96 h-96 bg-accent" style="top:-15%;right:-10%;"></div>
+    <div class="parallax-shape w-64 h-64 bg-secondary" style="bottom:-10%;left:-5%;animation-delay:3s;"></div>
+
+    <!-- Big 404 -->
+    <div class="error-num" aria-hidden="true">404</div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-lg">
+      <div
+        class="w-20 h-20 rounded-full gradient-gold flex items-center justify-center mx-auto mb-8 shadow-gold animate-pulse-slow">
+        <i class="fa-solid fa-camera text-primary text-3xl"></i>
+      </div>
+      <div class="section-label mb-5 mx-auto w-fit"><i class="fa-solid fa-triangle-exclamation"></i> Error 404</div>
+      <h1 class="text-5xl font-black mb-4">Shot not <span class="gradient-text">found</span></h1>
+      <p class="text-lg mb-10" style="color:var(--text-secondary);">
+        This frame doesn't exist in our roll. The page you're looking for may have moved, been deleted, or never
+        existed.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="index.html" class="btn-primary hover-glow hover-float">
+          <i class="fa-solid fa-house"></i> Back to Home
+        </a>
+        <a href="contact.html" class="btn-outline hover-float">
+          <i class="fa-solid fa-headset"></i> Contact Support
+        </a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center text-sm" style="color:var(--text-muted);">
+        <a href="services.html" class="hover:text-accent transition-colors">Services</a>
+        <span>Â·</span>
+        <a href="pricing.html" class="hover:text-accent transition-colors">Pricing</a>
+        <span>Â·</span>
+        <a href="portfolio.html" class="hover:text-accent transition-colors">Portfolio</a>
+        <span>Â·</span>
+        <a href="blog.html" class="hover:text-accent transition-colors">Blog</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

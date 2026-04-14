@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | High-End Photography Studio Rental</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Transparent, flexible pricing for every creative budget. Hourly, half-day, and full-day packages for all HEPS studios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .toggle-switch {
+      position: relative;
+      width: 56px;
+      height: 28px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-thumb {
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(225, 29, 72, 0.3);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .toggle-thumb::before {
+      content: '';
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: 0.3s;
+    }
+
+    input:checked+.toggle-thumb {
+      background: rgba(225, 29, 72, 0.15);
+    }
+
+    input:checked+.toggle-thumb::before {
+      transform: translateX(28px);
+    }
+
+    .compare-table th {
+      text-align: center;
+    }
+
+    .check-yes {
+      color: var(--accent);
+    }
+
+    .check-no {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="container flex items-center justify-between">
+      <!-- Left: Logo -->
+      <a href="index.html" class="nav-logo flex items-center gap-2.5">
+        <img src="logo.svg" alt="HEPS" class="h-7 w-auto" style="transform:translateY(-2px);">
+        HEPS<span>.</span>
+      </a>
+
+      <!-- Right: Nav, Actions & Hamburger -->
+      <div class="flex items-center gap-4 lg:gap-8">
+        <!-- Desktop Nav (Hidden on mobile) -->
+        <div class="hidden xl:flex items-center gap-8">
+          <!-- Home dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
+              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav-link">About</a>
+
+          <!-- Services dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
+                Services</a>
+              <a href="service-details.html" class="dropdown-item"><i
+                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
+            </div>
+          </div>
+
+          <a href="pricing.html" class="nav-link" style="color:var(--accent);">Pricing</a>
+
+          <!-- Blog dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="blog.html" class="dropdown-item">Blog Listing</a>
+              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
+            </div>
+          </div>
+
+          <!-- Dashboard dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Dashboard <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+              <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <!-- Toggles & Auth buttons -->
+        <div class="flex items-center gap-3">
+          <!-- Toggles: Always visible -->
+          <div class="flex items-center gap-2">
+            <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle" data-rtl-toggle title="Toggle RTL/LTR">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+          
+          <!-- Auth: Hidden on small screens -->
+          <div class="hidden sm:flex items-center gap-3">
+            <a href="login.html" class="btn-ghost text-sm">Login</a>
+            <a href="register.html" class="btn-primary text-sm">Book Studio</a>
+          </div>
+
+          <!-- Hamburger: Visible on medium/small screens -->
+          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+            <span class="block w-6 h-0.5 bg-current"></span>
+            <span class="block w-6 h-0.5 bg-current"></span>
+            <span class="block w-4 h-0.5 bg-current"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu"
+    class="fixed top-0 left-0 w-full h-screen bg-[var(--primary)] backdrop-blur-xl z-[999] p-6 overflow-y-auto hidden flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <a href="index.html" class="nav-logo text-2xl flex items-center gap-2.5 text-[var(--text-primary)]">
+        <img src="logo.svg" alt="HEPS" class="h-7 w-auto">
+        HEPS<span>.</span>
+      </a>
+      <button id="close-menu" class="text-3xl p-2 text-[var(--text-primary)] hover:text-accent transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-6 px-2">
+      <!-- Home Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="index.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Home 1</a>
+          <a href="index2.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Home 2</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
+
+      <!-- Services Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
+          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <a href="pricing.html" class="text-lg font-semibold text-accent hover:text-accent transition-colors py-2">Pricing</a>
+
+      <!-- Blog Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
+          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
+        </div>
+      </div>
+
+      <!-- Dashboard Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Dashboard <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="user-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">User Dashboard</a>
+          <a href="admin-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Admin Dashboard</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
+
+      <!-- Auth Links (Mobile only) -->
+      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
+        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
+        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-section pt-24 lg:pt-0" style="min-height:55vh; background:#080808;">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80" alt="Pricing"
+        class="w-full h-full object-cover opacity-30" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content container text-center">
+      <div class="section-label mx-auto w-fit fade-in"><i class="fa-solid fa-tag"></i> Transparent Pricing</div>
+      <h1 class="slide-up mt-4 mb-4">Simple, <span class="gradient-text">Honest Rates</span></h1>
+      <p class="slide-up delay-100 text-xl max-w-2xl mx-auto" style="color:var(--text-secondary);">No hidden fees. No
+        surprises. Choose the plan that fits your creative ambition.</p>
+    </div>
+  </section>
+
+  <!-- TOGGLE + PRICING CARDS -->
+  <section class="section-pad gradient-section">
+    <div class="container">
+      <!-- Toggle -->
+      <div class="flex items-center justify-center gap-4 mb-14">
+        <span class="font-semibold text-sm uppercase tracking-wider" style="color:var(--text-secondary);">Hourly</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="pricing-toggle" />
+          <span class="toggle-thumb"></span>
+        </label>
+        <span class="font-semibold text-sm uppercase tracking-wider" style="color:var(--text-secondary);">Full Day <span
+            class="badge badge-gold ml-2">Save 30%</span></span>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid md:grid-cols-3 gap-8 items-start">
+        <!-- Essentials -->
+        <div class="pricing-card slide-up">
+          <div class="mb-6">
+            <div class="service-icon mb-4"><i class="fa-solid fa-camera"></i></div>
+            <h3 class="mb-2">Essentials</h3>
+            <p class="text-sm" style="color:var(--text-secondary);">Perfect for individual photographers and small
+              portrait sessions.</p>
+          </div>
+          <div class="flex items-end gap-2 mb-6">
+            <div class="pricing-price" data-monthly="149" data-annual="1045">$149</div>
+            <span class="pricing-period mb-2">/ hour</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Portrait Studio A or B</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>2-hour minimum booking</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Standard backdrop library</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>4 x Profoto B10 heads</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Wi-Fi & refreshments</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-muted);"><i
+                class="fa-solid fa-xmark check-no mt-0.5"></i>Studio technician</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-muted);"><i
+                class="fa-solid fa-xmark check-no mt-0.5"></i>Makeup room access</li>
+          </ul>
+          <a href="register.html" class="btn-outline w-full text-center block">Get Started</a>
+        </div>
+
+        <!-- Pro â€” Featured -->
+        <div class="pricing-card featured slide-up delay-200">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="mb-6">
+            <div class="service-icon mb-4" style="background:rgba(225,29,72,0.2);"><i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="mb-2" style="color:var(--accent);">Pro</h3>
+            <p class="text-sm" style="color:var(--text-secondary);">The choice of commercial photographers and creative
+              directors.</p>
+          </div>
+          <div class="flex items-end gap-2 mb-6">
+            <div class="pricing-price" data-monthly="299" data-annual="2093">$299</div>
+            <span class="pricing-period mb-2">/ hour</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Any studio including Commercial</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>2-hour minimum booking</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Full backdrop library (60+ colors)</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>6 x Profoto B10 heads</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Dedicated studio technician</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Makeup room & wardrobe</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Tethered Capture One station</li>
+          </ul>
+          <a href="register.html" class="btn-primary w-full text-center block hover-glow">Book Pro Studio</a>
+        </div>
+
+        <!-- Elite -->
+        <div class="pricing-card slide-up delay-400">
+          <div class="mb-6">
+            <div class="service-icon mb-4"><i class="fa-solid fa-crown"></i></div>
+            <h3 class="mb-2">Elite</h3>
+            <p class="text-sm" style="color:var(--text-secondary);">Full-day agency-level production with all studios
+              and crew.</p>
+          </div>
+          <div class="flex items-end gap-2 mb-6">
+            <div class="pricing-price" data-monthly="1995" data-annual="13965">$1,995</div>
+            <span class="pricing-period mb-2">/ day</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Exclusive full-floor buyout</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>All 14 studios available</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Full lighting & grip package</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>3 x studio technicians</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>2,000-item prop library access</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>Catered lunch & refreshments</li>
+            <li class="flex gap-3 text-sm" style="color:var(--text-secondary);"><i
+                class="fa-solid fa-check check-yes mt-0.5"></i>On-site retoucher included</li>
+          </ul>
+          <a href="contact.html" class="btn-outline w-full text-center block">Request Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE COMPARISON TABLE -->
+  <section class="section-pad" style="background:var(--primary);">
+    <div class="container">
+      <div class="text-center mb-14">
+        <div class="section-label fade-in"><i class="fa-solid fa-table-columns"></i> Compare Plans</div>
+        <h2 class="slide-up mt-2">Full Feature <span class="gradient-text">Comparison</span></h2>
+        <div class="divider-gold center"></div>
+      </div>
+      <div class="table-wrap glass-card">
+        <table class="data-table w-full">
+          <thead>
+            <tr>
+              <th class="text-left" style="min-width:200px;">Feature</th>
+              <th>Essentials</th>
+              <th style="color:var(--accent);">Pro â­</th>
+              <th>Elite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Portrait Studios</td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Commercial Studio</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Film & Video Stage</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Studio Technician</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i> 3x</td>
+            </tr>
+            <tr>
+              <td>Makeup Room</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Capture One Tethering</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Full Prop Library</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>On-site Retoucher</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>Catered Service</td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-no"><i class="fa-solid fa-xmark"></i></td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>After-Hours Access</td>
+              <td class="text-center" style="color:var(--text-muted);">+20%</td>
+              <td class="text-center" style="color:var(--text-muted);">+20%</td>
+              <td class="text-center check-yes"><i class="fa-solid fa-check"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-pad gradient-section">
+    <div class="container">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-14">
+          <div class="section-label fade-in mx-auto w-fit"><i class="fa-solid fa-circle-question"></i> FAQ</div>
+          <h2 class="slide-up mt-2">Pricing <span class="gradient-text">Questions</span></h2>
+          <div class="divider-gold center"></div>
+        </div>
+        <div class="space-y-3">
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Is there a deposit required to book?</span><i
+                class="fa-solid fa-chevron-down accordion-icon"></i></button>
+            <div class="accordion-body">Yes â€” a 50% deposit is collected at time of booking. The remaining balance is
+              charged 48 hours before your session. All payments are processed securely via Stripe.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>What is the cancellation policy?</span><i
+                class="fa-solid fa-chevron-down accordion-icon"></i></button>
+            <div class="accordion-body">Cancel 7+ days before: full refund. Cancel 3â€“7 days before: 50% refund. Cancel
+              within 48 hours: deposit is forfeited. We offer one free reschedule with 24 hours' notice.</div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Do you offer membership or retainer rates?</span><i
+                class="fa-solid fa-chevron-down accordion-icon"></i></button>
+            <div class="accordion-body">Yes! Our Creator Membership starts at $1,200/month and includes 12 hours of
+              studio time, priority booking, and 15% discount on add-ons. Contact us for enterprise retainer packages.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger"><span>Are taxes included in the listed prices?</span><i
+                class="fa-solid fa-chevron-down accordion-icon"></i></button>
+            <div class="accordion-body">All listed prices are exclusive of applicable New York State and City sales tax
+              (currently 8.875%). Tax will be displayed at checkout before payment confirmation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="nav-logo text-2xl mb-4 flex items-center gap-3"><img src="logo.svg" alt="HEPS"
+              class="h-8 w-auto" style="transform:translateY(-2px);"> HEPS<span>.</span></a>
+          <p class="text-sm mb-6 max-w-xs" style="color:var(--text-muted);">
+            New York's premier photography studio rental destination. 14 studios, world-class equipment, unforgettable
+            results.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="footer-social" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
+          <ul class="space-y-3">
+            <li><a class="footer-link" href="index.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Home</a></li>
+            <li><a class="footer-link" href="about.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>About Us</a></li>
+            <li><a class="footer-link" href="services.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Services</a></li>
+            <li><a class="footer-link" href="portfolio.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Portfolio</a></li>
+            <li><a class="footer-link" href="pricing.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Pricing</a></li>
+            <li><a class="footer-link" href="contact.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
+          <ul class="space-y-3">
+            <li><a class="footer-link" href="service-details.html">Portrait Studio</a></li>
+            <li><a class="footer-link" href="service-details.html">Commercial Studio</a></li>
+            <li><a class="footer-link" href="service-details.html">Film & Video Stage</a></li>
+            <li><a class="footer-link" href="service-details.html">Creative Loft</a></li>
+            <li><a class="footer-link" href="service-details.html">Food & Product</a></li>
+            <li><a class="footer-link" href="service-details.html">Photo Workshops</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot mt-1" style="color:var(--accent);"></i>
+              <span class="text-sm" style="color:var(--text-muted);">450 W 15th St, Meatpacking District, New York, NY
+                10011</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone" style="color:var(--accent);"></i>
+              <a href="tel:+12125550198" class="footer-link">+1 (212) 555-0198</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope" style="color:var(--accent);"></i>
+              <a href="mailto:hello@heps.studio" class="footer-link">hello@heps.studio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 text-center" style="border-top:1px solid rgba(225,29,72,0.1);">
+        <p class="text-sm opacity-60" style="color:var(--text-muted);">© 2025 High-End Photography Studio Rental. All
+          rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+
+</html>

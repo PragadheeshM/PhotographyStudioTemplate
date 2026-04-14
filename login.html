@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | High-End Photography Studio Rental</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Sign in to your HEPS account to manage bookings, view invoices, and access your creative portfolio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .social-login-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(225, 29, 72, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .social-login-btn:hover {
+      border-color: rgba(225, 29, 72, 0.4);
+      background: rgba(225, 29, 72, 0.06);
+      color: var(--text-primary);
+    }
+
+    .divider-text {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .divider-text span {
+      flex: 1;
+      height: 1px;
+      background: rgba(225, 29, 72, 0.15);
+    }
+
+    .divider-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+
+<body class="auth-page">
+
+  <!-- Background -->
+  <div class="auth-bg">
+    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1920&q=90"
+      alt="Photography Studio Background" />
+    <div class="auth-overlay"></div>
+  </div>
+
+  <!-- controls are now inside the specific pages to shift with RTL -->
+
+  <!-- Card -->
+  <div class="auth-card">
+    <!-- Corner Controls -->
+    <div class="auth-card-controls">
+      <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme"><i
+          class="fa-solid fa-sun"></i></button>
+      <button class="rtl-toggle" data-rtl-toggle title="Toggle RTL/LTR"><i class="fa-solid fa-globe"></i></button>
+    </div>
+    <div class="text-center mb-8">
+      <a href="index.html" class="nav-logo text-2xl flex items-center justify-center gap-3 mb-3"><img src="logo.svg"
+          alt="HEPS" class="h-8 w-auto"> HEPS<span>.</span></a>
+      <h2 class="text-2xl mb-1">Welcome Back</h2>
+      <p class="text-sm" style="color:var(--text-secondary);">Sign in to manage your studio bookings</p>
+    </div>
+
+    <!-- Social Login -->
+    <div class="space-y-3 mb-2">
+      <button class="social-login-btn" onclick="showToast('Google sign-in requires backend integration.', 'info')">
+        <i class="fab fa-google text-red-400"></i> Continue with Google
+      </button>
+      <button class="social-login-btn" onclick="showToast('Apple sign-in requires backend integration.', 'info')">
+        <i class="fab fa-apple"></i> Continue with Apple
+      </button>
+    </div>
+
+    <div class="divider-text"><span></span>
+      <p>or sign in with email</p><span></span>
+    </div>
+
+    <form data-mock-form="login" class="space-y-4">
+      <div class="form-group mb-0">
+        <label class="form-label">Email Address</label>
+        <div class="relative">
+          <input type="email" id="login-email" class="form-input" placeholder="you@studio.com" required
+            style="padding-left:2.75rem;" />
+          <i class="fa-solid fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+            style="color:var(--text-muted);"></i>
+        </div>
+      </div>
+      <div class="form-group mb-0">
+        <div class="flex justify-between items-center mb-1.5">
+          <label class="form-label mb-0">Password</label>
+          <a href="#" class="text-xs hover:underline" style="color:var(--accent);">Forgot password?</a>
+        </div>
+        <div class="relative">
+          <input type="password" id="login-password" class="form-input" placeholder="enter your password" required
+            style="padding-left:2.75rem;" />
+          <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+            style="color:var(--text-muted);"></i>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <input type="checkbox" id="remember" class="w-4 h-4 cursor-pointer" style="accent-color:var(--accent);" />
+        <label for="remember" class="text-sm cursor-pointer" style="color:var(--text-secondary);">Keep me signed
+          in</label>
+      </div>
+
+      <button type="submit" class="btn-primary w-full justify-center hover-glow mt-3">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In
+      </button>
+    </form>
+
+    <p class="text-center mt-6 text-sm" style="color:var(--text-secondary);">
+      Don't have an account?
+      <a href="register.html" class="font-semibold hover:underline" style="color:var(--accent);">Create Account</a>
+    </p>
+
+    <!-- Demo Shortcut -->
+    <div class="mt-5 p-3 rounded-xl text-center text-xs"
+      style="background:rgba(225,29,72,0.06); border:1px dashed rgba(225,29,72,0.2); color:var(--text-muted);">
+      <i class="fa-solid fa-circle-info mr-1" style="color:var(--accent);"></i>
+      Demo: any email + password works. Click <strong>Sign In</strong> to see the toast.
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

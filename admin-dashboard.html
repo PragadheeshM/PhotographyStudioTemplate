@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | HEPS</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="HEPS Admin Dashboard - manage revenue, bookings, clients, and studio demographics." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body {
+      padding-top: 0;
+    }
+
+    .sidebar-logo {
+      padding: 1.5rem 1rem 2rem;
+      border-bottom: 1px solid rgba(225, 29, 72, 0.12);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem 0.4rem;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 150;
+      display: none;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    .trend-up {
+      color: #10b981;
+    }
+
+    .trend-down {
+      color: #ef4444;
+    }
+
+    @media(max-width:1024px) {
+      .dashboard-main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" class="nav-logo text-lg flex items-center gap-2"><img src="logo.svg" alt="HEPS"
+          class="h-6 w-auto"> HEPS<span>.</span></a>
+    </div>
+
+    <!-- Admin Badge -->
+    <div class="px-3 mb-4">
+      <div class="flex items-center gap-2 px-3 py-2 rounded-xl"
+        style="background:rgba(225,29,72,0.1); border:1px solid rgba(225,29,72,0.2);">
+        <i class="fa-solid fa-shield-halved text-sm" style="color:var(--accent);"></i>
+        <span class="sidebar-label text-xs font-bold uppercase tracking-wider" style="color:var(--accent);">Admin
+          Panel</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label sidebar-label">Management</div>
+    <nav class="space-y-1">
+      <a href="admin-dashboard.html" class="sidebar-nav-item active">
+        <i class="sidebar-nav-icon fa-solid fa-gauge-high"></i>
+        <span class="sidebar-label">Overview</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-calendar-days"></i>
+        <span class="sidebar-label">Bookings</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-users"></i>
+        <span class="sidebar-label">Clients</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-building"></i>
+        <span class="sidebar-label">Studios</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-dollar-sign"></i>
+        <span class="sidebar-label">Revenue</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-section-label sidebar-label mt-4">Content</div>
+    <nav class="space-y-1">
+      <a href="blog.html" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-newspaper"></i>
+        <span class="sidebar-label">Blog Posts</span>
+      </a>
+      <a href="portfolio.html" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-images"></i>
+        <span class="sidebar-label">Portfolio</span>
+      </a>
+      <a href="#" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-ticket"></i>
+        <span class="sidebar-label">Support Tickets</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-section-label sidebar-label mt-4">System</div>
+    <nav class="space-y-1">
+      <a href="#" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-gear"></i>
+        <span class="sidebar-label">Settings</span>
+      </a>
+    </nav>
+
+    <div class="mt-auto pt-8">
+      <div class="glass-card p-4 mb-4">
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=100&q=80"
+            class="w-10 h-10 rounded-full object-cover border-2" style="border-color:var(--accent);" alt="Admin" />
+          <div class="sidebar-label overflow-hidden">
+            <div class="font-semibold text-sm truncate">Marcus Ellison</div>
+            <div class="text-xs" style="color:var(--accent);">Super Admin</div>
+          </div>
+        </div>
+      </div>
+      <a href="login.html" class="sidebar-nav-item text-sm mt-4" style="color:var(--text-muted);">
+        <i class="fa-solid fa-right-from-bracket sidebar-nav-icon" style="color:var(--text-muted);"></i>
+        <span class="sidebar-label">Sign Out</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dashboard-main overflow-x-hidden" id="dashboard-main">
+    <!-- Header -->
+    <div class="dashboard-header flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <button id="sidebar-toggle" class="xl:hidden theme-toggle w-9 h-9">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h3 class="text-xl font-bold mb-0.5">Admin Overview</h3>
+          <p class="text-sm" style="color:var(--text-muted);">April 2025 - Real-time studio performance</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 flex-wrap">
+        <div class="header-controls px-4 py-1.5 flex items-center gap-4">
+          <button class="theme-toggle text-sm" data-theme-toggle data-theme-icon title="Toggle Theme"><i
+              class="fa-solid fa-sun"></i></button>
+          <button class="rtl-toggle text-sm" data-rtl-toggle title="Toggle Layout"><i
+              class="fa-solid fa-globe"></i></button>
+        </div>
+        <button class="btn-ghost text-sm" onclick="showToast('Report exported successfully.','success')">
+          <i class="fa-solid fa-download me-1"></i> Export Report
+        </button>
+        <a href="contact.html" class="btn-primary text-sm py-2 px-4"><i class="fa-solid fa-plus me-1"></i> New
+          Booking</a>
+      </div>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+      <div class="stat-widget slide-up">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Monthly Revenue</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-chart-line text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="87420" data-prefix="$">-
+        </div>
+        <div class="text-xs trend-up">↑ 18.4% vs last month</div>
+      </div>
+      <div class="stat-widget slide-up delay-100">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Active Bookings</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-calendar-check text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="142" data-suffix="">-</div>
+        <div class="text-xs trend-up">↑ 23 this week</div>
+      </div>
+      <div class="stat-widget slide-up delay-200">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Total Clients</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-users text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="3241" data-suffix="">-</div>
+        <div class="text-xs trend-up">↑ 47 new this month</div>
+      </div>
+      <div class="stat-widget slide-up delay-300">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Occupancy Rate</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-building text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="87" data-suffix="%">-</div>
+        <div class="text-xs trend-up">↑ 5% vs last month</div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-6">
+      <!-- Bar Chart - Revenue -->
+      <div class="chart-card slide-up lg:col-span-2 overflow-hidden w-full max-w-full">
+        <div class="flex items-center justify-between mb-5">
+          <h4>Monthly Revenue</h4>
+          <div class="flex gap-2">
+            <button class="btn-ghost text-xs py-1 px-2 active" id="rev-monthly">Monthly</button>
+            <button class="btn-ghost text-xs py-1 px-2" id="rev-quarterly">Quarterly</button>
+          </div>
+        </div>
+        <div class="relative w-full h-64 sm:h-72 px-2">
+          <canvas id="revenueChart" class="w-full h-full"></canvas>
+        </div>
+      </div>
+
+      <!-- Pie Chart - Demographics -->
+      <div class="chart-card slide-up delay-200 overflow-hidden w-full max-w-full">
+        <div class="flex items-center justify-between mb-5">
+          <h4>Client Type</h4>
+          <span class="badge badge-gold">Apr 2025</span>
+        </div>
+        <div class="relative w-full h-48 sm:h-56 px-2">
+          <canvas id="demoChart" class="w-full h-full"></canvas>
+        </div>
+        <div class="grid grid-cols-1 gap-2 mt-4 text-xs" style="color:var(--text-muted);">
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#E11D48;"></span>Freelancers (42%)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#FB7185;"></span>Agencies (28%)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#BE123C;"></span>Brands (18%)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#881337;"></span>Students (8%)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#1A1A2E;"></span>Other (4%)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Bookings Table -->
+    <div class="chart-card slide-up mb-6">
+      <div class="flex items-center justify-between mb-5">
+        <h4>Recent Bookings</h4>
+        <button class="btn-ghost text-xs py-1 px-3" onclick="showToast('View all bookings coming soon.','info')">View
+          All</button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="text-left">Booking ID</th>
+              <th class="text-left">Client</th>
+              <th class="text-left">Studio</th>
+              <th class="text-left">Date & Time</th>
+              <th class="text-left">Amount</th>
+              <th class="text-left">Status</th>
+              <th class="text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span style="color:var(--accent);">#BKG-5201</span></td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=40&q=80"
+                    class="w-7 h-7 rounded-full object-cover" alt="" />
+                  <span>Sarah Kensington</span>
+                </div>
+              </td>
+              <td>Commercial Studio</td>
+              <td>Apr 18, 9AM-5PM</td>
+              <td style="color:var(--accent);">$2,392</td>
+              <td><span class="badge badge-success">Confirmed</span></td>
+              <td><button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('#BKG-5201 details opened.','info')">View</button></td>
+            </tr>
+            <tr>
+              <td><span style="color:var(--accent);">#BKG-5202</span></td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=40&q=80"
+                    class="w-7 h-7 rounded-full object-cover" alt="" />
+                  <span>Marcus Rhodes</span>
+                </div>
+              </td>
+              <td>Portrait Studio A</td>
+              <td>Apr 18, 9AM-1PM</td>
+              <td style="color:var(--accent);">$598</td>
+              <td><span class="badge badge-success">Confirmed</span></td>
+              <td><button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('#BKG-5202 details opened.','info')">View</button></td>
+            </tr>
+            <tr>
+              <td><span style="color:var(--accent);">#BKG-5203</span></td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=40&q=80"
+                    class="w-7 h-7 rounded-full object-cover" alt="" />
+                  <span>Priya Menon</span>
+                </div>
+              </td>
+              <td>Film & Video Stage</td>
+              <td>Apr 22, 2PM-8PM</td>
+              <td style="color:var(--accent);">$1,794</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+              <td><button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('#BKG-5203 details opened.','info')">View</button></td>
+            </tr>
+            <tr>
+              <td><span style="color:var(--accent);">#BKG-5204</span></td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=40&q=80"
+                    class="w-7 h-7 rounded-full object-cover" alt="" />
+                  <span>Sofia Laurent</span>
+                </div>
+              </td>
+              <td>Creative Loft</td>
+              <td>Apr 24, 10AM-4PM</td>
+              <td style="color:var(--accent);">$1,196</td>
+              <td><span class="badge badge-gold">Waitlist</span></td>
+              <td><button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('#BKG-5204 details opened.','info')">View</button></td>
+            </tr>
+            <tr>
+              <td><span style="color:var(--accent);">#BKG-5205</span></td>
+              <td>
+                <div class="flex items-center gap-2">
+                  <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=40&q=80"
+                    class="w-7 h-7 rounded-full object-cover" alt="" />
+                  <span>Jordan Park</span>
+                </div>
+              </td>
+              <td>Food & Product Studio</td>
+              <td>Apr 25, 8AM-12PM</td>
+              <td style="color:var(--accent);">$596</td>
+              <td><span class="badge badge-error">Cancelled</span></td>
+              <td><button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('#BKG-5205 refund initiated.','success')">Refund</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 slide-up">
+      <button class="stat-widget text-center cursor-pointer hover-float"
+        onclick="showToast('Generating revenue report...','info')">
+        <i class="fa-solid fa-file-invoice-dollar text-2xl mb-2" style="color:var(--accent);"></i>
+        <div class="text-sm font-semibold">Revenue Report</div>
+      </button>
+      <button class="stat-widget text-center cursor-pointer hover-float"
+        onclick="showToast('Client export started.','success')">
+        <i class="fa-solid fa-users-gear text-2xl mb-2" style="color:var(--accent);"></i>
+        <div class="text-sm font-semibold">Export Clients</div>
+      </button>
+      <button class="stat-widget text-center cursor-pointer hover-float"
+        onclick="showToast('Maintenance mode toggled.','info')">
+        <i class="fa-solid fa-wrench text-2xl mb-2" style="color:var(--accent);"></i>
+        <div class="text-sm font-semibold">Studio Maintenance</div>
+      </button>
+      <button class="stat-widget text-center cursor-pointer hover-float"
+        onclick="showToast('Newsletter sent to 3,241 subscribers.','success')">
+        <i class="fa-solid fa-paper-plane text-2xl mb-2" style="color:var(--accent);"></i>
+        <div class="text-sm font-semibold">Send Newsletter</div>
+      </button>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Bar Chart - Revenue
+      window.HEPS.initBar('revenueChart',
+        [52000, 61000, 48000, 73000, 68000, 79000, 87420],
+        ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr']
+      );
+
+      // Pie Chart - Demographics
+      window.HEPS.initPie('demoChart',
+        [42, 28, 18, 8, 4],
+        ['Freelancers', 'Agencies', 'Brands', 'Students', 'Other']
+      );
+    });
+  </script>
+</body>
+
+</html>

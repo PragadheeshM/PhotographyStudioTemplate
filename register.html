@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account | High-End Photography Studio Rental</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Create your free HEPS account and unlock instant studio booking, member rates, and priority access." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .social-login-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(225, 29, 72, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .social-login-btn:hover {
+      border-color: rgba(225, 29, 72, 0.4);
+      background: rgba(225, 29, 72, 0.06);
+      color: var(--text-primary);
+    }
+
+    .divider-text {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .divider-text span {
+      flex: 1;
+      height: 1px;
+      background: rgba(225, 29, 72, 0.15);
+    }
+
+    .divider-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .auth-card {
+      max-width: 500px;
+    }
+  </style>
+</head>
+
+<body class="auth-page">
+
+  <!-- Background â€” different from login -->
+  <div class="auth-bg">
+    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&q=90"
+      alt="Photography Studio Rental" />
+    <div class="auth-overlay"></div>
+  </div>
+
+  <!-- controls are now inside the specific pages to shift with RTL -->
+
+  <!-- Card -->
+  <div class="auth-card">
+    <!-- Corner Controls -->
+    <div class="auth-card-controls">
+      <button class="theme-toggle" data-theme-toggle data-theme-icon><i class="fa-solid fa-sun"></i></button>
+      <button class="rtl-toggle" data-rtl-toggle><i class="fa-solid fa-globe"></i></button>
+    </div>
+    <div class="text-center mb-7">
+      <a href="index.html" class="nav-logo text-2xl flex items-center justify-center gap-3 mb-3"><img src="logo.svg"
+          alt="HEPS" class="h-8 w-auto"> HEPS<span>.</span></a>
+      <h2 class="text-2xl mb-1">Create Account</h2>
+      <p class="text-sm" style="color:var(--text-secondary);">Join 3,000+ photographers. First session 20% off.</p>
+    </div>
+
+    <div class="space-y-3 mb-2">
+      <button class="social-login-btn" onclick="showToast('Google sign-up requires backend integration.','info')">
+        <i class="fab fa-google text-red-400"></i> Sign up with Google
+      </button>
+    </div>
+
+    <div class="divider-text"><span></span>
+      <p>or register with email</p><span></span>
+    </div>
+
+    <form data-mock-form="register" class="space-y-4">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="form-group mb-0">
+          <label class="form-label">First Name</label>
+          <input type="text" id="reg-fname" class="form-input" placeholder="Marcus" required />
+        </div>
+        <div class="form-group mb-0">
+          <label class="form-label">Last Name</label>
+          <input type="text" id="reg-lname" class="form-input" placeholder="Rhodes" required />
+        </div>
+      </div>
+      <div class="form-group mb-0">
+        <label class="form-label">Email Address</label>
+        <div class="relative">
+          <input type="email" id="reg-email" class="form-input" placeholder="you@studio.com" required
+            style="padding-left:2.75rem;" />
+          <i class="fa-solid fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+            style="color:var(--text-muted);"></i>
+        </div>
+      </div>
+      <div class="form-group mb-0">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" id="reg-phone" class="form-input" placeholder="+1 (555) 000-0000" />
+      </div>
+      <div class="form-group mb-0">
+        <label class="form-label">Account Type</label>
+        <select id="reg-type" class="form-input" style="background-image:none;">
+          <option value="" disabled selected style="background:var(--primary); color:var(--text-primary);">I am a...</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Freelance Photographer</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Commercial Agency</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Brand / Company</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Photo Educator</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Student</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Other</option>
+        </select>
+      </div>
+      <div class="form-group mb-0">
+        <label class="form-label">Password</label>
+        <div class="relative">
+          <input type="password" id="reg-password" class="form-input" placeholder="Min. 8 characters" required
+            minlength="8" style="padding-left:2.75rem;" />
+          <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+            style="color:var(--text-muted);"></i>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-2">
+        <input type="checkbox" id="terms" class="w-4 h-4 mt-0.5 cursor-pointer flex-shrink-0"
+          style="accent-color:var(--accent);" required />
+        <label for="terms" class="text-xs cursor-pointer" style="color:var(--text-secondary);">
+          I agree to the <a href="#" class="underline" style="color:var(--accent);">Terms of Service</a> and <a href="#"
+            class="underline" style="color:var(--accent);">Privacy Policy</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary w-full justify-center hover-glow">
+        <i class="fa-solid fa-user-plus"></i> Create My Account
+      </button>
+    </form>
+
+    <p class="text-center mt-5 text-sm" style="color:var(--text-secondary);">
+      Already have an account?
+      <a href="login.html" class="font-semibold hover:underline" style="color:var(--accent);">Sign In</a>
+    </p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | High-End Photography Studio Rental</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Get in touch with HEPS &mdash; book a studio tour, ask questions, or get a custom production quote." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="container flex items-center justify-between">
+      <!-- Left: Logo -->
+      <a href="index.html" class="nav-logo flex items-center gap-2.5">
+        <img src="logo.svg" alt="HEPS" class="h-7 w-auto" style="transform:translateY(-2px);">
+        HEPS<span>.</span>
+      </a>
+
+      <!-- Right: Nav, Actions & Hamburger -->
+      <div class="flex items-center gap-4 lg:gap-8">
+        <!-- Desktop Nav (Hidden on mobile) -->
+        <div class="hidden xl:flex items-center gap-8">
+          <!-- Home dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
+              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav-link">About</a>
+
+          <!-- Services dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
+                Services</a>
+              <a href="service-details.html" class="dropdown-item"><i
+                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
+            </div>
+          </div>
+
+          <a href="pricing.html" class="nav-link">Pricing</a>
+
+          <!-- Blog dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="blog.html" class="dropdown-item">Blog Listing</a>
+              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
+            </div>
+          </div>
+
+          <!-- Dashboard dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Dashboard <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+              <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="nav-link" style="color:var(--accent);">Contact</a>
+        </div>
+
+        <!-- Toggles & Auth buttons -->
+        <div class="flex items-center gap-3">
+          <!-- Toggles: Always visible -->
+          <div class="flex items-center gap-2">
+            <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle" data-rtl-toggle title="Toggle RTL/LTR">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+
+          <!-- Auth: Hidden on small screens -->
+          <div class="hidden sm:flex items-center gap-3">
+            <a href="login.html" class="btn-ghost text-sm">Login</a>
+            <a href="register.html" class="btn-primary text-sm">Book Studio</a>
+          </div>
+
+          <!-- Hamburger: Visible on medium/small screens -->
+          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+            <span class="block w-6 h-0.5 bg-current"></span>
+            <span class="block w-6 h-0.5 bg-current"></span>
+            <span class="block w-4 h-0.5 bg-current"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu"
+    class="fixed top-0 left-0 w-full h-screen bg-[var(--primary)] backdrop-blur-xl z-[999] p-6 overflow-y-auto hidden flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <a href="index.html" class="nav-logo text-2xl flex items-center gap-2.5 text-[var(--text-primary)]">
+        <img src="logo.svg" alt="HEPS" class="h-7 w-auto">
+        HEPS<span>.</span>
+      </a>
+      <button id="close-menu" class="text-3xl p-2 text-[var(--text-primary)] hover:text-accent transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-6 px-2">
+      <!-- Home Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="index.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Home 1</a>
+          <a href="index2.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Home 2</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
+
+      <!-- Services Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
+          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
+
+      <!-- Blog Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
+          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
+        </div>
+      </div>
+
+      <!-- Dashboard Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Dashboard <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="user-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">User Dashboard</a>
+          <a href="admin-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Admin Dashboard</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <a href="contact.html" class="text-lg font-semibold text-accent hover:text-accent transition-colors py-2">Contact</a>
+
+      <!-- Auth Links (Mobile only) -->
+      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
+        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
+        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-section pt-24 lg:pt-0" style="min-height:50vh; background:#080808;">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1562564055-71e051d33c19?w=1920&q=80" alt="Contact HEPS"
+        class="w-full h-full object-cover opacity-35" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content container text-center">
+      <div class="section-label mx-auto w-fit fade-in"><i class="fa-solid fa-envelope-open-text"></i> Get in Touch</div>
+      <h1 class="slide-up mt-4 mb-4">Let's <span class="gradient-text">Talk</span></h1>
+      <p class="slide-up delay-100 text-xl max-w-xl mx-auto" style="color:var(--text-secondary);">Questions, bookings,
+        or custom production quotes - our team responds within 2 hours.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CARDS -->
+  <section class="section-pad-sm gradient-section">
+    <div class="container">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="contact-card slide-up">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <h4 class="mb-1">Call Us</h4>
+            <p class="text-sm mb-2" style="color:var(--text-secondary);">Mon-Sat, 8am-8pm EST</p>
+            <a href="tel:+12125550198" class="text-accent font-semibold hover:underline">+1 (212) 555-0198</a>
+          </div>
+        </div>
+        <div class="contact-card slide-up delay-100">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <h4 class="mb-1">Email Us</h4>
+            <p class="text-sm mb-2" style="color:var(--text-secondary);">We reply within 2 hours</p>
+            <a href="mailto:hello@heps.studio" class="text-accent font-semibold hover:underline">hello@heps.studio</a>
+          </div>
+        </div>
+        <div class="contact-card slide-up delay-200">
+          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <h4 class="mb-1">Visit Us</h4>
+            <p class="text-sm" style="color:var(--text-secondary);">450 W 15th St, Meatpacking District<br />New York,
+              NY 10011</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + MAP -->
+  <section class="section-pad" style="background:var(--primary);">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-14 items-start">
+        <!-- Form -->
+        <div class="slide-left">
+          <div class="section-label mb-5"><i class="fa-solid fa-paper-plane"></i> Send a Message</div>
+          <h2 class="mb-8">Book a Tour or <span class="gradient-text">Request a Quote</span></h2>
+          <form data-mock-form="contact" class="space-y-5">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-input" placeholder="Marcus" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-input" placeholder="Rhodes" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" placeholder="you@studio.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Inquiry Type</label>
+              <select class="form-input">
+                <option value="" disabled selected>Select inquiry type</option>
+                <option>Studio Booking</option>
+                <option>Production Quote</option>
+                <option>Studio Tour</option>
+                <option>Workshop Enrollment</option>
+                <option>Partnership</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Studio</label>
+              <select class="form-input">
+                <option value="" disabled selected>Select a studio (optional)</option>
+                <option>Portrait Studio A</option>
+                <option>Portrait Studio B</option>
+                <option>Commercial Studio</option>
+                <option>Film & Video Stage</option>
+                <option>Creative Loft</option>
+                <option>Food & Product Studio</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-input" rows="5"
+                placeholder="Tell us about your project, preferred dates, and team sizeâ€¦" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary w-full justify-center hover-glow">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Map + Info -->
+        <div class="slide-right space-y-8">
+          <!-- Map -->
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.984513891748!2d-74.00748968459405!3d40.74050677932797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9a88b0cf5%3A0x87f3a2f9b05adcf3!2sMeatpacking%20District%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1682000000000!5m2!1sen!2sus"
+              allowfullscreen="" loading="lazy" title="HEPS Location"></iframe>
+          </div>
+
+          <!-- Hours -->
+          <div class="glass-card p-6">
+            <h3 class="mb-5"><i class="fa-solid fa-clock mr-2" style="color:var(--accent);"></i>Studio Hours</h3>
+            <ul class="space-y-3">
+              <li class="flex justify-between text-sm">
+                <span style="color:var(--text-secondary);">Monday - Friday</span>
+                <span class="font-semibold">6:00 AM - 12:00 AM</span>
+              </li>
+              <li class="flex justify-between text-sm">
+                <span style="color:var(--text-secondary);">Saturday</span>
+                <span class="font-semibold">7:00 AM - 12:00 AM</span>
+              </li>
+              <li class="flex justify-between text-sm">
+                <span style="color:var(--text-secondary);">Sunday</span>
+                <span class="font-semibold">8:00 AM - 10:00 PM</span>
+              </li>
+              <li class="flex justify-between text-sm border-t pt-3" style="border-color:rgba(225,29,72,0.15);">
+                <span style="color:var(--text-secondary);">After-Hours Shoots</span>
+                <span class="badge badge-gold">By Request</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social -->
+          <div class="glass-card p-6">
+            <h3 class="mb-5"><i class="fa-solid fa-share-nodes mr-2" style="color:var(--accent);"></i>Follow the Studio
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <a href="#" class="btn-ghost text-sm"><i class="fab fa-instagram mr-2"></i>Instagram</a>
+              <a href="#" class="btn-ghost text-sm"><i class="fab fa-youtube mr-2"></i>YouTube</a>
+              <a href="#" class="btn-ghost text-sm"><i class="fab fa-linkedin mr-2"></i>LinkedIn</a>
+              <a href="#" class="btn-ghost text-sm"><i class="fab fa-x-twitter mr-2"></i>Twitter/X</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="nav-logo text-2xl mb-4 flex items-center gap-3"><img src="logo.svg" alt="HEPS"
+              class="h-8 w-auto" style="transform:translateY(-2px);"> HEPS<span>.</span></a>
+          <p class="text-sm mb-6 max-w-xs" style="color:var(--text-muted);">
+            New York's premier photography studio rental destination. 14 studios, world-class equipment, unforgettable
+            results.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="footer-social" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
+          <ul class="space-y-3">
+            <li><a class="footer-link" href="index.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Home</a></li>
+            <li><a class="footer-link" href="about.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>About Us</a></li>
+            <li><a class="footer-link" href="services.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Services</a></li>
+            <li><a class="footer-link" href="portfolio.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Portfolio</a></li>
+            <li><a class="footer-link" href="pricing.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Pricing</a></li>
+            <li><a class="footer-link" href="contact.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
+          <ul class="space-y-3">
+            <li><a class="footer-link" href="service-details.html">Portrait Studio</a></li>
+            <li><a class="footer-link" href="service-details.html">Commercial Studio</a></li>
+            <li><a class="footer-link" href="service-details.html">Film & Video Stage</a></li>
+            <li><a class="footer-link" href="service-details.html">Creative Loft</a></li>
+            <li><a class="footer-link" href="service-details.html">Food & Product</a></li>
+            <li><a class="footer-link" href="service-details.html">Photo Workshops</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot mt-1" style="color:var(--accent);"></i>
+              <span class="text-sm" style="color:var(--text-muted);">450 W 15th St, Meatpacking District, New York, NY
+                10011</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone" style="color:var(--accent);"></i>
+              <a href="tel:+12125550198" class="footer-link">+1 (212) 555-0198</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope" style="color:var(--accent);"></i>
+              <a href="mailto:hello@heps.studio" class="footer-link">hello@heps.studio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 text-center" style="border-top:1px solid rgba(225,29,72,0.1);">
+        <p class="text-sm opacity-60" style="color:var(--text-muted);">© 2025 High-End Photography Studio Rental. All
+          rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,804 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | HEPS Dashboard</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Manage your HEPS profile, update your details, change password, and manage notification preferences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      padding-top: 0;
+    }
+
+    .sidebar-logo {
+      padding: 1.5rem 1rem 2rem;
+      border-bottom: 1px solid rgba(225, 29, 72, 0.12);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem 0.4rem;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 150;
+      display: none;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    .avatar-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px rgba(225, 29, 72, 0.35);
+      object-fit: cover;
+    }
+
+    .avatar-upload {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: var(--transition);
+    }
+
+    .avatar-upload:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      background: transparent;
+    }
+
+    .tab-btn.active {
+      background: rgba(225, 29, 72, 0.12);
+      color: var(--accent);
+      border-color: rgba(225, 29, 72, 0.25);
+    }
+
+    .tab-btn:hover:not(.active) {
+      background: rgba(225, 29, 72, 0.06);
+      color: var(--text-primary);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .notif-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(225, 29, 72, 0.08);
+    }
+
+    .notif-row:last-child {
+      border-bottom: none;
+    }
+
+    .toggle-switch-sm {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .toggle-switch-sm input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-thumb-sm {
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(225, 29, 72, 0.25);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .toggle-thumb-sm::before {
+      content: '';
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: 0.3s;
+    }
+
+    .toggle-switch-sm input:checked+.toggle-thumb-sm {
+      background: rgba(225, 29, 72, 0.2);
+    }
+
+    .toggle-switch-sm input:checked+.toggle-thumb-sm::before {
+      background: var(--accent);
+      transform: translateX(20px);
+    }
+
+    @media(max-width:768px) {
+      .dashboard-main {
+        margin-left: 0 !important;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" class="nav-logo text-lg">HEPS<span>.</span></a>
+    </div>
+
+    <div class="sidebar-section-label sidebar-label">Main</div>
+    <nav class="space-y-1">
+      <a href="user-dashboard.html" class="sidebar-nav-item"><i class="sidebar-nav-icon fa-solid fa-gauge"></i><span
+          class="sidebar-label">Dashboard</span></a>
+      <a href="pricing.html" class="sidebar-nav-item"><i class="sidebar-nav-icon fa-solid fa-calendar-check"></i><span
+          class="sidebar-label">Bookings</span></a>
+      <a href="portfolio.html" class="sidebar-nav-item"><i class="sidebar-nav-icon fa-solid fa-images"></i><span
+          class="sidebar-label">My Portfolio</span></a>
+      <a href="user-profile.html" class="sidebar-nav-item active"><i class="sidebar-nav-icon fa-solid fa-user"></i><span
+          class="sidebar-label">Profile</span></a>
+    </nav>
+
+    <div class="sidebar-section-label sidebar-label mt-4">Account</div>
+    <nav class="space-y-1">
+      <a href="#" class="sidebar-nav-item"><i class="sidebar-nav-icon fa-solid fa-credit-card"></i><span
+          class="sidebar-label">Billing</span></a>
+      <a href="#" class="sidebar-nav-item"><i class="sidebar-nav-icon fa-solid fa-headset"></i><span
+          class="sidebar-label">Support</span></a>
+      <a href="#" class="sidebar-nav-item"><i class="sidebar-nav-icon fa-solid fa-gear"></i><span
+          class="sidebar-label">Settings</span></a>
+    </nav>
+
+    <div class="mt-auto pt-8">
+      <div class="glass-card p-4 mb-4">
+        <div class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=100&q=80"
+            class="w-10 h-10 rounded-full object-cover border-2" style="border-color:var(--accent);" alt="User" />
+          <div class="sidebar-label overflow-hidden">
+            <div class="font-semibold text-sm truncate">Marcus Rhodes</div>
+            <div class="text-xs" style="color:var(--accent);">Pro Member</div>
+          </div>
+        </div>
+      </div>
+      <a href="login.html" class="sidebar-nav-item text-sm mt-4" style="color:var(--text-muted);">
+        <i class="fa-solid fa-right-from-bracket sidebar-nav-icon" style="color:var(--text-muted);"></i>
+        <span class="sidebar-label">Sign Out</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="dashboard-main" id="dashboard-main">
+    <!-- Header -->
+    <div class="flex items-center justify-between gap-4 w-full">
+      <div class="flex items-center gap-4">
+        <button id="sidebar-toggle" class="lg:hidden theme-toggle w-9 h-9"><i class="fa-solid fa-bars"></i></button>
+        <div>
+          <h3 class="text-xl font-bold mb-0.5">My Profile</h3>
+          <p class="text-sm" style="color:var(--text-muted);">Manage your personal details and preferences</p>
+        </div>
+      </div>
+      <div class="header-controls px-4 py-1.5 flex items-center gap-4">
+        <button class="theme-toggle text-sm" data-theme-toggle data-theme-icon title="Toggle Theme"><i
+            class="fa-solid fa-sun"></i></button>
+        <button class="rtl-toggle text-sm" data-rtl-toggle title="Toggle Layout"><i
+            class="fa-solid fa-globe"></i></button>
+      </div>
+    </div>
+    </div>
+
+    <!-- Profile Header Card -->
+    <div class="chart-card mb-6 slide-up">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+        <!-- Avatar -->
+        <div class="relative flex-shrink-0">
+          <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=200&q=80" class="avatar-ring"
+            alt="Marcus Rhodes" />
+          <div class="avatar-upload" title="Change photo"
+            onclick="showToast('Avatar upload would open file picker here.','info')">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="flex-1">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold mb-1">Marcus Rhodes</h2>
+              <p class="text-sm mb-3" style="color:var(--text-muted);">marcus.rhodes@studio.com</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="badge badge-gold"><i class="fa-solid fa-star mr-1"></i>Pro Member</span>
+                <span class="badge badge-success"><i class="fa-solid fa-circle mr-1 text-xs"></i>Active</span>
+                <span class="badge"
+                  style="background:rgba(99,102,241,0.15); color:#a5b4fc; border:1px solid rgba(99,102,241,0.3);">
+                  <i class="fa-solid fa-camera mr-1"></i>Verified Photographer
+                </span>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Member Since</div>
+              <div class="text-sm font-semibold">March 2022</div>
+              <div class="text-xs mt-1" style="color:var(--text-muted);">47 sessions booked</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini Stats -->
+      <div class="grid grid-cols-4 gap-4 mt-6 pt-6" style="border-top:1px solid rgba(225,29,72,0.12);">
+        <div class="text-center">
+          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="47" data-suffix="">â€”</div>
+          <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Sessions</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="186" data-suffix="h">â€”</div>
+          <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Studio Hours</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="2450" data-suffix="">â€”</div>
+          <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Reward Points</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="98" data-suffix="%">â€”</div>
+          <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="flex flex-wrap gap-2 mb-6 p-1 rounded-xl"
+      style="background:rgba(26,26,46,0.5); border:1px solid rgba(225,29,72,0.12); display:inline-flex;">
+      <button class="tab-btn active" data-tab="personal">Personal Info</button>
+      <button class="tab-btn" data-tab="security">Security</button>
+      <button class="tab-btn" data-tab="notifications">Notifications</button>
+      <button class="tab-btn" data-tab="subscription">Subscription</button>
+    </div>
+
+    <!-- â”€â”€ TAB: PERSONAL INFO â”€â”€ -->
+    <div id="tab-personal" class="tab-panel active">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2">
+          <div class="chart-card slide-up">
+            <h4 class="mb-6">Personal Information</h4>
+            <form data-mock-form="profile-update" class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div class="form-group mb-0">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-input" value="Marcus" />
+                </div>
+                <div class="form-group mb-0">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-input" value="Rhodes" />
+                </div>
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" value="marcus.rhodes@studio.com" />
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" value="+1 (917) 555-0147" />
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Account Type</label>
+                <select class="form-input">
+                  <option selected>Freelance Photographer</option>
+                  <option>Commercial Agency</option>
+                  <option>Brand / Company</option>
+                  <option>Photo Educator</option>
+                  <option>Student</option>
+                </select>
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Website / Portfolio URL</label>
+                <input type="url" class="form-input" value="https://marcusrhodes.photography" />
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Instagram Handle</label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+                    style="color:var(--text-muted);">@</span>
+                  <input type="text" class="form-input" style="padding-left:2rem;" value="marcusrhodes.photo" />
+                </div>
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Bio</label>
+                <textarea class="form-input"
+                  rows="3">Commercial & editorial photographer based in New York. I specialize in high-end fashion and brand campaigns. Regular HEPS client since 2022.</textarea>
+              </div>
+              <div class="flex gap-3">
+                <button type="submit" class="btn-primary"><i class="fa-solid fa-check mr-1"></i>Save Changes</button>
+                <button type="button" class="btn-ghost" onclick="showToast('Changes discarded.','info')">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar Info -->
+        <div class="space-y-5">
+          <!-- Subscription Summary -->
+          <div class="chart-card slide-up"
+            style="background:linear-gradient(135deg,rgba(225,29,72,0.1),rgba(26,26,46,0.6)); border-color:rgba(225,29,72,0.25);">
+            <div class="text-xs uppercase tracking-widest mb-1" style="color:var(--accent);">Current Plan</div>
+            <h4 class="mb-1">Pro Creator</h4>
+            <div class="text-2xl font-black mb-0.5" style="color:var(--accent);">$299<span class="text-sm font-normal"
+                style="color:var(--text-muted);">/mo</span></div>
+            <div class="text-xs mb-4" style="color:var(--text-muted);">Renews May 1, 2025</div>
+            <div class="progress-bar-wrap mb-2">
+              <div class="progress-bar" style="width:75%;"></div>
+            </div>
+            <div class="text-xs mb-4" style="color:var(--text-muted);">18h used / 24h monthly</div>
+            <a href="pricing.html" class="btn-primary w-full text-center block text-sm">Upgrade to Elite</a>
+          </div>
+
+          <!-- Linked Accounts -->
+          <div class="chart-card slide-up delay-100">
+            <h4 class="mb-4 text-sm">Linked Accounts</h4>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl flex items-center justify-center"
+                    style="background:#DB4437; color:#fff; font-size:0.75rem;"><i class="fab fa-google"></i></div>
+                  <span class="text-sm">Google</span>
+                </div>
+                <span class="badge badge-success">Connected</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl flex items-center justify-center"
+                    style="background:#E1306C; color:#fff; font-size:0.75rem;"><i class="fab fa-instagram"></i></div>
+                  <span class="text-sm">Instagram</span>
+                </div>
+                <button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('Instagram connected!','success')">Connect</button>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-xl flex items-center justify-center"
+                    style="background:#000; color:#fff; font-size:0.75rem;"><i class="fab fa-x-twitter"></i></div>
+                  <span class="text-sm">X / Twitter</span>
+                </div>
+                <button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('X account connected!','success')">Connect</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- â”€â”€ TAB: SECURITY â”€â”€ -->
+    <div id="tab-security" class="tab-panel">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Change Password -->
+        <div class="chart-card slide-up">
+          <h4 class="mb-6">Change Password</h4>
+          <form data-mock-form="password" class="space-y-4">
+            <div class="form-group mb-0">
+              <label class="form-label">Current Password</label>
+              <div class="relative">
+                <input type="password" class="form-input" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                  style="padding-left:2.75rem;" />
+                <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+                  style="color:var(--text-muted);"></i>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <label class="form-label">New Password</label>
+              <div class="relative">
+                <input type="password" class="form-input" placeholder="Min. 8 characters"
+                  style="padding-left:2.75rem;" />
+                <i class="fa-solid fa-lock-open absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+                  style="color:var(--text-muted);"></i>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <label class="form-label">Confirm New Password</label>
+              <div class="relative">
+                <input type="password" class="form-input" placeholder="Repeat new password"
+                  style="padding-left:2.75rem;" />
+                <i class="fa-solid fa-shield-halved absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
+                  style="color:var(--text-muted);"></i>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary"><i class="fa-solid fa-key mr-1"></i> Update Password</button>
+          </form>
+        </div>
+
+        <!-- 2FA + Sessions -->
+        <div class="space-y-5">
+          <div class="chart-card slide-up delay-100">
+            <h4 class="mb-4">Two-Factor Authentication</h4>
+            <p class="text-sm mb-5" style="color:var(--text-secondary);">Add a second layer of security to your HEPS
+              account using an authenticator app or SMS code.</p>
+            <div class="flex items-center justify-between p-4 rounded-xl"
+              style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2);">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl flex items-center justify-center"
+                  style="background:rgba(16,185,129,0.15);"><i class="fa-solid fa-mobile-screen text-sm"
+                    style="color:#10b981;"></i></div>
+                <div>
+                  <div class="text-sm font-semibold">SMS Authentication</div>
+                  <div class="text-xs" style="color:var(--text-muted);">Via +1 (917) Â·Â·Â·-0147</div>
+                </div>
+              </div>
+              <span class="badge badge-success">Enabled</span>
+            </div>
+            <button class="btn-ghost text-sm mt-4 w-full justify-center"
+              onclick="showToast('Authenticator app setup started.','info')">
+              <i class="fa-solid fa-qrcode mr-1"></i> Set Up Authenticator App
+            </button>
+          </div>
+
+          <div class="chart-card slide-up delay-200">
+            <h4 class="mb-4">Active Sessions</h4>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-sm">
+                <div>
+                  <div class="font-semibold">Chrome Â· macOS <span class="badge badge-success ml-2">Current</span></div>
+                  <div class="text-xs mt-0.5" style="color:var(--text-muted);">New York, NY Â· Apr 13, 2025</div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <div>
+                  <div class="font-semibold">Safari Â· iPhone 14</div>
+                  <div class="text-xs mt-0.5" style="color:var(--text-muted);">New York, NY Â· Apr 12, 2025</div>
+                </div>
+                <button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('Session revoked.','success')">Revoke</button>
+              </div>
+              <div class="flex items-center justify-between text-sm">
+                <div>
+                  <div class="font-semibold">Firefox Â· Windows 11</div>
+                  <div class="text-xs mt-0.5" style="color:var(--text-muted);">Newark, NJ Â· Apr 10, 2025</div>
+                </div>
+                <button class="btn-ghost text-xs py-1 px-2"
+                  onclick="showToast('Session revoked.','success')">Revoke</button>
+              </div>
+            </div>
+            <button class="btn-ghost text-sm mt-5 w-full justify-center"
+              style="color:#ef4444; border-color:rgba(239,68,68,0.3);"
+              onclick="showToast('All other sessions signed out.','success')">
+              <i class="fa-solid fa-right-from-bracket mr-1"></i> Sign Out All Other Sessions
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- â”€â”€ TAB: NOTIFICATIONS â”€â”€ -->
+    <div id="tab-notifications" class="tab-panel">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div class="chart-card slide-up">
+          <h4 class="mb-6">Email Notifications</h4>
+          <div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Booking Confirmations</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Email when a booking is confirmed or
+                  modified</div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" checked /><span
+                  class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Session Reminders</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">24h and 1h reminder before your session
+                </div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" checked /><span
+                  class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Invoices & Receipts</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Email after each successful payment</div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" checked /><span
+                  class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Support Ticket Updates</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Replies and status changes on your tickets
+                </div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" checked /><span
+                  class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Newsletter & Blog</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Weekly tutorials, tips, and studio news
+                </div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" /><span class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Promotional Offers</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Member-only discounts and flash sales</div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" /><span class="toggle-thumb-sm"></span></label>
+            </div>
+          </div>
+          <button class="btn-primary mt-6" onclick="showToast('Notification preferences saved!','success')">
+            <i class="fa-solid fa-check mr-1"></i> Save Preferences
+          </button>
+        </div>
+
+        <div class="chart-card slide-up delay-100">
+          <h4 class="mb-6">Push & SMS Notifications</h4>
+          <div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">Push Notifications</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Browser push for real-time booking updates
+                </div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" checked /><span
+                  class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">SMS Reminders</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Text message 2 hours before your session
+                </div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" checked /><span
+                  class="toggle-thumb-sm"></span></label>
+            </div>
+            <div class="notif-row">
+              <div>
+                <div class="font-semibold text-sm">SMS Marketing</div>
+                <div class="text-xs mt-0.5" style="color:var(--text-muted);">Special offers and new studio announcements
+                </div>
+              </div>
+              <label class="toggle-switch-sm"><input type="checkbox" /><span class="toggle-thumb-sm"></span></label>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="mt-8 p-5 rounded-xl"
+            style="background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2);">
+            <h4 class="text-base mb-2" style="color:#ef4444;">Danger Zone</h4>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">Permanently delete your account and all
+              associated data. This action cannot be undone.</p>
+            <button class="text-sm font-semibold px-4 py-2 rounded-xl"
+              style="background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); color:#fca5a5; cursor:pointer; transition:var(--transition);"
+              onclick="showToast('Account deletion requires email confirmation.','error')">
+              <i class="fa-solid fa-triangle-exclamation mr-1"></i> Delete My Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- â”€â”€ TAB: SUBSCRIPTION â”€â”€ -->
+    <div id="tab-subscription" class="tab-panel">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Current Plan -->
+        <div class="lg:col-span-2 space-y-5">
+          <div class="chart-card slide-up"
+            style="background:linear-gradient(135deg,rgba(225,29,72,0.1),rgba(26,26,46,0.7)); border-color:rgba(225,29,72,0.3);">
+            <div class="flex flex-wrap items-start justify-between gap-6">
+              <div>
+                <div class="text-xs uppercase tracking-widest mb-1" style="color:var(--accent);">Current Plan</div>
+                <h3 class="mb-1">Pro Creator</h3>
+                <p class="text-sm" style="color:var(--text-secondary);">Best for commercial photographers with regular
+                  bookings</p>
+              </div>
+              <div class="text-right">
+                <div class="text-4xl font-black" style="color:var(--accent);">$299</div>
+                <div class="text-sm" style="color:var(--text-muted);">per month</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mt-6 pt-6" style="border-top:1px solid rgba(225,29,72,0.15);">
+              <div>
+                <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Monthly Hours</div>
+                <div class="font-bold">24 hours</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Used This Month
+                </div>
+                <div class="font-bold" style="color:var(--accent);">18 hours</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Next Renewal</div>
+                <div class="font-bold">May 1, 2025</div>
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Status</div><span
+                  class="badge badge-success"><i class="fa-solid fa-circle text-xs mr-1"></i>Active</span>
+              </div>
+            </div>
+            <div class="flex gap-3 mt-6">
+              <a href="pricing.html" class="btn-primary text-sm">Upgrade to Elite</a>
+              <button class="btn-ghost text-sm"
+                onclick="showToast('Subscription management coming soon.','info')">Manage Plan</button>
+              <button class="btn-ghost text-sm" style="color:#ef4444; border-color:rgba(239,68,68,0.2);"
+                onclick="showToast('Cancellation request submitted.','error')">Cancel Plan</button>
+            </div>
+          </div>
+
+          <!-- Billing History -->
+          <div class="chart-card slide-up delay-100">
+            <h4 class="mb-5">Billing History</h4>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Invoice</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Apr 1, 2025</td>
+                    <td>Pro Creator â€” Monthly</td>
+                    <td style="color:var(--accent);">$299.00</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td><button class="btn-ghost text-xs py-1 px-2"
+                        onclick="showToast('Invoice downloaded.','success')"><i
+                          class="fa-solid fa-download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Mar 1, 2025</td>
+                    <td>Pro Creator â€” Monthly</td>
+                    <td style="color:var(--accent);">$299.00</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td><button class="btn-ghost text-xs py-1 px-2"
+                        onclick="showToast('Invoice downloaded.','success')"><i
+                          class="fa-solid fa-download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Feb 1, 2025</td>
+                    <td>Pro Creator â€” Monthly</td>
+                    <td style="color:var(--accent);">$299.00</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td><button class="btn-ghost text-xs py-1 px-2"
+                        onclick="showToast('Invoice downloaded.','success')"><i
+                          class="fa-solid fa-download"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>Jan 1, 2025</td>
+                    <td>Pro Creator â€” Monthly + Add-on</td>
+                    <td style="color:var(--accent);">$449.00</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td><button class="btn-ghost text-xs py-1 px-2"
+                        onclick="showToast('Invoice downloaded.','success')"><i
+                          class="fa-solid fa-download"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="space-y-5">
+          <div class="chart-card slide-up delay-200">
+            <h4 class="mb-5">Payment Method</h4>
+            <div class="p-4 rounded-xl mb-4"
+              style="background:rgba(225,29,72,0.06); border:1px solid rgba(225,29,72,0.2);">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-7 rounded flex items-center justify-center text-xs font-bold"
+                  style="background:#1a1f71; color:#fff;">VISA</div>
+                <div>
+                  <div class="text-sm font-semibold">â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ 4242</div>
+                  <div class="text-xs" style="color:var(--text-muted);">Expires 08/27</div>
+                </div>
+                <span class="badge badge-success ml-auto">Default</span>
+              </div>
+            </div>
+            <button class="btn-ghost text-sm w-full justify-center"
+              onclick="showToast('Card management coming soon.','info')">
+              <i class="fa-solid fa-plus mr-1"></i> Add Payment Method
+            </button>
+          </div>
+
+          <div class="chart-card slide-up delay-300">
+            <h4 class="mb-4 text-sm">Loyalty Rewards</h4>
+            <div class="text-center py-4">
+              <div class="text-4xl font-black mb-1" style="color:var(--accent);">2,450</div>
+              <div class="text-xs uppercase tracking-wider mb-4" style="color:var(--text-muted);">Reward Points</div>
+              <div class="progress-bar-wrap mb-2">
+                <div class="progress-bar" style="width:49%;"></div>
+              </div>
+              <div class="text-xs" style="color:var(--text-muted);">2,550 pts to Gold Elite Status</div>
+            </div>
+            <button class="btn-primary w-full text-sm text-center mt-3"
+              onclick="showToast('Redeem 500 points = $25 credit applied!','success')">
+              Redeem Points
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = document.getElementById('tab-' + btn.dataset.tab);
+        if (panel) {
+          panel.classList.add('active');
+          // Re-trigger scroll animations for newly shown panel
+          panel.querySelectorAll('.slide-up, .fade-in').forEach(el => {
+            el.classList.remove('animate-in');
+            setTimeout(() => el.classList.add('animate-in'), 50);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

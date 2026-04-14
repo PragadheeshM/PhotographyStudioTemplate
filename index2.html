@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEPS &mdash; Vibrant Studios | Alternative Home</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Explore HEPS from a vibrant angle &mdash; immersive imagery, featured studios, and a bold creative vision." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero2-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    @media(max-width:768px) {
+      .hero2-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero2-left {
+      background: var(--secondary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero2-right {
+      position: relative;
+      overflow: hidden;
+      min-height: 60vh;
+    }
+
+    .hero2-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .mosaic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 200px);
+      gap: 1rem;
+    }
+
+    .mosaic-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .mosaic-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .mosaic-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .mosaic-item--tall {
+      grid-row: span 2;
+    }
+
+    .feature-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: rgba(26, 26, 46, 0.5);
+      border: 1px solid rgba(225, 29, 72, 0.15);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      border-color: rgba(225, 29, 72, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .process-step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: rgba(26, 26, 46, 0.4);
+      border: 1px solid rgba(225, 29, 72, 0.12);
+      transition: var(--transition);
+    }
+
+    .process-step:hover {
+      border-color: rgba(225, 29, 72, 0.35);
+    }
+
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--accent);
+      opacity: 0.4;
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 50px;
+    }
+
+    .newsletter-box {
+      background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(225, 29, 72, 0.06));
+      border: 1px solid rgba(225, 29, 72, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+    }
+
+    .team-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media(max-width:640px) {
+      .team-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ••• NAVBAR (shared) ••• -->
+  <nav id="navbar">
+    <div class="container flex items-center justify-between">
+      <!-- Left: Logo -->
+      <a href="index.html" class="nav-logo flex items-center gap-2.5">
+        <img src="logo.svg" alt="HEPS" class="h-7 w-auto" style="transform:translateY(-2px);">
+        HEPS<span>.</span>
+      </a>
+
+      <!-- Right: Nav, Actions & Hamburger -->
+      <div class="flex items-center gap-4 lg:gap-8">
+        <!-- Desktop Nav (Hidden on mobile) -->
+        <div class="hidden xl:flex items-center gap-8">
+          <!-- Home dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
+              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+            </div>
+          </div>
+
+          <a href="about.html" class="nav-link">About</a>
+
+          <!-- Services dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
+                Services</a>
+              <a href="service-details.html" class="dropdown-item"><i
+                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
+            </div>
+          </div>
+
+          <a href="pricing.html" class="nav-link">Pricing</a>
+
+          <!-- Blog dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="blog.html" class="dropdown-item">Blog Listing</a>
+              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
+            </div>
+          </div>
+
+          <!-- Dashboard dropdown -->
+          <div class="dropdown">
+            <a href="#" class="nav-link flex items-center gap-1">
+              Dashboard <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="user-dashboard.html" class="dropdown-item">User Dashboard</a>
+              <a href="admin-dashboard.html" class="dropdown-item">Admin Dashboard</a>
+            </div>
+          </div>
+
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <!-- Toggles & Auth buttons -->
+        <div class="flex items-center gap-3">
+          <!-- Toggles: Always visible -->
+          <div class="flex items-center gap-2">
+            <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle" data-rtl-toggle title="Toggle RTL/LTR">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+
+          <!-- Auth: Hidden on small screens -->
+          <div class="hidden sm:flex items-center gap-3">
+            <a href="login.html" class="btn-ghost text-sm">Login</a>
+            <a href="register.html" class="btn-primary text-sm">Book Studio</a>
+          </div>
+
+          <!-- Hamburger: Visible on medium/small screens -->
+          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+            <span class="block w-6 h-0.5 bg-current"></span>
+            <span class="block w-6 h-0.5 bg-current"></span>
+            <span class="block w-4 h-0.5 bg-current"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu"
+    class="fixed top-0 left-0 w-full h-screen bg-[var(--primary)] backdrop-blur-xl z-[999] p-6 overflow-y-auto hidden flex-col">
+    <div class="flex items-center justify-between mb-10">
+      <a href="index.html" class="nav-logo text-2xl flex items-center gap-2.5 text-[var(--text-primary)]">
+        <img src="logo.svg" alt="HEPS" class="h-7 w-auto">
+        HEPS<span>.</span>
+      </a>
+      <button id="close-menu" class="text-3xl p-2 text-[var(--text-primary)] hover:text-accent transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-6 px-2">
+      <!-- Home Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-accent flex items-center justify-between py-2 transition-colors">
+          Home <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="index.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Home 1</a>
+          <a href="index2.html" class="text-sm text-accent hover:text-accent transition-colors">Home 2</a>
+        </div>
+      </div>
+
+      <!-- About -->
+      <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
+
+      <!-- Services Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
+          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
+
+      <!-- Blog Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
+          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
+        </div>
+      </div>
+
+      <!-- Dashboard Section -->
+      <div class="mobile-dropdown">
+        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
+          Dashboard <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+        </a>
+        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
+          <a href="user-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">User Dashboard</a>
+          <a href="admin-dashboard.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Admin Dashboard</a>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
+
+      <!-- Auth Links (Mobile only) -->
+      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
+        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
+        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ••• HERO — SPLIT SCREEN ••• -->
+  <div class="hero2-split pt-24 lg:pt-0">
+    <div class="hero2-left">
+      <!-- Background Shape -->
+      <div class="parallax-shape w-72 h-72 bg-accent" style="top:-20%;left:-10%;"></div>
+
+      <div class="relative z-10">
+        <div class="section-label mb-6 inline-flex">
+          <i class="fa-solid fa-star"></i> Award-Winning Studios
+        </div>
+        <h1 class="mb-6">Your Vision.<br /><span class="gradient-text">Limitless</span> Space.</h1>
+        <p class="mb-10 text-lg max-w-lg" style="color:var(--text-secondary);">
+          Step into studios designed for the elite &mdash; with lighting equipment worth over $1M, every creative idea
+          becomes
+          a masterpiece.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="portfolio.html" class="btn-primary hover-glow hover-float">
+            <i class="fa-solid fa-images"></i> Explore Work
+          </a>
+          <a href="services.html" class="btn-outline hover-float">
+            <i class="fa-solid fa-door-open"></i> Our Studios
+          </a>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-3 gap-4 mt-12 pt-10" style="border-top:1px solid rgba(225,29,72,0.15);">
+          <div>
+            <div class="text-2xl font-black" style="color:var(--accent);" data-counter="14" data-suffix="">&mdash;</div>
+            <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Studios</div>
+          </div>
+          <div>
+            <div class="text-2xl font-black" style="color:var(--accent);" data-counter="5200" data-suffix="+">&mdash;
+            </div>
+            <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Sessions</div>
+          </div>
+          <div>
+            <div class="text-2xl font-black" style="color:var(--accent);" data-counter="98" data-suffix="%">&mdash;
+            </div>
+            <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero2-right">
+      <img src="https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?w=900&q=85" alt="Vibrant Studio Space" />
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,26,46,0.5),transparent);"></div>
+      <!-- Floating Tag -->
+      <div class="glass absolute bottom-10 left-1/2 -translate-x-1/2 px-5 py-3 flex items-center gap-3 rounded-2xl"
+        style="white-space:nowrap;">
+        <i class="fa-solid fa-map-pin text-accent"></i>
+        <span class="text-sm font-semibold">Meatpacking District, NYC</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ••• FEATURED STUDIOS ••• -->
+  <section class="section-pad gradient-section">
+    <div class="container">
+      <div class="text-center mb-14">
+        <div class="section-label fade-in"><i class="fa-solid fa-aperture"></i> Featured Spaces</div>
+        <h2 class="slide-up mt-2">Our Most-Booked <span class="gradient-text">Studios</span></h2>
+        <div class="divider-gold center"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer hover-float slide-up"
+          style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=700&q=80" alt="Portrait Studio"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.9) 30%,transparent);">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="badge badge-gold mb-2">Most Popular</span>
+            <h3 class="text-white mb-2">Portrait Studio A</h3>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">2,000 sq ft , Up to 12 people , 6 Profoto B10
+            </p>
+            <a href="service-details.html" class="btn-primary text-sm py-2 px-5">Book Now</a>
+          </div>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer hover-float slide-up delay-200"
+          style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=700&q=80" alt="Commercial Studio"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.9) 30%,transparent);">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="badge badge-gold mb-2">Best for Brands</span>
+            <h3 class="text-white mb-2">Commercial Studio B</h3>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">5,000 sq ft , 24ft ceiling , Full
+              green-screen</p>
+            <a href="service-details.html" class="btn-primary text-sm py-2 px-5">Book Now</a>
+          </div>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden group cursor-pointer hover-float slide-up delay-400"
+          style="height:420px;">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80" alt="Creative Loft"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.9) 30%,transparent);">
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="badge badge-gold mb-2">Trendsetter Pick</span>
+            <h3 class="text-white mb-2">Creative Loft</h3>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">3,200 sq ft , Exposed brick , Natural light
+            </p>
+            <a href="service-details.html" class="btn-primary text-sm py-2 px-5">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ••• WHY CHOOSE HEPS ••• -->
+  <section class="section-pad" style="background:var(--primary);">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="section-label fade-in"><i class="fa-solid fa-trophy"></i> Why We're Different</div>
+          <h2 class="slide-up mt-3 mb-8">World-Class Equipment.<br /><span class="gradient-text">Local Pricing.</span>
+          </h2>
+          <div class="space-y-5">
+            <div class="feature-card slide-up">
+              <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div>
+                <h4 class="mb-1">Instant Online Booking</h4>
+                <p style="color:var(--text-secondary); font-size:0.9375rem;">Reserve any studio 24/7 in under 90
+                  seconds. Real-time availability, zero phone-tag.</p>
+              </div>
+            </div>
+            <div class="feature-card slide-up delay-100">
+              <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div>
+                <h4 class="mb-1">$5M Equipment Insurance</h4>
+                <p style="color:var(--text-secondary); font-size:0.9375rem;">Every session is fully insured. Focus on
+                  creating &mdash; we protect the gear.</p>
+              </div>
+            </div>
+            <div class="feature-card slide-up delay-200">
+              <div class="service-icon"><i class="fa-solid fa-headset"></i></div>
+              <div>
+                <h4 class="mb-1">Dedicated Studio Technician</h4>
+                <p style="color:var(--text-secondary); font-size:0.9375rem;">Each session includes a certified lighting
+                  technician &mdash; on-call, on-site.</p>
+              </div>
+            </div>
+            <div class="feature-card slide-up delay-300">
+              <div class="service-icon"><i class="fa-solid fa-rotate"></i></div>
+              <div>
+                <h4 class="mb-1">Flexible Rescheduling</h4>
+                <p style="color:var(--text-secondary); font-size:0.9375rem;">Cancel or reschedule up to 24 hours before
+                  your shoot with zero penalty.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mosaic-grid slide-right">
+          <div class="mosaic-item mosaic-item--tall">
+            <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?w=400&q=80" alt="Fashion" />
+          </div>
+          <div class="mosaic-item">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" alt="Portrait" />
+          </div>
+          <div class="mosaic-item">
+            <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=400&q=80" alt="Studio" />
+          </div>
+          <div class="mosaic-item">
+            <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=400&q=80" alt="Model" />
+          </div>
+          <div class="mosaic-item">
+            <img src="https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?w=400&q=80" alt="Equipment" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ••• PROCESS ••• -->
+  <section class="section-pad gradient-section">
+    <div class="container">
+      <div class="text-center mb-14">
+        <div class="section-label fade-in"><i class="fa-solid fa-list-check"></i> Process</div>
+        <h2 class="slide-up mt-2">From Idea to <span class="gradient-text">Iconic Shot</span></h2>
+        <div class="divider-gold center"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="process-step slide-up">
+          <div class="step-num">01</div>
+          <div>
+            <h4 class="mb-2">Browse Studios</h4>
+            <p style="color:var(--text-secondary); font-size:0.9375rem;">Filter by size, theme, equipment, and
+              availability to find your perfect creative space.</p>
+          </div>
+        </div>
+        <div class="process-step slide-up delay-100">
+          <div class="step-num">02</div>
+          <div>
+            <h4 class="mb-2">Reserve & Pay</h4>
+            <p style="color:var(--text-secondary); font-size:0.9375rem;">Book hourly or full-day packages with secure
+              Stripe payment in under 2 minutes.</p>
+          </div>
+        </div>
+        <div class="process-step slide-up delay-200">
+          <div class="step-num">03</div>
+          <div>
+            <h4 class="mb-2">Studio Prep</h4>
+            <p style="color:var(--text-secondary); font-size:0.9375rem;">Our team pre-sets lighting, cleans seamless
+              paper, and stage your requested props before you arrive.</p>
+          </div>
+        </div>
+        <div class="process-step slide-up delay-300">
+          <div class="step-num">04</div>
+          <div>
+            <h4 class="mb-2">Create & Deliver</h4>
+            <p style="color:var(--text-secondary); font-size:0.9375rem;">Walk in, create extraordinary work, and walk
+              out. Use our on-site editing stations for immediate review.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ••• TEAM SPOTLIGHT ••• -->
+  <section class="section-pad" style="background:var(--primary);">
+    <div class="container">
+      <div class="text-center mb-14">
+        <div class="section-label fade-in"><i class="fa-solid fa-users"></i> Meet the Team</div>
+        <h2 class="slide-up mt-2">The <span class="gradient-text">Creative Minds</span> Behind HEPS</h2>
+        <div class="divider-gold center"></div>
+      </div>
+      <div class="team-strip">
+        <div class="team-card slide-up">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" class="team-photo"
+            alt="Marcus Ellison" onerror="this.src='https://placehold.co/400x533/160B10/E11D48?text=Marcus+Ellison'" />
+          <div class="team-info">
+            <h4 class="text-white">Marcus Ellison</h4>
+            <p class="text-sm mt-1" style="color:var(--accent);">Founder & Creative Director</p>
+            <div class="flex gap-3 mt-3">
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card slide-up delay-100">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=350&q=80" class="team-photo"
+            alt="Sofia Laurent" onerror="this.src='https://placehold.co/400x533/160B10/E11D48?text=Sofia+Laurent'" />
+          <div class="team-info">
+            <h4 class="text-white">Sofia Laurent</h4>
+            <p class="text-sm mt-1" style="color:var(--accent);">Studio Operations Manager</p>
+            <div class="flex gap-3 mt-3">
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card slide-up delay-200">
+          <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=350&q=80" class="team-photo"
+            alt="Derek Chen" onerror="this.src='https://placehold.co/400x533/160B10/E11D48?text=Derek+Chen'" />
+          <div class="team-info">
+            <h4 class="text-white">Derek Chen</h4>
+            <p class="text-sm mt-1" style="color:var(--accent);">Head Lighting Technician</p>
+            <div class="flex gap-3 mt-3">
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-card slide-up delay-300">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=350&q=80" class="team-photo"
+            alt="Amara Diallo" onerror="this.src='https://placehold.co/400x533/160B10/E11D48?text=Amara+Diallo'" />
+          <div class="team-info">
+            <h4 class="text-white">Amara Diallo</h4>
+            <p class="text-sm mt-1" style="color:var(--accent);">Lead Prop Stylist</p>
+            <div class="flex gap-3 mt-3">
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="footer-social w-8 h-8" style="font-size:0.75rem;"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="about.html" class="btn-outline hover-float"><i class="fa-solid fa-users mr-2"></i>Meet the Full
+          Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ••• GALLERY MOSAIC ••• -->
+  <section class="section-pad gradient-section">
+    <div class="container">
+      <div class="text-center mb-14">
+        <div class="section-label fade-in"><i class="fa-solid fa-photo-film"></i> Gallery</div>
+        <h2 class="slide-up mt-2">Stories Told in <span class="gradient-text">Light</span></h2>
+        <div class="divider-gold center"></div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="portfolio-item md:col-span-2 md:row-span-2 scale-in" style="aspect-ratio:1;">
+          <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80" alt="Portrait"
+            onerror="this.src='https://placehold.co/800x800/160B10/E11D48?text=Fine+Art+Portrait'" />
+          <div class="portfolio-overlay"><span class="text-white text-xl font-bold">Fine Art Portrait</span></div>
+        </div>
+        <div class="portfolio-item scale-in delay-100">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80" alt="Food"
+            onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Product'" />
+          <div class="portfolio-overlay"><span class="text-white font-bold">Product</span></div>
+        </div>
+        <div class="portfolio-item scale-in delay-200">
+          <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=80" alt="Fashion"
+            onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Fashion'" />
+          <div class="portfolio-overlay"><span class="text-white font-bold">Fashion</span></div>
+        </div>
+        <div class="portfolio-item scale-in delay-300">
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&q=80" alt="Commercial"
+            onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Commercial'" />
+          <div class="portfolio-overlay"><span class="text-white font-bold">Commercial</span></div>
+        </div>
+        <div class="portfolio-item scale-in delay-400">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80" alt="Wedding"
+            onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Wedding'" />
+          <div class="portfolio-overlay"><span class="text-white font-bold">Wedding</span></div>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="portfolio.html" class="btn-primary hover-float hover-glow"><i class="fa-solid fa-images mr-2"></i>View
+          Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ••• NEWSLETTER CTA ••• -->
+  <section class="section-pad" style="background:var(--primary);">
+    <div class="container">
+      <div class="newsletter-box text-center">
+        <div class="section-label fade-in mx-auto w-fit mb-6"><i class="fa-solid fa-envelope"></i> Newsletter</div>
+        <h2 class="slide-up mb-4">Get Exclusive <span class="gradient-text">Studio Offers</span></h2>
+        <p class="slide-up delay-100 max-w-xl mx-auto mb-10" style="color:var(--text-secondary);">
+          Subscribe for priority booking access, member-only discounts, and monthly lighting tutorials from our master
+          photographers.
+        </p>
+        <form class="slide-up delay-200 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" data-mock-form="newsletter"
+          onsubmit="event.preventDefault(); window.showToast && showToast('Subscribed! Check your inbox.','success');">
+          <input type="email" placeholder="your@email.com" class="form-input flex-1" required />
+          <button type="submit" class="btn-primary whitespace-nowrap">Subscribe <i
+              class="fa-solid fa-arrow-right ml-1"></i></button>
+        </form>
+        <p class="text-xs mt-4" style="color:var(--text-muted);">No spam, ever. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ••• FOOTER ••• -->
+  <footer>
+    <div class="container py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div class="lg:col-span-2">
+          <a href="index.html" class="nav-logo text-2xl mb-4 flex items-center gap-3"><img src="logo.svg" alt="HEPS"
+              class="h-8 w-auto" style="transform:translateY(-2px);"> HEPS<span>.</span></a>
+          <p class="text-sm mb-6 max-w-xs" style="color:var(--text-muted);">
+            New York's premier photography studio rental destination. 14 studios, world-class equipment, unforgettable
+            results.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="footer-social" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="footer-social" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
+          <ul class="space-y-3">
+            <li><a class="footer-link" href="index.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Home</a></li>
+            <li><a class="footer-link" href="about.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>About Us</a></li>
+            <li><a class="footer-link" href="services.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Services</a></li>
+            <li><a class="footer-link" href="portfolio.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Portfolio</a></li>
+            <li><a class="footer-link" href="pricing.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Pricing</a></li>
+            <li><a class="footer-link" href="contact.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
+                  style="color:var(--accent);"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
+          <ul class="space-y-3">
+            <li><a class="footer-link" href="service-details.html">Portrait Studio</a></li>
+            <li><a class="footer-link" href="service-details.html">Commercial Studio</a></li>
+            <li><a class="footer-link" href="service-details.html">Film & Video Stage</a></li>
+            <li><a class="footer-link" href="service-details.html">Creative Loft</a></li>
+            <li><a class="footer-link" href="service-details.html">Food & Product</a></li>
+            <li><a class="footer-link" href="service-details.html">Photo Workshops</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot mt-1" style="color:var(--accent);"></i>
+              <span class="text-sm" style="color:var(--text-muted);">450 W 15th St, Meatpacking District, New York, NY
+                10011</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone" style="color:var(--accent);"></i>
+              <a href="tel:+12125550198" class="footer-link">+1 (212) 555-0198</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope" style="color:var(--accent);"></i>
+              <a href="mailto:hello@heps.studio" class="footer-link">hello@heps.studio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 text-center" style="border-top:1px solid rgba(225,29,72,0.1);">
+        <p class="text-sm opacity-60" style="color:var(--text-muted);">© 2025 High-End Photography Studio Rental. All
+          rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

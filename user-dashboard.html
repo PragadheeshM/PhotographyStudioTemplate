@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Dashboard | HEPS</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="Manage your HEPS studio bookings, subscriptions, and support tickets from your personal dashboard." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body {
+      padding-top: 0;
+    }
+
+    .sidebar-logo {
+      padding: 1.5rem 1rem 2rem;
+      border-bottom: 1px solid rgba(225, 29, 72, 0.12);
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-section-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem 0.4rem;
+    }
+
+    .ticket-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(225, 29, 72, 0.1);
+      transition: var(--transition);
+      background: rgba(26, 26, 46, 0.4);
+    }
+
+    .ticket-row:hover {
+      border-color: rgba(225, 29, 72, 0.3);
+    }
+
+    .booking-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid rgba(225, 29, 72, 0.08);
+      transition: var(--transition);
+    }
+
+    .booking-row:hover {
+      background: rgba(225, 29, 72, 0.04);
+    }
+
+    .booking-row:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 150;
+      display: none;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    @media(max-width:1024px) {
+      .dashboard-main {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 1rem 0.75rem;
+      }
+      .chart-card {
+        padding: 1.25rem !important;
+      }
+      .stat-widget {
+        padding: 1.25rem !important;
+      }
+    }
+
+    @media(max-width:480px) {
+      .booking-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+        padding: 1.25rem !important;
+        border: 1px solid rgba(225, 29, 72, 0.1);
+        border-radius: var(--radius);
+        margin-bottom: 0.75rem;
+        background: rgba(26, 26, 46, 0.2);
+      }
+      .booking-row .flex-1 {
+        width: 100%;
+      }
+      .ticket-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html" class="nav-logo text-lg flex items-center gap-2"><img src="logo.svg" alt="HEPS"
+          class="h-6 w-auto"> HEPS<span>.</span></a>
+    </div>
+
+    <div class="sidebar-section-label sidebar-label">Main</div>
+    <nav class="space-y-1">
+      <a href="user-dashboard.html" class="sidebar-nav-item active">
+        <i class="sidebar-nav-icon fa-solid fa-gauge"></i>
+        <span class="sidebar-label">Dashboard</span>
+      </a>
+      <a href="pricing.html" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-calendar-check"></i>
+        <span class="sidebar-label">Bookings</span>
+      </a>
+      <a href="portfolio.html" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-images"></i>
+        <span class="sidebar-label">My Portfolio</span>
+      </a>
+      <a href="user-profile.html" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-user"></i>
+        <span class="sidebar-label">Profile</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-section-label sidebar-label mt-4">Account</div>
+    <nav class="space-y-1">
+      <a href="user-profile.html?tab=subscription" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-credit-card"></i>
+        <span class="sidebar-label">Billing</span>
+      </a>
+      <a href="user-profile.html" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-headset"></i>
+        <span class="sidebar-label">Support</span>
+      </a>
+      <a href="user-profile.html?tab=security" class="sidebar-nav-item">
+        <i class="sidebar-nav-icon fa-solid fa-gear"></i>
+        <span class="sidebar-label">Settings</span>
+      </a>
+    </nav>
+
+    <div class="mt-auto pt-8">
+      <div class="glass-card p-4 mb-4">
+        <div class="flex items-center gap-3 mb-3">
+          <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=100&q=80"
+            class="w-10 h-10 rounded-full object-cover border-2" style="border-color:var(--accent);" alt="User" />
+          <div class="sidebar-label overflow-hidden">
+            <div class="font-semibold text-sm truncate">Marcus Rhodes</div>
+            <div class="text-xs truncate" style="color:var(--text-muted);">Pro Member</div>
+          </div>
+        </div>
+        <div class="sidebar-label">
+          <div class="flex justify-between text-xs mb-1" style="color:var(--text-muted);">
+            <span>Hours Used</span><span style="color:var(--accent);">18 / 24</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" style="width:75%;"></div>
+          </div>
+        </div>
+      </div>
+      <a href="login.html" class="sidebar-nav-item text-sm mt-4" style="color:var(--text-muted);">
+        <i class="fa-solid fa-right-from-bracket sidebar-nav-icon" style="color:var(--text-muted);"></i>
+        <span class="sidebar-label">Sign Out</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main overflow-x-hidden" id="dashboard-main">
+    <!-- Header -->
+    <div class="dashboard-header flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <button id="sidebar-toggle" class="xl:hidden theme-toggle w-9 h-9">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div>
+          <h3 class="text-xl font-bold mb-0.5">Good morning, Marcus 👋</h3>
+          <p class="text-sm" style="color:var(--text-muted);">Here's what's happening with your studio bookings</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 flex-wrap">
+        <div class="header-controls px-4 py-1.5 flex items-center gap-4">
+          <button class="theme-toggle text-sm" data-theme-toggle data-theme-icon title="Toggle Theme"><i
+              class="fa-solid fa-sun"></i></button>
+          <button class="rtl-toggle text-sm" data-rtl-toggle title="Toggle Layout"><i
+              class="fa-solid fa-globe"></i></button>
+        </div>
+        <a href="pricing.html" class="btn-primary text-sm py-2 px-4"><i class="fa-solid fa-calendar-plus me-1"></i> New
+          Booking</a>
+      </div>
+    </div>
+
+    <!-- Stat Widgets -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+      <div class="stat-widget slide-up">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Total Sessions</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-camera text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="47" data-suffix="">0</div>
+        <div class="text-xs" style="color:var(--text-muted);">↑ 4 this month</div>
+      </div>
+      <div class="stat-widget slide-up delay-100">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Hours Booked</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-clock text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="186" data-suffix="h">0</div>
+        <div class="text-xs" style="color:var(--text-muted);">↑ 12h this month</div>
+      </div>
+      <div class="stat-widget slide-up delay-200">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Total Spent</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-dollar-sign text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="12840" data-prefix="$">0
+        </div>
+        <div class="text-xs" style="color:var(--text-muted);">↑ $1,200 this month</div>
+      </div>
+      <div class="stat-widget slide-up delay-300">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Loyalty Points</span>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
+            <i class="fa-solid fa-star text-sm" style="color:var(--accent);"></i>
+          </div>
+        </div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="2450" data-suffix="pts">0
+        </div>
+        <div class="text-xs" style="color:var(--text-muted);">Redeem at checkout</div>
+      </div>
+    </div>
+
+    <!-- Chart + Subscription -->
+    <div class="grid lg:grid-cols-3 gap-6 mb-6">
+      <!-- Doughnut Chart -->
+      <div class="chart-card slide-up flex flex-col items-center overflow-hidden w-full max-w-full">
+        <div class="flex items-center justify-between w-full mb-4">
+          <h4>Studio Usage</h4>
+          <span class="badge badge-gold">This Month</span>
+        </div>
+        <div class="relative w-full h-64 px-2">
+          <canvas id="usageChart" class="w-full h-full"></canvas>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mt-5 w-full text-xs" style="color:var(--text-muted);">
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#E11D48;"></span>Portrait (8h)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#FB7185;"></span>Commercial (5h)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#BE123C;"></span>Film Stage (3h)</div>
+          <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full inline-block"
+              style="background:#1A1A2E;"></span>Remaining (8h)</div>
+        </div>
+      </div>
+
+      <!-- Active Subscription -->
+      <div class="chart-card slide-up delay-100 lg:col-span-2">
+        <div class="flex items-center justify-between mb-5">
+          <h4>Active Subscription</h4>
+          <span class="badge badge-success"><i class="fa-solid fa-circle text-xs me-1"></i>Active</span>
+        </div>
+        <div class="p-5 rounded-xl mb-5"
+          style="background:linear-gradient(135deg,rgba(225,29,72,0.12),rgba(26,26,46,0.5)); border:1px solid rgba(225,29,72,0.25);">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <div class="text-xs uppercase tracking-widest mb-1" style="color:var(--accent);">Pro Creator Plan</div>
+              <div class="text-3xl font-black" style="color:var(--text-primary);">$299<span
+                  class="text-base font-normal" style="color:var(--text-muted);">/month</span></div>
+              <div class="text-sm mt-1" style="color:var(--text-secondary);">Renews: May 1, 2025</div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs mb-2" style="color:var(--text-muted);">Monthly Hours</div>
+              <div class="text-2xl font-black" style="color:var(--accent);">18 <span class="text-base font-normal"
+                  style="color:var(--text-muted);">/ 24h</span></div>
+              <div class="progress-bar-wrap mt-2" style="width:120px;">
+                <div class="progress-bar" style="width:75%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Feature list -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check"
+              style="color:var(--accent);"></i>Any studio access</div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check"
+              style="color:var(--accent);"></i>Studio technician</div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check"
+              style="color:var(--accent);"></i>60+ backdrop colors</div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check"
+              style="color:var(--accent);"></i>Priority booking</div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check"
+              style="color:var(--accent);"></i>Capture One tethering</div>
+          <div class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check"
+              style="color:var(--accent);"></i>15% add-on discount</div>
+        </div>
+        <div class="flex gap-3 mt-5">
+          <a href="pricing.html" class="btn-primary text-sm py-2 px-4">Upgrade to Elite</a>
+          <button class="btn-ghost text-sm" onclick="showToast('Subscription management coming soon.','info')">Manage
+            Plan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming Bookings + Tickets -->
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- Upcoming Bookings -->
+      <div class="chart-card slide-up">
+        <div class="flex items-center justify-between mb-5">
+          <h4>Upcoming Bookings</h4>
+          <a href="pricing.html" class="btn-ghost text-xs py-1 px-3"><i class="fa-solid fa-plus mr-1"></i>New</a>
+        </div>
+        <div class="space-y-1">
+          <div class="booking-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(225,29,72,0.1);">
+                <i class="fa-solid fa-camera text-sm" style="color:var(--accent);"></i>
+              </div>
+              <span class="badge badge-success sm:hidden">Confirmed</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">Portrait Studio A</div>
+              <div class="text-xs" style="color:var(--text-muted);">Apr 18, 2025 . 9:00AM - 1:00PM</div>
+            </div>
+            <span class="badge badge-success hidden sm:flex-shrink-0 sm:block">Confirmed</span>
+          </div>
+          <div class="booking-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(225,29,72,0.1);">
+                <i class="fa-solid fa-film text-sm" style="color:var(--accent);"></i>
+              </div>
+              <span class="badge badge-warning sm:hidden">Pending</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">Film & Video Stage</div>
+              <div class="text-xs" style="color:var(--text-muted);">Apr 22, 2025 . 2:00PM - 8:00PM</div>
+            </div>
+            <span class="badge badge-warning hidden sm:flex-shrink-0 sm:block">Pending</span>
+          </div>
+          <div class="booking-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(225,29,72,0.1);">
+                <i class="fa-solid fa-palette text-sm" style="color:var(--accent);"></i>
+              </div>
+              <span class="badge badge-success sm:hidden">Confirmed</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">Creative Loft</div>
+              <div class="text-xs" style="color:var(--text-muted);">May 3, 2025 . 10:00AM - 4:00PM</div>
+            </div>
+            <span class="badge badge-success hidden sm:flex-shrink-0 sm:block">Confirmed</span>
+          </div>
+          <div class="booking-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(225,29,72,0.1);">
+                <i class="fa-solid fa-mug-hot text-sm" style="color:var(--accent);"></i>
+              </div>
+              <span class="badge badge-gold sm:hidden">Waitlist</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">Food & Product Studio</div>
+              <div class="text-xs" style="color:var(--text-muted);">May 10, 2025 . 8:00AM - 12:00PM</div>
+            </div>
+            <span class="badge badge-gold hidden sm:flex-shrink-0 sm:block">Waitlist</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support Tickets -->
+      <div class="chart-card slide-up delay-100">
+        <div class="flex items-center justify-between mb-5">
+          <h4>Support Tickets</h4>
+          <button class="btn-ghost text-xs py-1 px-3"
+            onclick="showToast('New ticket form is launching soon.','info')"><i class="fa-solid fa-plus mr-1"></i>Open
+            Ticket</button>
+        </div>
+        <div class="space-y-3">
+          <div class="ticket-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(16,185,129,0.1);">
+                <i class="fa-solid fa-circle-check text-sm" style="color:#10b981;"></i>
+              </div>
+              <span class="badge badge-success sm:hidden">Resolved</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">#TKT-1042 . Backdrop Color Request</div>
+              <div class="text-xs" style="color:var(--text-muted);">Opened Apr 10 . Resolved Apr 11</div>
+            </div>
+            <span class="badge badge-success hidden sm:flex-shrink-0 sm:block">Resolved</span>
+          </div>
+          <div class="ticket-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(245,158,11,0.1);">
+                <i class="fa-solid fa-clock text-sm" style="color:#f59e0b;"></i>
+              </div>
+              <span class="badge badge-warning sm:hidden">In Progress</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">#TKT-1055 . Rescheduling Request</div>
+              <div class="text-xs" style="color:var(--text-muted);">Opened Apr 13 . Awaiting response</div>
+            </div>
+            <span class="badge badge-warning hidden sm:flex-shrink-0 sm:block">In Progress</span>
+          </div>
+          <div class="ticket-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(239,68,68,0.1);">
+                <i class="fa-solid fa-triangle-exclamation text-sm text-red-400"></i>
+              </div>
+              <span class="badge badge-error sm:hidden">Open</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">#TKT-1061 . Invoice Discrepancy</div>
+              <div class="text-xs" style="color:var(--text-muted);">Opened Apr 13 . Urgent</div>
+            </div>
+            <span class="badge badge-error hidden sm:flex-shrink-0 sm:block">Open</span>
+          </div>
+          <div class="ticket-row">
+            <div class="flex items-center justify-between w-full sm:w-auto">
+              <div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+                style="background:rgba(16,185,129,0.1);">
+                <i class="fa-solid fa-circle-check text-sm" style="color:#10b981;"></i>
+              </div>
+              <span class="badge badge-success sm:hidden">Resolved</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-sm truncate">#TKT-1028 . WiFi Connection Issue</div>
+              <div class="text-xs" style="color:var(--text-muted);">Opened Mar 28 . Resolved Mar 29</div>
+            </div>
+            <span class="badge badge-success hidden sm:flex-shrink-0 sm:block">Resolved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity Section -->
+    <div class="chart-card slide-up mt-6 mb-10">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h4 class="mb-1">Recent Activity</h4>
+          <p class="text-xs" style="color:var(--text-muted);">Your transaction and booking history for the last 30 days</p>
+        </div>
+        <button class="btn-ghost text-xs py-1 px-3" onclick="showToast('Loading full history...','info')">View All</button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table w-full">
+          <thead>
+            <tr>
+              <th class="text-left">Date</th>
+              <th class="text-left">Description</th>
+              <th class="text-left">Amount</th>
+              <th class="text-left">Method</th>
+              <th class="text-left">Receipt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apr 12, 2025</td>
+              <td>Gear Rental . Sony A7R V + 24-70mm GM II</td>
+              <td class="font-semibold" style="color:var(--accent);">$85.00</td>
+              <td>Visa .... 4242</td>
+              <td><button class="text-accent hover:underline text-xs"><i class="fa-solid fa-file-pdf mr-1"></i>PDF</button></td>
+            </tr>
+            <tr>
+              <td>Apr 01, 2025</td>
+              <td>Monthly Subscription . Pro Creator Plan</td>
+              <td class="font-semibold" style="color:var(--accent);">$299.00</td>
+              <td>Visa .... 4242</td>
+              <td><button class="text-accent hover:underline text-xs"><i class="fa-solid fa-file-pdf mr-1"></i>PDF</button></td>
+            </tr>
+            <tr>
+              <td>Mar 26, 2025</td>
+              <td>On-Site Retoucher Service (4h)</td>
+              <td class="font-semibold" style="color:var(--accent);">$180.00</td>
+              <td>Visa .... 4242</td>
+              <td><button class="text-accent hover:underline text-xs"><i class="fa-solid fa-file-pdf mr-1"></i>PDF</button></td>
+            </tr>
+            <tr>
+              <td>Mar 15, 2025</td>
+              <td>Additional Studio Hours . Creative Loft (2h)</td>
+              <td class="font-semibold" style="color:var(--accent);">$120.00</td>
+              <td>Credits</td>
+              <td><button class="text-accent hover:underline text-xs"><i class="fa-solid fa-file-pdf mr-1"></i>PDF</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+  <script>
+    // Usage Doughnut Chart
+    document.addEventListener('DOMContentLoaded', () => {
+      window.HEPS.initDoughnut('usageChart',
+        [8, 5, 3, 8],
+        ['Portrait (8h)', 'Commercial (5h)', 'Film Stage (3h)', 'Remaining (8h)']
+      );
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brooklyn Studio â€” Coming Soon | HEPS</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <meta name="description"
+    content="HEPS Brooklyn is opening Q4 2025. Be the first to book â€” join our priority waitlist now." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .cs-page {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .cs-logo-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--accent);
+      padding: 0.2rem 0.75rem;
+      border-radius: 50px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="fixed top-5 right-5 z-50 flex gap-2">
+    <button class="theme-toggle" data-theme-toggle data-theme-icon><i class="fa-solid fa-sun"></i></button>
+    <button class="rtl-toggle" data-rtl-toggle><i class="fa-solid fa-globe"></i></button>
+  </div>
+
+  <div class="cs-page">
+    <!-- Background -->
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=1920&q=85" alt="Brooklyn Studio"
+        class="w-full h-full object-cover" />
+      <div class="hero-overlay"
+        style="background:linear-gradient(135deg,rgba(13,13,13,0.95) 0%,rgba(26,26,46,0.85) 60%,rgba(13,13,13,0.7) 100%);">
+      </div>
+    </div>
+
+    <!-- Parallax shapes -->
+    <div class="parallax-shape w-96 h-96 bg-accent" style="top:-15%;right:-8%;"></div>
+    <div class="parallax-shape w-72 h-72 bg-secondary" style="bottom:-10%;left:-5%;animation-delay:3s;"></div>
+
+    <div class="relative z-10 text-center max-w-3xl">
+      <!-- Logo -->
+      <a href="index.html" class="nav-logo text-3xl flex items-center justify-center gap-3 mb-4">
+        <img src="logo.svg" alt="HEPS" class="h-10 w-auto" style="transform:translateY(-2px);"> HEPS<span>.</span>
+      </a>
+      <div class="flex items-center justify-center gap-3 mb-8">
+        <div class="cs-logo-tag">Coming Soon</div>
+        <div class="text-sm" style="color:var(--text-muted);">Brooklyn, DUMBO</div>
+      </div>
+
+      <h1 class="mb-6">HEPS <span class="gradient-text">Brooklyn</span><br />Opening Q4 2025</h1>
+      <p class="text-xl mb-4" style="color:var(--text-secondary);">
+        12,000 sq ft of industrial-chic studio space in DUMBO, Brooklyn. Rooftop terrace, natural skylight banks, and
+        our largest commercial stage yet.
+      </p>
+      <p class="mb-12 text-base" style="color:var(--text-muted);">
+        Join the priority waitlist and get first access to bookings â€” plus an exclusive 25% launch discount.
+      </p>
+
+      <!-- Countdown -->
+      <div id="countdown" class="grid grid-cols-4 gap-4 mb-12 max-w-lg mx-auto">
+        <div class="countdown-block">
+          <div class="countdown-number" id="cd-days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-block">
+          <div class="countdown-number" id="cd-hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-block">
+          <div class="countdown-number" id="cd-minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-block">
+          <div class="countdown-number" id="cd-seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+
+      <!-- Waitlist Form -->
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-10"
+        onsubmit="event.preventDefault(); showToast && showToast('You are on the priority waitlist! ðŸŽ‰','success');">
+        <input type="email" class="form-input flex-1" placeholder="your@email.com" required />
+        <button type="submit" class="btn-primary whitespace-nowrap hover-glow">
+          Join Waitlist <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </form>
+
+      <!-- Features Preview -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 max-w-2xl mx-auto">
+        <div class="glass p-4 rounded-xl text-center">
+          <i class="fa-solid fa-building text-2xl mb-2" style="color:var(--accent);"></i>
+          <div class="text-xs font-bold" style="color:var(--text-secondary);">12,000 sq ft</div>
+        </div>
+        <div class="glass p-4 rounded-xl text-center">
+          <i class="fa-solid fa-sun text-2xl mb-2" style="color:var(--accent);"></i>
+          <div class="text-xs font-bold" style="color:var(--text-secondary);">Rooftop Terrace</div>
+        </div>
+        <div class="glass p-4 rounded-xl text-center">
+          <i class="fa-solid fa-camera text-2xl mb-2" style="color:var(--accent);"></i>
+          <div class="text-xs font-bold" style="color:var(--text-secondary);">10 Studios</div>
+        </div>
+        <div class="glass p-4 rounded-xl text-center">
+          <i class="fa-solid fa-map-pin text-2xl mb-2" style="color:var(--accent);"></i>
+          <div class="text-xs font-bold" style="color:var(--text-secondary);">DUMBO, Brooklyn</div>
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="flex items-center justify-center gap-3">
+        <span class="text-sm" style="color:var(--text-muted);">Follow the build:</span>
+        <a href="#" class="footer-social w-9 h-9"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-social w-9 h-9"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" class="footer-social w-9 h-9"><i class="fab fa-youtube"></i></a>
+      </div>
+
+      <!-- Back Link -->
+      <div class="mt-8">
+        <a href="index.html" class="text-sm hover:text-accent transition-colors" style="color:var(--text-muted);">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Back to Main Site
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
