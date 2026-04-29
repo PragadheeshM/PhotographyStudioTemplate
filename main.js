@@ -75,9 +75,10 @@ function initRTLToggle() {
 }
 
 function updateRTLIcon(btn, dir) {
-  btn.innerHTML = dir === 'rtl'
-    ? '<i class="fa-solid fa-globe" title="LTR"></i>'
-    : '<i class="fa-solid fa-globe" title="RTL"></i>';
+  btn.innerHTML = dir === 'rtl' ? 'LTR' : 'RTL';
+  btn.style.fontSize = '0.75rem';
+  btn.style.fontWeight = '800';
+  btn.style.letterSpacing = '0.05em';
   btn.title = dir === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
 }
 

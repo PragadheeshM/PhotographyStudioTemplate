@@ -48,8 +48,29 @@
       background: rgba(26, 26, 46, 0.4);
     }
 
+    .light-mode .ticket-row {
+      background: #FFFFFF;
+      border-color: rgba(225, 29, 72, 0.12);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
     .ticket-row:hover {
       border-color: rgba(225, 29, 72, 0.3);
+    }
+
+    /* Subscription Box Custom Styling */
+    .active-subscription-box {
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, rgba(225, 29, 72, 0.12), rgba(26, 26, 46, 0.5));
+      border: 1px solid rgba(225, 29, 72, 0.25);
+    }
+
+    .light-mode .active-subscription-box {
+      background: linear-gradient(135deg, rgba(225, 29, 72, 0.08), rgba(255, 255, 255, 0.95));
+      border-color: rgba(225, 29, 72, 0.15);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
     }
 
     .booking-row {
@@ -106,6 +127,11 @@
         margin-bottom: 0.75rem;
         background: rgba(26, 26, 46, 0.2);
       }
+
+      .light-mode .booking-row {
+        background: #FFFFFF;
+      }
+
       .booking-row .flex-1 {
         width: 100%;
       }
@@ -292,8 +318,7 @@
           <h4>Active Subscription</h4>
           <span class="badge badge-success"><i class="fa-solid fa-circle text-xs me-1"></i>Active</span>
         </div>
-        <div class="p-5 rounded-xl mb-5"
-          style="background:linear-gradient(135deg,rgba(225,29,72,0.12),rgba(26,26,46,0.5)); border:1px solid rgba(225,29,72,0.25);">
+        <div class="active-subscription-box">
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
               <div class="text-xs uppercase tracking-widest mb-1" style="color:var(--accent);">Pro Creator Plan</div>
