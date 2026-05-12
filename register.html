@@ -75,25 +75,27 @@
     <div class="auth-overlay"></div>
   </div>
 
-  <!-- controls are now inside the specific pages to shift with RTL -->
+  <!-- Corner Controls -->
+  <div class="auth-card-controls">
+    <button class="theme-toggle" data-theme-toggle data-theme-icon><i class="fa-solid fa-sun"></i></button>
+    <button class="rtl-toggle" data-rtl-toggle><i class="fa-solid fa-globe"></i></button>
+  </div>
 
   <!-- Card -->
   <div class="auth-card">
-    <!-- Corner Controls -->
-    <div class="auth-card-controls">
-      <button class="theme-toggle" data-theme-toggle data-theme-icon><i class="fa-solid fa-sun"></i></button>
-      <button class="rtl-toggle" data-rtl-toggle><i class="fa-solid fa-globe"></i></button>
-    </div>
     <div class="text-center mb-7">
       <a href="index.html" class="nav-logo text-2xl flex items-center justify-center gap-3 mb-3"><img src="logo.svg"
           alt="HEPS" class="h-8 w-auto"> HEPS</a>
-      <h2 class="text-2xl mb-1">Create Account</h2>
-      <p class="text-sm" style="color:var(--text-secondary);">Join 3,000+ photographers. First session 20% off.</p>
+      <h2 class="text-2xl mb-1">Join the Production Network</h2>
+      <p class="text-sm" style="color:var(--text-secondary);">Access industry-leading infrastructure and digital asset delivery</p>
     </div>
 
     <div class="space-y-3 mb-2">
       <button class="social-login-btn" onclick="showToast('Google sign-up requires backend integration.','info')">
         <i class="fab fa-google text-red-400"></i> Sign up with Google
+      </button>
+      <button class="social-login-btn" onclick="showToast('Apple sign-up requires backend integration.','info')">
+        <i class="fab fa-apple"></i> Sign up with Apple
       </button>
     </div>
 
@@ -129,11 +131,11 @@
         <label class="form-label">Account Type</label>
         <select id="reg-type" class="form-input" style="background-image:none;">
           <option value="" disabled selected style="background:var(--primary); color:var(--text-primary);">I am a...</option>
-          <option style="background:var(--primary); color:var(--text-primary);">Freelance Photographer</option>
-          <option style="background:var(--primary); color:var(--text-primary);">Commercial Agency</option>
-          <option style="background:var(--primary); color:var(--text-primary);">Brand / Company</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Fashion & Editorial</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Commercial Advertising</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Cinematic Motion</option>
+          <option style="background:var(--primary); color:var(--text-primary);">Portrait & Beauty</option>
           <option style="background:var(--primary); color:var(--text-primary);">Photo Educator</option>
-          <option style="background:var(--primary); color:var(--text-primary);">Student</option>
           <option style="background:var(--primary); color:var(--text-primary);">Other</option>
         </select>
       </div>

@@ -30,7 +30,7 @@
 
     .sidebar-section-label {
       font-size: 0.65rem;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -159,7 +159,7 @@
     <!-- Header -->
     <div class="dashboard-header flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div class="flex items-center gap-4">
-        <button id="sidebar-toggle" class="xl:hidden theme-toggle w-9 h-9">
+        <button id="sidebar-toggle" class="theme-toggle w-9 h-9">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div>
@@ -207,23 +207,23 @@
       </div>
       <div class="stat-widget slide-up delay-200">
         <div class="flex items-center justify-between mb-3">
-          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Total Clients</span>
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Fiber Traffic</span>
           <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
-            <i class="fa-solid fa-users text-sm" style="color:var(--accent);"></i>
+            <i class="fa-solid fa-server text-sm" style="color:var(--accent);"></i>
           </div>
         </div>
-        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="3241" data-suffix="">-</div>
-        <div class="text-xs trend-up">↑ 47 new this month</div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="4.2" data-suffix="TB">0</div>
+        <div class="text-xs trend-up">↑ 1.2TB this week</div>
       </div>
       <div class="stat-widget slide-up delay-300">
         <div class="flex items-center justify-between mb-3">
-          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Occupancy Rate</span>
+          <span class="text-xs uppercase tracking-wider" style="color:var(--text-muted);">Hardware Health</span>
           <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(225,29,72,0.12);">
-            <i class="fa-solid fa-building text-sm" style="color:var(--accent);"></i>
+            <i class="fa-solid fa-microchip text-sm" style="color:var(--accent);"></i>
           </div>
         </div>
-        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="87" data-suffix="%">-</div>
-        <div class="text-xs trend-up">↑ 5% vs last month</div>
+        <div class="text-3xl font-black mb-1" style="color:var(--accent);" data-counter="98" data-suffix="%">-</div>
+        <div class="text-xs trend-up">All systems nominal</div>
       </div>
     </div>
 
@@ -266,6 +266,47 @@
         </div>
       </div>
     </div>
+    
+    <!-- Live Studio Monitor (NEW) -->
+    <div class="chart-card slide-up mb-6">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h4>Live Studio Status</h4>
+          <p class="text-xs" style="color:var(--text-muted);">Real-time monitoring of all 14 studio environments</p>
+        </div>
+        <div class="flex gap-2">
+          <span class="badge badge-success"><i class="fa-solid fa-circle text-[6px] me-1"></i> 8 Active</span>
+          <span class="badge badge-gold"><i class="fa-solid fa-circle text-[6px] me-1"></i> 2 Setup</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div class="p-3 rounded-xl border border-white/5" style="background:rgba(225,29,72,0.05);">
+          <div class="text-[10px] uppercase tracking-widest text-accent mb-1">Portrait A</div>
+          <div class="text-sm font-semibold truncate" style="color:var(--text-primary);">Vogue Shoot</div>
+          <div class="text-[9px] mt-1" style="color:var(--text-muted);">Fiber: 850Mbps . Temp: 72°F</div>
+        </div>
+        <div class="p-3 rounded-xl border border-white/5" style="background:rgba(0,0,0,0.03);">
+          <div class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--text-muted);">Portrait B</div>
+          <div class="text-sm font-semibold truncate" style="color:var(--text-primary);">Available</div>
+          <div class="text-[9px] mt-1" style="color:var(--text-muted);">Ready for load-in</div>
+        </div>
+        <div class="p-3 rounded-xl border border-white/5" style="background:rgba(225,29,72,0.08);">
+          <div class="text-[10px] uppercase tracking-widest text-accent mb-1">Commercial</div>
+          <div class="text-sm font-semibold truncate" style="color:var(--text-primary);">Nike Campaign</div>
+          <div class="text-[9px] mt-1" style="color:var(--text-muted);">Fiber: 4.2Gbps . Temp: 68°F</div>
+        </div>
+        <div class="p-3 rounded-xl border border-white/5" style="background:rgba(0,0,0,0.03);">
+          <div class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--text-muted);">Film Stage</div>
+          <div class="text-sm font-semibold truncate" style="color:var(--text-primary);">Setup Mode</div>
+          <div class="text-[9px] mt-1" style="color:var(--text-muted);">Technician On-site</div>
+        </div>
+        <div class="p-3 rounded-xl border border-white/5" style="background:rgba(0,0,0,0.03);">
+          <div class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--text-muted);">Loft Studio</div>
+          <div class="text-sm font-semibold truncate" style="color:var(--text-primary);">Available</div>
+          <div class="text-[9px] mt-1" style="color:var(--text-muted);">Ready for load-in</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Recent Bookings Table -->
     <div class="chart-card slide-up mb-6">
@@ -297,7 +338,7 @@
                   <span>Sarah Kensington</span>
                 </div>
               </td>
-              <td>Commercial Studio</td>
+              <td>Commercial Studio [Nike Project]</td>
               <td>Apr 18, 9AM-5PM</td>
               <td style="color:var(--accent);">$2,392</td>
               <td><span class="badge badge-success">Confirmed</span></td>

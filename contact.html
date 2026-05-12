@@ -39,38 +39,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="contact.html" class="nav-link" style="color:var(--accent);">Contact</a>
 
@@ -86,9 +66,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -98,19 +78,20 @@
             </button>
           </div>
 
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -143,29 +124,13 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-accent hover:text-accent transition-colors py-2">Contact</a>
@@ -181,10 +146,22 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle px-4 h-10" data-rtl-toggle title="Toggle RTL/LTR">RTL</button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
@@ -199,7 +176,7 @@
     <div class="hero-content container text-center">
       <div class="section-label mx-auto w-fit fade-in"><i class="fa-solid fa-envelope-open-text"></i> Get in Touch</div>
       <h1 class="slide-up mt-4 mb-4">Let's <span class="gradient-text">Talk</span></h1>
-      <p class="slide-up delay-100 text-xl max-w-xl mx-auto" style="color:var(--text-secondary);">Questions, bookings,
+      <p class="slide-up delay-100 text-xl max-w-xl mx-auto text-white/70">Questions, bookings,
         or custom production quotes - our team responds within 2 hours.</p>
     </div>
   </section>
@@ -243,58 +220,67 @@
         <!-- Form -->
         <div class="slide-left">
           <div class="section-label mb-5"><i class="fa-solid fa-paper-plane"></i> Send a Message</div>
-          <h2 class="mb-8">Book a Tour or <span class="gradient-text">Request a Quote</span></h2>
+          <h2 class="mb-8">Initiate Your <span class="gradient-text">Visual Production</span></h2>
           <form data-mock-form="contact" class="space-y-5">
             <div class="grid sm:grid-cols-2 gap-5">
               <div class="form-group">
-                <label class="form-label">First Name</label>
-                <input type="text" class="form-input" placeholder="Marcus" required />
+                <label class="form-label">Contact Name</label>
+                <input type="text" class="form-input" placeholder="Marcus Rhodes" required />
               </div>
               <div class="form-group">
-                <label class="form-label">Last Name</label>
-                <input type="text" class="form-input" placeholder="Rhodes" required />
+                <label class="form-label">Agency / Brand</label>
+                <input type="text" class="form-input" placeholder="Independent Creator" />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="form-group">
+                <label class="form-label">Production Type</label>
+                <select class="form-input">
+                  <option value="" disabled selected>Select production type</option>
+                  <option>Editorial Fashion</option>
+                  <option>Commercial Campaign</option>
+                  <option>Cinematic Motion</option>
+                  <option>E-Commerce / Product</option>
+                  <option>Music Video</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Estimated Team Size</label>
+                <select class="form-input">
+                  <option value="" disabled selected>Select crew size</option>
+                  <option>Solo / Small (1-3)</option>
+                  <option>Medium (4-10)</option>
+                  <option>Large Agency (11-25)</option>
+                  <option>Full Scale (25+)</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="you@studio.com" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" />
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" placeholder="you@studio.com" required />
+              <label class="form-label">Specialized Requirements</label>
+              <div class="grid grid-cols-2 gap-3 mt-2">
+                <label class="flex items-center gap-2 text-xs text-white/60"><input type="checkbox" class="accent-accent" /> Need Gaffer / Rigging</label>
+                <label class="flex items-center gap-2 text-xs text-white/60"><input type="checkbox" class="accent-accent" /> DIT Station Setup</label>
+                <label class="flex items-center gap-2 text-xs text-white/60"><input type="checkbox" class="accent-accent" /> Phase One Tethering</label>
+                <label class="flex items-center gap-2 text-xs text-white/60"><input type="checkbox" class="accent-accent" /> Catering Required</label>
+              </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" />
-            </div>
-            <div class="form-group">
-              <label class="form-label">Inquiry Type</label>
-              <select class="form-input">
-                <option value="" disabled selected>Select inquiry type</option>
-                <option>Studio Booking</option>
-                <option>Production Quote</option>
-                <option>Studio Tour</option>
-                <option>Workshop Enrollment</option>
-                <option>Partnership</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Preferred Studio</label>
-              <select class="form-input">
-                <option value="" disabled selected>Select a studio (optional)</option>
-                <option>Portrait Studio A</option>
-                <option>Portrait Studio B</option>
-                <option>Commercial Studio</option>
-                <option>Film & Video Stage</option>
-                <option>Creative Loft</option>
-                <option>Food & Product Studio</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Message</label>
+              <label class="form-label">Production Brief / Message</label>
               <textarea class="form-input" rows="5"
-                placeholder="Tell us about your project, preferred dates, and team sizeâ€¦" required></textarea>
+                placeholder="Briefly describe your creative vision, preferred dates, and studio requirements..." required></textarea>
             </div>
             <button type="submit" class="btn-primary w-full justify-center hover-glow">
-              <i class="fa-solid fa-paper-plane"></i> Send Message
+              <i class="fa-solid fa-paper-plane"></i> Submit Production Inquiry
             </button>
           </form>
         </div>

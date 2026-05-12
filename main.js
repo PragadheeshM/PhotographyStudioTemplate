@@ -375,17 +375,33 @@ function initForms() {
    DASHBOARD SIDEBAR TOGGLE
    ══════════════════════════════════════════════════════════════ */
 function initDashboardSidebar() {
-  const sidebar      = document.getElementById('sidebar');
-  const sidebarToggle = document.getElementById('sidebar-toggle');
-  const overlay      = document.getElementById('sidebar-overlay');
+  const sidebar       = document.getElementById('sidebar');
+  const sidebarToggle  = document.getElementById('sidebar-toggle');
+  const overlay       = document.getElementById('sidebar-overlay');
 
   if (!sidebar) return;
 
-  // Mobile open
+  // Restore collapsed state on desktop
+  if (window.innerWidth > 1024) {
+    const isCollapsed = localStorage.getItem('heps-sidebar-collapsed') === 'true';
+    if (isCollapsed) {
+      sidebar.classList.add('collapsed');
+    }
+  }
+
+  // Toggle behavior
   if (sidebarToggle) {
     sidebarToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      if (overlay) overlay.classList.toggle('active');
+      if (window.innerWidth > 1024) {
+        // Desktop: Toggle collapsed state
+        sidebar.classList.toggle('collapsed');
+        const nowCollapsed = sidebar.classList.contains('collapsed');
+        localStorage.setItem('heps-sidebar-collapsed', nowCollapsed);
+      } else {
+        // Mobile: Toggle slide-in menu
+        sidebar.classList.toggle('open');
+        if (overlay) overlay.classList.toggle('active');
+      }
     });
   }
 
@@ -396,11 +412,13 @@ function initDashboardSidebar() {
     });
   }
 
-  // Close sidebar on menu link click
+  // Close mobile sidebar on menu link click
   sidebar.querySelectorAll('.sidebar-nav-item').forEach(link => {
     link.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      if (overlay) overlay.classList.remove('active');
+      if (window.innerWidth <= 1024) {
+        sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+      }
     });
   });
 }

@@ -23,9 +23,16 @@
       min-height: 100vh;
     }
 
-    @media(max-width:768px) {
+    @media(max-width:1024px) {
       .hero2-split {
         grid-template-columns: 1fr;
+      }
+      .hero2-left {
+        padding: 3rem 1.5rem 3rem;
+        justify-content: flex-start;
+      }
+      .hero2-right {
+        min-height: 450px;
       }
     }
 
@@ -113,7 +120,7 @@
     .step-num {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
-      font-weight: 900;
+      font-weight: 600;
       color: var(--accent);
       opacity: 0.4;
       line-height: 1;
@@ -175,38 +182,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="contact.html" class="nav-link">Contact</a>
 
@@ -222,9 +209,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -234,19 +221,20 @@
             </button>
           </div>
 
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -279,29 +267,13 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
@@ -317,16 +289,30 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle w-10 h-10" data-rtl-toggle title="Toggle RTL/LTR">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ••• HERO — SPLIT SCREEN ••• -->
-  <div class="hero2-split pt-24 lg:pt-0">
+  <div class="hero2-split">
     <div class="hero2-left">
       <!-- Background Shape -->
       <div class="parallax-shape w-72 h-72 bg-accent" style="top:-20%;left:-10%;"></div>
@@ -353,16 +339,16 @@
         <!-- Quick Stats -->
         <div class="grid grid-cols-3 gap-4 mt-12 pt-10" style="border-top:1px solid rgba(225,29,72,0.15);">
           <div>
-            <div class="text-2xl font-black" style="color:var(--accent);" data-counter="14" data-suffix="">&mdash;</div>
+            <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="14" data-suffix="">&mdash;</div>
             <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Studios</div>
           </div>
           <div>
-            <div class="text-2xl font-black" style="color:var(--accent);" data-counter="5200" data-suffix="+">&mdash;
+            <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="5200" data-suffix="+">&mdash;
             </div>
             <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Sessions</div>
           </div>
           <div>
-            <div class="text-2xl font-black" style="color:var(--accent);" data-counter="98" data-suffix="%">&mdash;
+            <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="98" data-suffix="%">&mdash;
             </div>
             <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Satisfaction</div>
           </div>
@@ -371,7 +357,9 @@
     </div>
 
     <div class="hero2-right">
-      <img src="vibrant-studio.png" alt="Vibrant Studio Space" />
+      <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1200&q=90" 
+        onerror="this.src='https://placehold.co/1200x800/160B10/E11D48?text=Vibrant+Studio+Space'"
+        alt="Vibrant Studio Space" />
       <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,26,46,0.3),transparent);"></div>
       <!-- Floating Tag -->
       <div class="glass absolute bottom-10 left-1/2 -translate-x-1/2 px-5 py-3 flex items-center gap-3 rounded-2xl"
@@ -390,12 +378,12 @@
         <h2 class="slide-up mt-2">Our Most-Booked <span class="gradient-text">Studios</span></h2>
         <div class="divider-gold center"></div>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid lg:grid-cols-3 gap-6">
         <div class="relative rounded-2xl overflow-hidden group cursor-pointer hover-float slide-up"
           style="height:420px;">
           <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=700&q=80" alt="Portrait Studio"
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.9) 30%,transparent);">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.7) 20%,transparent);">
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6">
             <span class="badge badge-gold mb-2">Most Popular</span>
@@ -409,7 +397,7 @@
           style="height:420px;">
           <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=700&q=80" alt="Commercial Studio"
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.9) 30%,transparent);">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.7) 20%,transparent);">
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6">
             <span class="badge badge-gold mb-2">Best for Brands</span>
@@ -423,7 +411,7 @@
           style="height:420px;">
           <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80" alt="Creative Loft"
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.9) 30%,transparent);">
+          <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(13,13,13,0.7) 20%,transparent);">
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6">
             <span class="badge badge-gold mb-2">Trendsetter Pick</span>
@@ -509,7 +497,7 @@
         <h2 class="slide-up mt-2">From Idea to <span class="gradient-text">Iconic Shot</span></h2>
         <div class="divider-gold center"></div>
       </div>
-      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
         <div class="process-step slide-up">
           <div class="step-num">01</div>
           <div>
@@ -619,31 +607,31 @@
         <h2 class="slide-up mt-2">Stories Told in <span class="gradient-text">Light</span></h2>
         <div class="divider-gold center"></div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         <div class="portfolio-item md:col-span-2 md:row-span-2 scale-in" style="aspect-ratio:1;">
           <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80" alt="Portrait"
             onerror="this.src='https://placehold.co/800x800/160B10/E11D48?text=Fine+Art+Portrait'" />
-          <div class="portfolio-overlay"><span class="text-white text-xl font-bold">Fine Art Portrait</span></div>
+          <div class="portfolio-overlay"><span class="text-white text-xl font-semibold">Fine Art Portrait</span></div>
         </div>
         <div class="portfolio-item scale-in delay-100">
-          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80" alt="Food"
+          <img src="https://images.unsplash.com/photo-1543157145-f78c636d023d?w=400&q=80" alt="Fine Art Product"
             onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Product'" />
-          <div class="portfolio-overlay"><span class="text-white font-bold">Product</span></div>
+          <div class="portfolio-overlay"><span class="text-white font-semibold">Fine Art Product</span></div>
         </div>
         <div class="portfolio-item scale-in delay-200">
           <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&q=80" alt="Fashion"
             onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Fashion'" />
-          <div class="portfolio-overlay"><span class="text-white font-bold">Fashion</span></div>
+          <div class="portfolio-overlay"><span class="text-white font-semibold">Fashion</span></div>
         </div>
         <div class="portfolio-item scale-in delay-300">
           <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&q=80" alt="Commercial"
             onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Commercial'" />
-          <div class="portfolio-overlay"><span class="text-white font-bold">Commercial</span></div>
+          <div class="portfolio-overlay"><span class="text-white font-semibold">Commercial</span></div>
         </div>
         <div class="portfolio-item scale-in delay-400">
           <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80" alt="Wedding"
             onerror="this.src='https://placehold.co/400x400/160B10/E11D48?text=Wedding'" />
-          <div class="portfolio-overlay"><span class="text-white font-bold">Wedding</span></div>
+          <div class="portfolio-overlay"><span class="text-white font-semibold">Wedding</span></div>
         </div>
       </div>
       <div class="text-center mt-10">
@@ -695,7 +683,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
           <ul class="space-y-3">
             <li><a class="footer-link" href="index.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
                   style="color:var(--accent);"></i>Home</a></li>
@@ -713,7 +701,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
           <ul class="space-y-3">
             <li><a class="footer-link" href="service-details.html">Portrait Studio</a></li>
             <li><a class="footer-link" href="service-details.html">Commercial Studio</a></li>
@@ -725,7 +713,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
               <i class="fa-solid fa-location-dot mt-1" style="color:var(--accent);"></i>

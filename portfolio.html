@@ -40,38 +40,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="portfolio.html" class="nav-link" style="color:var(--accent);">Portfolio</a>
           <a href="contact.html" class="nav-link">Contact</a>
@@ -88,9 +68,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -100,19 +80,20 @@
             </button>
           </div>
           
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -145,15 +126,7 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
@@ -162,15 +135,7 @@
       <a href="portfolio.html" class="text-lg font-semibold text-accent hover:text-accent transition-colors py-2">Portfolio</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
@@ -186,10 +151,22 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle px-4 h-10" data-rtl-toggle title="Toggle RTL/LTR">RTL</button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
@@ -205,7 +182,7 @@
     <div class="hero-content container text-center">
       <div class="section-label mx-auto w-fit fade-in"><i class="fa-solid fa-images"></i> Our Gallery</div>
       <h1 class="slide-up mt-4 mb-4">Work Born in <span class="gradient-text">Our Studios</span></h1>
-      <p class="slide-up delay-100 text-xl max-w-2xl mx-auto" style="color:var(--text-secondary);">Every image below was
+      <p class="slide-up delay-100 text-xl max-w-2xl mx-auto text-white/70">Every image below was
         captured within our walls â€” proof of what's possible with the right space.</p>
     </div>
   </section>
@@ -220,29 +197,33 @@
         <button class="filter-btn" data-filter="fashion">Fashion</button>
         <button class="filter-btn" data-filter="commercial">Commercial</button>
         <button class="filter-btn" data-filter="food">Food & Product</button>
-        <button class="filter-btn" data-filter="architecture">Architecture</button>
+        <button class="filter-btn" data-filter="cinematic">Cinematic</button>
+        <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
         <button class="filter-btn" data-filter="wedding">Wedding</button>
+        <button class="filter-btn" data-filter="events">Events</button>
       </div>
 
       <!-- Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="portfolio-item" data-category="portrait">
           <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/4;">
-            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80" alt="Portrait"
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=80" alt="Editorial Portrait"
               class="w-full h-full object-cover" />
             <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Editorial Portrait</span>
-              <span class="text-sm" style="color:var(--accent);">Portrait Studio A</span>
+              <span class="text-white font-semibold text-lg">Editorial Portrait</span>
+              <p class="text-xs text-white/70 mt-1">Vogue Italia Submission</p>
+              <span class="text-[10px] mt-2 uppercase tracking-widest" style="color:var(--accent);">Portrait Studio A</span>
             </div>
           </div>
         </div>
         <div class="portfolio-item" data-category="fashion">
           <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/4;">
-            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80" alt="Fashion"
+            <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80" alt="High Fashion"
               class="w-full h-full object-cover" />
             <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">High Fashion</span>
-              <span class="text-sm" style="color:var(--accent);">Commercial Studio</span>
+              <span class="text-white font-semibold text-lg">High Fashion Editorial</span>
+              <p class="text-xs text-white/70 mt-1">Prada Fall Collection</p>
+              <span class="text-[10px] mt-2 uppercase tracking-widest" style="color:var(--accent);">Commercial Studio</span>
             </div>
           </div>
         </div>
@@ -251,77 +232,88 @@
             <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80" alt="Commercial"
               class="w-full h-full object-cover" />
             <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Nike Campaign</span>
-              <span class="text-sm" style="color:var(--accent);">Film & Video Stage</span>
+              <span class="text-white font-semibold text-lg">Nike 'Move' Campaign</span>
+              <p class="text-xs text-white/70 mt-1">Global Brand Launch</p>
+              <span class="text-[10px] mt-2 uppercase tracking-widest" style="color:var(--accent);">Film & Video Stage</span>
             </div>
           </div>
         </div>
         <div class="portfolio-item" data-category="food">
           <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/2;">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Food"
+            <img src="https://images.unsplash.com/photo-1543157145-f78c636d023d?w=600&q=80" alt="Fine Art Product"
               class="w-full h-full object-cover" />
             <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Michelin Editorial</span>
-              <span class="text-sm" style="color:var(--accent);">Food & Product Studio</span>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-category="architecture">
-          <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/2;">
-            <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&q=80" alt="Architecture"
-              class="w-full h-full object-cover" />
-            <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Interior Architecture</span>
-              <span class="text-sm" style="color:var(--accent);">Creative Loft</span>
+              <span class="text-white font-semibold text-lg">Swiss Watch Editorial</span>
+              <p class="text-xs text-white/70 mt-1">Macro Product Session</p>
+              <span class="text-[10px] mt-2 uppercase tracking-widest" style="color:var(--accent);">Food & Product Studio</span>
             </div>
           </div>
         </div>
         <div class="portfolio-item" data-category="wedding">
           <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/2;">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Wedding"
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Couture Wedding"
               class="w-full h-full object-cover" />
             <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Bridal Couture</span>
-              <span class="text-sm" style="color:var(--accent);">Portrait Studio B</span>
+              <span class="text-white font-semibold text-lg">Royal Palace Wedding</span>
+              <p class="text-xs text-white/70 mt-1">Bridal Couture Session</p>
+              <span class="text-[10px] mt-2 uppercase tracking-widest" style="color:var(--accent);">Portrait Studio B</span>
             </div>
           </div>
         </div>
-        <div class="portfolio-item" data-category="portrait">
+        <div class="portfolio-item" data-category="cinematic">
           <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/4;">
-            <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=600&q=80" alt="Portrait"
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80" alt="Cinematic Stage"
               class="w-full h-full object-cover" />
             <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Fine Art</span>
-              <span class="text-sm" style="color:var(--accent);">Portrait Studio A</span>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-category="fashion">
-          <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/4;">
-            <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?w=600&q=80" alt="Fashion"
-              class="w-full h-full object-cover" />
-            <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Editorial Fashion</span>
-              <span class="text-sm" style="color:var(--accent);">Creative Loft</span>
-            </div>
-          </div>
-        </div>
-        <div class="portfolio-item" data-category="commercial">
-          <div class="relative rounded-2xl overflow-hidden" style="aspect-ratio:3/4;">
-            <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=600&q=80" alt="Commercial"
-              class="w-full h-full object-cover" />
-            <div class="portfolio-overlay">
-              <span class="text-white font-bold text-lg">Brand Campaign</span>
-              <span class="text-sm" style="color:var(--accent);">Commercial Studio</span>
+              <span class="text-white font-semibold text-lg">Independent Feature Film</span>
+              <p class="text-xs text-white/70 mt-1">Motion Storytelling</p>
+              <span class="text-[10px] mt-2 uppercase tracking-widest" style="color:var(--accent);">Cinematic Stage</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="text-center mt-12">
+      <div class="text-center mt-12 mb-20">
         <a href="register.html" class="btn-primary hover-glow hover-float">
           <i class="fa-solid fa-camera mr-2"></i> Create Your Own Story
         </a>
+      </div>
+
+      <!-- CASE STUDY SECTION (NEW) -->
+      <div class="mt-20 pt-20 border-t border-white/5">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="slide-left relative">
+            <div class="rounded-3xl overflow-hidden shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=800&q=90" alt="Production Case Study" class="w-full h-[500px] object-cover" />
+            </div>
+            <div class="glass absolute -bottom-8 -right-8 p-6 rounded-2xl border border-white/10 max-w-xs">
+              <div class="text-xs uppercase tracking-widest text-accent mb-2">Technical Highlight</div>
+              <p class="text-sm leading-relaxed" style="color:var(--text-secondary);">"The hardwired 10Gbps fiber allowed our global creative team to monitor the 8K stream in real-time with zero latency."</p>
+            </div>
+          </div>
+          <div class="slide-right">
+            <div class="section-label mb-5"><i class="fa-solid fa-briefcase"></i> Case Study</div>
+            <h2 class="mb-6">The <span class="gradient-text">Global Brand</span> Launch</h2>
+            <p class="mb-6" style="color:var(--text-secondary);">
+              When a major luxury Swiss watch brand needed to launch their flagship collection, they chose HEPS for our specialized infrastructure.
+            </p>
+            <div class="space-y-4 mb-8">
+              <div class="flex items-center gap-4">
+                <i class="fa-solid fa-check text-accent"></i>
+                <span class="text-sm">Used Commercial Studio A & Cinematic Stage</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <i class="fa-solid fa-check text-accent"></i>
+                <span class="text-sm">24-hour back-to-back production schedule</span>
+              </div>
+              <div class="flex items-center gap-4">
+                <i class="fa-solid fa-check text-accent"></i>
+                <span class="text-sm">In-house retouching lab for real-time delivery</span>
+              </div>
+            </div>
+            <a href="contact.html" class="btn-outline">Plan Your Production <i class="fa-solid fa-arrow-right ml-2"></i></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -332,19 +324,34 @@
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="stat-card glass-card slide-up">
           <div class="stat-number" data-counter="5200" data-suffix="+">&nbsp;</div>
-          <div class="stat-label">Sessions Hosted</div>
+          <div class="stat-label">Professional Sessions</div>
         </div>
         <div class="stat-card glass-card slide-up delay-100">
-          <div class="stat-number" data-counter="340" data-suffix="+">&nbsp;</div>
-          <div class="stat-label">Award-Winning Shots</div>
+          <div class="stat-number" data-counter="48" data-suffix="">48</div>
+          <div class="stat-label">Magazine Covers</div>
         </div>
         <div class="stat-card glass-card slide-up delay-200">
-          <div class="stat-number" data-counter="48" data-suffix="+">&nbsp;</div>
-          <div class="stat-label">Magazine Covers</div>
+          <div class="stat-number" data-counter="340" data-suffix="+">&nbsp;</div>
+          <div class="stat-label">Awards Won</div>
         </div>
         <div class="stat-card glass-card slide-up delay-300">
           <div class="stat-number" data-counter="120" data-suffix="+">&nbsp;</div>
-          <div class="stat-label">Global Brand Partners</div>
+          <div class="stat-label">Brand Partners</div>
+        </div>
+      </div>
+      
+      <!-- Brands Scroller (Static Highlight for now) -->
+      <div class="mt-20 pt-12 border-t border-white/5">
+        <div class="text-center mb-8">
+          <p class="text-xs uppercase tracking-[0.3em] text-white/40">Trusted by Global Industry Leaders</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-10 opacity-30 grayscale contrast-125">
+          <div class="text-2xl font-black italic">VOGUE</div>
+          <div class="text-2xl font-black">NIKE</div>
+          <div class="text-2xl font-bold">APPLE</div>
+          <div class="text-2xl font-black italic">PRADA</div>
+          <div class="text-2xl font-bold">ROLEX</div>
+          <div class="text-2xl font-black">SONY</div>
         </div>
       </div>
     </div>
@@ -371,7 +378,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
           <ul class="space-y-3">
             <li><a class="footer-link" href="index.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
                   style="color:var(--accent);"></i>Home</a></li>
@@ -389,7 +396,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
           <ul class="space-y-3">
             <li><a class="footer-link" href="service-details.html">Portrait Studio</a></li>
             <li><a class="footer-link" href="service-details.html">Commercial Studio</a></li>
@@ -401,7 +408,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
               <i class="fa-solid fa-location-dot mt-1" style="color:var(--accent);"></i>

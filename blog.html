@@ -39,38 +39,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1" style="color:var(--accent);">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="contact.html" class="nav-link">Contact</a>
 
@@ -86,9 +66,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -98,19 +78,20 @@
             </button>
           </div>
 
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -143,29 +124,13 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-accent hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
@@ -181,10 +146,22 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle px-4 h-10" data-rtl-toggle title="Toggle RTL/LTR">RTL</button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
@@ -200,7 +177,7 @@
     <div class="hero-content container text-center">
       <div class="section-label mx-auto w-fit fade-in"><i class="fa-solid fa-newspaper"></i> HEPS Journal</div>
       <h1 class="slide-up mt-4 mb-4">Insights &amp; <span class="gradient-text">Inspiration</span></h1>
-      <p class="slide-up delay-100 text-xl max-w-xl mx-auto" style="color:var(--text-secondary);">Lighting tutorials,
+      <p class="slide-up delay-100 text-xl max-w-xl mx-auto text-white/70">Lighting tutorials,
         gear guides, business tips, and stories from the studio floor.</p>
     </div>
   </section>
@@ -219,28 +196,22 @@
       </div>
 
       <!-- Featured Post -->
-      <div class="relative rounded-2xl overflow-hidden mb-10 slide-up group h-[400px] md:h-[480px]">
-        <img src="https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?w=1200&q=85" alt="Featured"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div class="absolute inset-0"
-          style="background:linear-gradient(to right, rgba(13,13,13,0.95) 40%, rgba(13,13,13,0.3));"></div>
-        <div class="absolute inset-0 flex items-center px-8 md:px-16 lg:px-24 py-10">
+      <div class="relative rounded-2xl overflow-hidden mb-10 slide-up group min-h-[450px] md:min-h-[550px] flex items-center" 
+        style="background: linear-gradient(to right, rgba(13,13,13,0.95) 40%, rgba(13,13,13,0.3)), url('https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?w=1200&q=85') center/cover no-repeat;">
+        <div class="relative z-10 px-8 md:px-16 lg:px-24 py-20 w-full">
           <div class="max-w-2xl">
-            <span class="blog-tag">Featured . Business</span>
-            <h2 class="text-white mb-4">How to Price Your Photography Services in 2025</h2>
-            <p class="mb-6 text-base" style="color:var(--text-secondary);">A data-driven framework for building pricing
-              tiers that attract premium clients and protect your time - built from real revenue data across 5,000+
-              HEPS sessions.</p>
+            <span class="blog-tag">Featured . Business Production</span>
+            <h2 class="text-white mb-4">Scalable Production: Managing 40+ Crew Sessions</h2>
+            <p class="mb-6 text-base text-white/70">A deep-dive into the logistical architecture required to support large-scale brand campaigns, featuring case studies from recent Nike and Apple productions at HEPS.</p>
             <div class="flex items-center gap-4 mb-6">
               <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
-                onerror="this.src='https://ui-avatars.com/api/?name=Marcus+Ellison&background=E11D48&color=fff'"
                 class="w-10 h-10 rounded-full object-cover border-2 border-white/20" alt="Author" />
               <div>
-                <div class="text-sm font-semibold text-white">Marcus Ellison</div>
-                <div class="text-[10px] uppercase tracking-wider text-white/50">Apr 10, 2025 . 8 min read</div>
+                <div class="text-sm font-medium text-white">Marcus Ellison</div>
+                <div class="text-[10px] uppercase tracking-wider text-white/50">Founder & Creative Director . 10 min read</div>
               </div>
             </div>
-            <a href="blog-details.html" class="btn-primary hover-glow">Read Article <i
+            <a href="blog-details.html" class="btn-primary hover-glow">Read Production Guide <i
                 class="fa-solid fa-arrow-right ml-1"></i></a>
           </div>
         </div>
@@ -253,11 +224,10 @@
               src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80" class="blog-card-img"
               alt="Lighting" /></div>
           <div class="blog-card-body">
-            <span class="blog-tag">Lighting</span>
-            <h4 class="mb-2">Mastering Three-Point Lighting in Portrait Studios</h4>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">Unlock cinema-quality depth with this timeless
-              technique every portrait photographer should know.</p>
-            <div class="flex items-center justify-between">
+            <span class="blog-tag">Technical Workflow</span>
+            <h4 class="mb-2">Phase One Workflow: 150MP Editorial Standards</h4>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">Mastering high-resolution data throughput and tethering stability for 150MP Phase One IQ4 systems.</p>
+            <div class="blog-card-footer">
               <div class="flex items-center gap-2">
                 <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=40&q=80"
                   class="w-7 h-7 rounded-full object-cover" alt="" />
@@ -274,11 +244,10 @@
               src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80" class="blog-card-img"
               alt="Gear" /></div>
           <div class="blog-card-body">
-            <span class="blog-tag">Gear Guide</span>
-            <h4 class="mb-2">Profoto vs Broncolor: The Definitive 2025 Comparison</h4>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">An unbiased battle between Studio strobe giants
-              ” power output, color accuracy, and value.</p>
-            <div class="flex items-center justify-between">
+            <span class="blog-tag">Infrastructure</span>
+            <h4 class="mb-2">Industrial Lighting: 400A 3-Phase Protocols</h4>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">A guide to managing high-output cinematic lighting arrays without compromising studio electrical stability.</p>
+            <div class="blog-card-footer">
               <div class="flex items-center gap-2">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
                   class="w-7 h-7 rounded-full object-cover" alt="" />
@@ -292,14 +261,14 @@
 
         <div class="blog-card slide-up delay-200" data-category="tutorial">
           <div class="overflow-hidden"><img
-              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" class="blog-card-img"
-              alt="Tutorial" /></div>
+              src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" class="blog-card-img"
+              alt="Wedding Tutorial" /></div>
           <div class="blog-card-body">
-            <span class="blog-tag">Tutorial</span>
-            <h4 class="mb-2">Food Photography Basics: Lighting a Perfect Flat Lay</h4>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">Step-by-step guide to styling and lighting hero
-              food shots that stop the scroll on any platform.</p>
-            <div class="flex items-center justify-between">
+            <span class="blog-tag">Wedding</span>
+            <h4 class="mb-2">The Art of Intimate Wedding Portraits in a Studio Setting</h4>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">How to capture timeless, high-end bridal couture
+              and couple portraits using our controlled studio environments.</p>
+            <div class="blog-card-footer">
               <div class="flex items-center gap-2">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=40&q=80"
                   class="w-7 h-7 rounded-full object-cover" alt="" />
@@ -320,7 +289,7 @@
             <h4 class="mb-2">Inside the Nike x HEPS 3-Day Production</h4>
             <p class="text-sm mb-4" style="color:var(--text-secondary);">How we staged a 40-person crew in our Film &
               Video Stage for Nike's global spring campaign.</p>
-            <div class="flex items-center justify-between">
+            <div class="blog-card-footer">
               <div class="flex items-center gap-2">
                 <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=40&q=80"
                   class="w-7 h-7 rounded-full object-cover" alt="" />
@@ -334,14 +303,14 @@
 
         <div class="blog-card slide-up delay-200" data-category="lighting">
           <div class="overflow-hidden"><img
-              src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=600&q=80" class="blog-card-img"
-              alt="Lighting" /></div>
+              src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80" class="blog-card-img"
+              alt="Fashion Lighting" /></div>
           <div class="blog-card-body">
-            <span class="blog-tag">Lighting</span>
-            <h4 class="mb-2">The Beauty Dish: Sculpting the Perfect Portrait Light</h4>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">Why the beauty dish remains the portrait
-              photographer's secret weapon - and how to set it up.</p>
-            <div class="flex items-center justify-between">
+            <span class="blog-tag">Fashion</span>
+            <h4 class="mb-2">2025 Fashion Editorial Trends: High-Contrast vs. Soft Dreamscape</h4>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">An in-depth look at the lighting setups defining
+              this season's high-fashion magazine covers and campaigns.</p>
+            <div class="blog-card-footer">
               <div class="flex items-center gap-2">
                 <img src="https://images.unsplash.com/photo-1531727991582-cfd25ce79613?w=40&q=80"
                   class="w-7 h-7 rounded-full object-cover" alt="" />
@@ -353,15 +322,15 @@
           </div>
         </div>
 
-        <div class="blog-card slide-up delay-300" data-category="business">
-          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1562564055-71e051d33c19?w=600&q=80"
-              class="blog-card-img" alt="Business" /></div>
+        <div class="blog-card slide-up delay-300" data-category="lifestyle">
+          <div class="overflow-hidden"><img src="https://images.unsplash.com/photo-1470434767159-ac7bf1b43351?w=600&q=80"
+              class="blog-card-img" alt="Lifestyle" /></div>
           <div class="blog-card-body">
-            <span class="blog-tag">Business</span>
-            <h4 class="mb-2">Building Your Photography Brand: A 90-Day Plan</h4>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">From portfolio to paying clients ” a
-              practical roadmap used by HEPS's top-booked photographers.</p>
-            <div class="flex items-center justify-between">
+            <span class="blog-tag">Lifestyle</span>
+            <h4 class="mb-2">Capturing Authenticity: A Guide to Commercial Lifestyle Photography</h4>
+            <p class="text-sm mb-4" style="color:var(--text-secondary);">How to direct models and light scenes to create
+              that "unposed" look that brands are craving in 2025.</p>
+            <div class="blog-card-footer">
               <div class="flex items-center gap-2">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
                   class="w-7 h-7 rounded-full object-cover" alt="" />
@@ -369,6 +338,38 @@
               </div>
               <a href="blog-details.html" class="btn-ghost text-xs py-1 px-3">Read <i
                   class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STUDIO INSIGHTS (NEW) -->
+      <div class="mt-20 pt-20 border-t border-white/5">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="slide-left">
+            <div class="section-label mb-5"><i class="fa-solid fa-lightbulb"></i> Studio Insights</div>
+            <h2 class="mb-6">The <span class="gradient-text">Technical</span> Edge</h2>
+            <div class="space-y-6">
+              <div class="p-6 glass-card rounded-2xl border border-white/5">
+                <h4 class="text-lg font-bold mb-2">Phase One IQ4 Integration</h4>
+                <p class="text-sm leading-relaxed" style="color:var(--text-secondary);">How to optimize your Capture One workflow for 150MP captures using our hardwired fiber stations.</p>
+                <a href="#" class="text-accent text-xs mt-3 inline-block font-semibold">Download Technical Whitepaper →</a>
+              </div>
+              <div class="p-6 glass-card rounded-2xl border border-white/5">
+                <h4 class="text-lg font-bold mb-2">ARRI Skypanel S360-C Rigging</h4>
+                <p class="text-sm leading-relaxed" style="color:var(--text-secondary);">Mastering the motorized LED grid in Cinematic Stage A for consistent high-output daylight simulation.</p>
+                <a href="#" class="text-accent text-xs mt-3 inline-block font-semibold">Watch BTS Tutorial →</a>
+              </div>
+            </div>
+          </div>
+          <div class="slide-right">
+            <div class="rounded-3xl overflow-hidden shadow-2xl relative">
+              <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=800&q=90" alt="Technical Insight" class="w-full h-[500px] object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-8 left-8 right-8 text-center">
+                <p class="text-white italic text-lg">"The precision of the HEPS infrastructure allows us to push technical boundaries that simply aren't possible in standard rental spaces."</p>
+                <div class="mt-4 text-xs uppercase tracking-widest text-accent font-bold">Derek Chen, Head Lighting Tech</div>
+              </div>
             </div>
           </div>
         </div>
@@ -406,7 +407,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Navigation</h4>
           <ul class="space-y-3">
             <li><a class="footer-link" href="index.html"><i class="fa-solid fa-chevron-right text-xs mr-2"
                   style="color:var(--accent);"></i>Home</a></li>
@@ -424,7 +425,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Studios</h4>
           <ul class="space-y-3">
             <li><a class="footer-link" href="service-details.html">Portrait Studio</a></li>
             <li><a class="footer-link" href="service-details.html">Commercial Studio</a></li>
@@ -436,7 +437,7 @@
         </div>
 
         <div>
-          <h4 class="text-sm font-bold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
+          <h4 class="text-sm font-semibold uppercase tracking-widest mb-5" style="color:var(--accent);">Contact</h4>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
               <i class="fa-solid fa-location-dot mt-1" style="color:var(--accent);"></i>

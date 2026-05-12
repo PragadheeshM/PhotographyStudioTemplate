@@ -71,21 +71,20 @@
     <div class="auth-overlay"></div>
   </div>
 
-  <!-- controls are now inside the specific pages to shift with RTL -->
+  <!-- Corner Controls -->
+  <div class="auth-card-controls">
+    <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme"><i
+        class="fa-solid fa-sun"></i></button>
+    <button class="rtl-toggle" data-rtl-toggle title="Toggle RTL/LTR"><i class="fa-solid fa-globe"></i></button>
+  </div>
 
   <!-- Card -->
   <div class="auth-card">
-    <!-- Corner Controls -->
-    <div class="auth-card-controls">
-      <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme"><i
-          class="fa-solid fa-sun"></i></button>
-      <button class="rtl-toggle" data-rtl-toggle title="Toggle RTL/LTR"><i class="fa-solid fa-globe"></i></button>
-    </div>
     <div class="text-center mb-8">
       <a href="index.html" class="nav-logo text-2xl flex items-center justify-center gap-3 mb-3"><img src="logo.svg"
           alt="HEPS" class="h-8 w-auto"> HEPS</a>
-      <h2 class="text-2xl mb-1">Welcome Back</h2>
-      <p class="text-sm" style="color:var(--text-secondary);">Sign in to manage your studio bookings</p>
+      <h2 class="text-2xl mb-1">Production Portal</h2>
+      <p class="text-sm" style="color:var(--text-secondary);">Manage your studio sessions and digital assets</p>
     </div>
 
     <!-- Social Login -->
@@ -113,23 +112,20 @@
         </div>
       </div>
       <div class="form-group mb-0">
-        <div class="flex justify-between items-center mb-1.5">
-          <label class="form-label mb-0">Password</label>
-          <a href="#" class="text-xs hover:underline" style="color:var(--accent);">Forgot password?</a>
-        </div>
-        <div class="relative">
+        <label class="form-label mb-1.5">Password</label>
+        <div class="relative mb-3">
           <input type="password" id="login-password" class="form-input" placeholder="enter your password" required
             style="padding-left:2.75rem;" />
           <i class="fa-solid fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-sm"
             style="color:var(--text-muted);"></i>
         </div>
-      </div>
-
-      <div class="flex items-center gap-2">
-        <input type="checkbox" id="remember" class="w-4 h-4 cursor-pointer" style="accent-color:var(--accent);" />
-        <label for="remember" class="text-sm cursor-pointer" style="color:var(--text-secondary);">Keep me signed
-          in</label>
-      </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="remember" class="w-4 h-4 cursor-pointer" style="accent-color:var(--accent);" />
+            <label for="remember" class="text-sm cursor-pointer" style="color:var(--text-secondary);">Keep me signed in</label>
+          </div>
+          <a href="#" class="text-xs hover:underline" style="color:var(--accent);">Forgot password?</a>
+        </div>
 
       <button type="submit" class="btn-primary w-full justify-center hover-glow mt-3">
         <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In

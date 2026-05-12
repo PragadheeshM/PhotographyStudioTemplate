@@ -120,38 +120,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1" style="color:var(--accent);">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link" style="color:var(--accent);">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="contact.html" class="nav-link">Contact</a>
 
@@ -167,9 +147,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -179,19 +159,20 @@
             </button>
           </div>
 
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -224,29 +205,13 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-accent hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-accent hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
@@ -262,10 +227,24 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle w-10 h-10" data-rtl-toggle title="Toggle RTL/LTR">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
@@ -283,18 +262,18 @@
     <div class="hero-content container text-center">
       <div class="max-w-3xl mx-auto">
         <!-- Breadcrumb -->
-        <div class="flex items-center justify-center gap-2 text-sm mb-6 slide-up" style="color:var(--text-muted);">
+        <div class="flex items-center justify-center gap-2 text-sm mb-6 slide-up text-white/50">
           <a href="index.html" class="hover:text-accent transition-colors">Home</a>
           <i class="fa-solid fa-chevron-right text-xs"></i>
           <a href="services.html" class="hover:text-accent transition-colors">Services</a>
           <i class="fa-solid fa-chevron-right text-xs"></i>
-          <span style="color:var(--text-secondary);">Commercial Studio</span>
+          <span class="text-white/80">Commercial Studio</span>
         </div>
-        <div class="section-label slide-up mx-auto w-fit"><i class="fa-solid fa-clapperboard"></i> Studio Details</div>
-        <h1 class="slide-up delay-100 mt-4 mb-6">Commercial <span class="gradient-text">Studio B</span></h1>
-        <p class="slide-up delay-200 text-xl max-w-2xl mb-8" style="color:var(--text-secondary);">
-          5,000 sq ft of production powerhouse. 24ft ceilings, a full green-screen wall, drive-in bay, and cinema-grade
-          lighting - all in the heart of Manhattan's Meatpacking District.
+        <div class="section-label slide-up mx-auto w-fit"><i class="fa-solid fa-clapperboard"></i> Studio Specifications</div>
+        <h1 class="slide-up delay-100 mt-4 mb-6">Commercial <span class="gradient-text">Stage A</span></h1>
+        <p class="slide-up delay-200 text-xl max-w-2xl mb-8 text-white/70">
+          5,000 sq ft of cinematic production space. 24ft ceilings, 400A 3-phase power, drive-in car access, and 
+          industrial-grade acoustic treatment — the standard for global brand campaigns.
         </p>
         <div class="slide-up delay-300 flex flex-wrap justify-center gap-4">
           <a href="pricing.html" class="btn-primary hover-glow hover-float"><i class="fa-solid fa-calendar-check"></i>
@@ -302,17 +281,17 @@
           <a href="contact.html" class="btn-outline hover-float"><i class="fa-solid fa-phone"></i> Request a Tour</a>
         </div>
         <div class="slide-up delay-400 flex flex-wrap justify-center gap-3 mt-10">
-          <div class="spec-pill">
+          <div class="spec-pill !bg-white/10 !border-white/10 !text-white">
             <i class="fa-solid fa-ruler-combined"></i>
             5,000 sq ft
           </div>
-          <div class="spec-pill">
+          <div class="spec-pill !bg-white/10 !border-white/10 !text-white">
             <i class="fa-solid fa-arrow-up"></i> 24ft Ceiling
           </div>
-          <div class="spec-pill">
+          <div class="spec-pill !bg-white/10 !border-white/10 !text-white">
             <i class="fa-solid fa-users"></i> Up to 60 people
           </div>
-          <div class="spec-pill">
+          <div class="spec-pill !bg-white/10 !border-white/10 !text-white">
             <i class="fa-solid fa-video"></i> Film & Photo
           </div>
         </div>
@@ -328,14 +307,13 @@
           <div class="section-label mb-4"><i class="fa-solid fa-circle-info"></i> Overview</div>
           <h2 class="mb-6">Built for <span class="gradient-text">Epic Productions</span></h2>
           <p class="mb-5" style="color:var(--text-secondary);">
-            Commercial Studio B was purpose-designed for large-scale advertising, fashion, and commercial film
-            productions. The 24ft open-truss ceiling accommodates full overhead rigging, while the 40ft drive-in bay
-            lets you bring in vehicles, large props, or production trucks without a second thought.
+            Commercial Stage A was engineered for large-scale advertising, global fashion editorials, and high-budget 
+            commercial motion capture. The 24ft open-truss ceiling is hard-rigged for overhead lighting arrays, 
+            while the 40ft drive-in bay facilitates seamless vehicle load-ins.
           </p>
           <p class="mb-8" style="color:var(--text-secondary);">
-            The integrated 30ft chroma-key green screen, permanently rigged Arri LED lighting, and 200A power service
-            make it the most technically capable studio in our portfolio - yet it's available to book by the hour,
-            half-day, or full day.
+            Equipped with dedicated 400A 3-phase power and a 10Gbps symmetric fiber backbone, Stage A provides the 
+            technical reliability required for 8K live-tethered sessions and high-bandwidth digital asset management.
           </p>
           <div class="space-y-3">
             <div class="flex items-center gap-3"><i class="fa-solid fa-check-circle"
@@ -353,13 +331,13 @@
           </div>
         </div>
         <div class="slide-right grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&q=80" alt="Commercial Studio"
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&q=80" alt="Drive-in Production"
             class="rounded-2xl w-full h-52 object-cover hover-float" />
           <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=500&q=80" alt="Studio Lighting"
             class="rounded-2xl w-full h-52 object-cover hover-float sm:mt-6" />
           <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80" alt="Studio Wide"
             class="rounded-2xl w-full h-52 object-cover hover-float sm:-mt-6" />
-          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&q=80" alt="Film Stage"
+          <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?w=500&q=80" alt="Cinematic Production"
             class="rounded-2xl w-full h-52 object-cover hover-float" />
         </div>
       </div>
@@ -377,16 +355,15 @@
             <div class="equip-item">
               <div class="equip-icon"><i class="fa-solid fa-lightbulb"></i></div>
               <div>
-                <div class="font-semibold text-sm mb-0.5">Arri Skypanel S60-C (8)</div>
-                <div class="text-xs" style="color:var(--text-muted);">Full-color LED panels with wireless DMX control
-                </div>
+                <div class="font-semibold text-sm mb-0.5">Arri Orbiter & Skypanel Array</div>
+                <div class="text-xs" style="color:var(--text-muted);">High-output LED fixtures with LiCo control and full gamut tuning</div>
               </div>
             </div>
             <div class="equip-item">
               <div class="equip-icon"><i class="fa-solid fa-camera"></i></div>
               <div>
-                <div class="font-semibold text-sm mb-0.5">Profoto Pro-11 2400 AirTTL (4)</div>
-                <div class="text-xs" style="color:var(--text-muted);">2400Ws studio strobe heads with HSS support</div>
+                <div class="font-semibold text-sm mb-0.5">Profoto Pro-11 2400 AirTTL (6)</div>
+                <div class="text-xs" style="color:var(--text-muted);">Industrial strobe packs with 0.01s recycling and high-speed sync</div>
               </div>
             </div>
             <div class="equip-item">
@@ -445,22 +422,13 @@
           <div class="glass-card p-6">
             <h3 class="mb-5">Studio Specifications</h3>
             <div>
-              <div class="spec-row"><span class="spec-label">Total Area</span><span class="spec-value">5,000 sq
-                  ft</span></div>
-              <div class="spec-row"><span class="spec-label">Ceiling Height</span><span class="spec-value">24 ft
-                  (7.3m)</span></div>
-              <div class="spec-row"><span class="spec-label">Max Capacity</span><span class="spec-value">60
-                  people</span></div>
-              <div class="spec-row"><span class="spec-label">Power Service</span><span class="spec-value">200A
-                  3-phase</span></div>
-              <div class="spec-row"><span class="spec-label">Drive-In Bay</span><span class="spec-value">14ft ×
-                  14ft</span></div>
-              <div class="spec-row"><span class="spec-label">Wi-Fi Speed</span><span class="spec-value">1 Gbps
-                  symmetric</span></div>
-              <div class="spec-row"><span class="spec-label">Air Conditioning</span><span class="spec-value">Constant
-                  68°F / 20°C</span></div>
-              <div class="spec-row"><span class="spec-label">Freight Lift</span><span class="spec-value">10,000lb
-                  capacity</span></div>
+              <div class="spec-row"><span class="spec-label">Total Area</span><span class="spec-value">5,000 sq ft</span></div>
+              <div class="spec-row"><span class="spec-label">Ceiling Height</span><span class="spec-value">24 ft (7.3m)</span></div>
+              <div class="spec-row"><span class="spec-label">Max Capacity</span><span class="spec-value">60 people</span></div>
+              <div class="spec-row"><span class="spec-label">Power Service</span><span class="spec-value">400A 3-phase</span></div>
+              <div class="spec-row"><span class="spec-label">Drive-In Bay</span><span class="spec-value">16ft × 16ft</span></div>
+              <div class="spec-row"><span class="spec-label">Fiber Network</span><span class="spec-value">10 Gbps Symmetric</span></div>
+              <div class="spec-row"><span class="spec-label">Acoustic Rating</span><span class="spec-value">STC 65 Soundproof</span></div>
             </div>
           </div>
 

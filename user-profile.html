@@ -29,7 +29,7 @@
 
     .sidebar-section-label {
       font-size: 0.65rem;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -166,7 +166,7 @@
       transform: translateX(20px);
     }
 
-    @media(max-width:768px) {
+    @media(max-width:1024px) {
       .dashboard-main {
         margin-left: 0 !important;
         padding: 1rem;
@@ -182,7 +182,9 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-      <a href="index.html" class="nav-logo text-lg">HEPS</a>
+      <a href="index.html" class="nav-logo text-lg flex items-center gap-2">
+        <img src="logo.svg" alt="HEPS" class="h-6 w-auto"> HEPS
+      </a>
     </div>
 
     <div class="sidebar-section-label sidebar-label">Main</div>
@@ -230,9 +232,9 @@
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 w-full">
       <div class="flex items-center gap-4">
-        <button id="sidebar-toggle" class="lg:hidden theme-toggle w-9 h-9"><i class="fa-solid fa-bars"></i></button>
+        <button id="sidebar-toggle" class="theme-toggle w-9 h-9"><i class="fa-solid fa-bars"></i></button>
         <div>
-          <h3 class="text-xl font-bold mb-4">My Profile</h3>
+          <h3 class="text-xl font-semibold mb-4">My Profile</h3>
           <p class="text-sm" style="color:var(--text-muted);">Manage your personal details and preferences</p>
         </div>
       </div>
@@ -262,7 +264,7 @@
         <div class="flex-1">
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h2 class="text-2xl font-bold mb-1">Marcus Rhodes</h2>
+              <h2 class="text-2xl font-semibold mb-1">Marcus Rhodes</h2>
               <p class="text-sm mb-3" style="color:var(--text-muted);">marcus.rhodes@studio.com</p>
               <div class="flex flex-wrap gap-2">
                 <span class="badge badge-gold"><i class="fa-solid fa-star mr-1"></i>Pro Member</span>
@@ -285,19 +287,19 @@
       <!-- Mini Stats -->
       <div class="grid grid-cols-4 gap-4 mt-6 pt-6" style="border-top:1px solid rgba(225,29,72,0.12);">
         <div class="text-center">
-          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="47" data-suffix="">â€”</div>
+          <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="47" data-suffix="">â€”</div>
           <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Sessions</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="186" data-suffix="h">â€”</div>
+          <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="186" data-suffix="h">â€”</div>
           <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Studio Hours</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="2450" data-suffix="">â€”</div>
+          <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="2450" data-suffix="">â€”</div>
           <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Reward Points</div>
         </div>
         <div class="text-center">
-          <div class="text-2xl font-black" style="color:var(--accent);" data-counter="98" data-suffix="%">â€”</div>
+          <div class="text-2xl font-semibold" style="color:var(--accent);" data-counter="98" data-suffix="%">â€”</div>
           <div class="text-xs mt-1 uppercase tracking-wider" style="color:var(--text-muted);">Rating</div>
         </div>
       </div>
@@ -338,13 +340,24 @@
                 <input type="tel" class="form-input" value="+1 (917) 555-0147" />
               </div>
               <div class="form-group mb-0">
-                <label class="form-label">Account Type</label>
+                <label class="form-label">Creative Specialization</label>
                 <select class="form-input">
-                  <option selected>Freelance Photographer</option>
-                  <option>Commercial Agency</option>
-                  <option>Brand / Company</option>
-                  <option>Photo Educator</option>
-                  <option>Student</option>
+                  <option selected>Fashion & Editorial</option>
+                  <option>Commercial Advertising</option>
+                  <option>Cinematic Motion</option>
+                  <option>Portrait & Beauty</option>
+                  <option>Architectural / Interior</option>
+                </select>
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label">Primary Camera System</label>
+                <select class="form-input">
+                  <option selected>Phase One IQ4 / XF</option>
+                  <option>Sony A7R V / A1</option>
+                  <option>Canon R5 / R3</option>
+                  <option>Hasselblad H6D</option>
+                  <option>Fujifilm GFX 100II</option>
+                  <option>Other / Mixed</option>
                 </select>
               </div>
               <div class="form-group mb-0">
@@ -360,9 +373,9 @@
                 </div>
               </div>
               <div class="form-group mb-0">
-                <label class="form-label">Bio</label>
+                <label class="form-label">Professional Brief</label>
                 <textarea class="form-input"
-                  rows="3">Commercial & editorial photographer based in New York. I specialize in high-end fashion and brand campaigns. Regular HEPS client since 2022.</textarea>
+                  rows="3">Creative Director and Editorial Photographer based in NYC. Specializing in high-end brand narratives and cinematic fashion. HEPS resident since 2022, primarily utilizing Stage A for large-scale rigging sessions.</textarea>
               </div>
               <div class="flex gap-3">
                 <button type="submit" class="btn-primary"><i class="fa-solid fa-check mr-1"></i>Save Changes</button>
@@ -379,7 +392,7 @@
             style="background:linear-gradient(135deg,rgba(225,29,72,0.1),rgba(26,26,46,0.6)); border-color:rgba(225,29,72,0.25);">
             <div class="text-xs uppercase tracking-widest mb-1" style="color:var(--accent);">Current Plan</div>
             <h4 class="mb-1">Pro Creator</h4>
-            <div class="text-2xl font-black mb-0.5" style="color:var(--accent);">$299<span class="text-sm font-normal"
+            <div class="text-2xl font-semibold mb-0.5" style="color:var(--accent);">$299<span class="text-sm font-normal"
                 style="color:var(--text-muted);">/mo</span></div>
             <div class="text-xs mb-4" style="color:var(--text-muted);">Renews May 1, 2025</div>
             <div class="progress-bar-wrap mb-2">
@@ -648,23 +661,23 @@
                   bookings</p>
               </div>
               <div class="text-right">
-                <div class="text-4xl font-black" style="color:var(--accent);">$299</div>
+                <div class="text-4xl font-semibold" style="color:var(--accent);">$299</div>
                 <div class="text-sm" style="color:var(--text-muted);">per month</div>
               </div>
             </div>
             <div class="grid grid-cols-2 gap-4 mt-6 pt-6" style="border-top:1px solid rgba(225,29,72,0.15);">
               <div>
                 <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Monthly Hours</div>
-                <div class="font-bold">24 hours</div>
+                <div class="font-semibold">24 hours</div>
               </div>
               <div>
                 <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Used This Month
                 </div>
-                <div class="font-bold" style="color:var(--accent);">18 hours</div>
+                <div class="font-semibold" style="color:var(--accent);">18 hours</div>
               </div>
               <div>
                 <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Next Renewal</div>
-                <div class="font-bold">May 1, 2025</div>
+                <div class="font-semibold">May 1, 2025</div>
               </div>
               <div>
                 <div class="text-xs uppercase tracking-wider mb-1" style="color:var(--text-muted);">Status</div><span
@@ -744,7 +757,7 @@
             <div class="p-4 rounded-xl mb-4"
               style="background:rgba(225,29,72,0.06); border:1px solid rgba(225,29,72,0.2);">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-7 rounded flex items-center justify-center text-xs font-bold"
+                <div class="w-10 h-7 rounded flex items-center justify-center text-xs font-semibold"
                   style="background:#1a1f71; color:#fff;">VISA</div>
                 <div>
                   <div class="text-sm font-semibold">â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ 4242</div>
@@ -762,7 +775,7 @@
           <div class="chart-card slide-up delay-300">
             <h4 class="mb-4 text-sm">Loyalty Rewards</h4>
             <div class="text-center py-4">
-              <div class="text-4xl font-black mb-1" style="color:var(--accent);">2,450</div>
+              <div class="text-4xl font-semibold mb-1" style="color:var(--accent);">2,450</div>
               <div class="text-xs uppercase tracking-wider mb-4" style="color:var(--text-muted);">Reward Points</div>
               <div class="progress-bar-wrap mb-2">
                 <div class="progress-bar" style="width:49%;"></div>

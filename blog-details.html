@@ -19,7 +19,7 @@
   <style>
     .article-body h2 {
       font-size: 1.75rem;
-      font-weight: 700;
+      font-weight: 600;
       margin: 2.5rem 0 1rem;
       color: var(--text-primary);
     }
@@ -86,7 +86,7 @@
     }
 
     .toc-num {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 0.75rem;
       color: var(--accent);
       width: 20px;
@@ -137,38 +137,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1" style="color:var(--accent);">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="contact.html" class="nav-link">Contact</a>
 
@@ -184,9 +164,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -196,19 +176,20 @@
             </button>
           </div>
 
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -241,29 +222,13 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-accent hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
@@ -279,10 +244,22 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle px-4 h-10" data-rtl-toggle title="Toggle RTL/LTR">RTL</button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
@@ -298,27 +275,27 @@
     <div class="hero-content container text-center">
       <div class="max-w-3xl mx-auto">
         <!-- Breadcrumb -->
-        <div class="flex items-center justify-center gap-2 text-sm mb-6 slide-up" style="color:var(--text-muted);">
+        <div class="flex items-center justify-center gap-2 text-sm mb-6 slide-up text-white/50">
           <a href="index.html" class="hover:text-accent transition-colors">Home</a>
           <i class="fa-solid fa-chevron-right text-xs"></i>
           <a href="blog.html" class="hover:text-accent transition-colors">Blog</a>
           <i class="fa-solid fa-chevron-right text-xs"></i>
-          <span style="color:var(--text-secondary);">Pricing Guide</span>
+          <span class="text-white/70">Pricing Guide</span>
         </div>
-        <div class="section-label slide-up mx-auto w-fit mb-5"><i class="fa-solid fa-newspaper"></i> Business of Photography</div>
-        <h1 class="slide-up delay-100 mt-4 mb-8 text-4xl lg:text-6xl">How to Price Your <span
-            class="gradient-text">Photography Services</span> in 2025</h1>
+        <div class="section-label slide-up mx-auto w-fit mb-5"><i class="fa-solid fa-microchip"></i> Technical Workflow</div>
+        <h1 class="slide-up delay-100 mt-4 mb-8 text-4xl lg:text-6xl">Phase One Workflow: <span
+            class="gradient-text">150MP Editorial Standards</span></h1>
 
-        <div class="slide-up delay-200 flex flex-wrap justify-center items-center gap-6 mt-10 p-6 glass-card rounded-2xl">
+        <div class="slide-up delay-200 flex flex-wrap justify-center items-center gap-x-8 gap-y-4 mt-10 py-6 px-8 experience-card rounded-2xl">
           <div class="flex items-center gap-3">
             <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80"
               class="w-12 h-12 rounded-full object-cover border-2 border-accent" alt="Marcus Ellison" />
             <div class="text-left">
               <div class="font-bold" style="color:var(--text-primary);">Marcus Ellison</div>
-              <div class="text-xs" style="color:var(--text-muted);">Founder & Creative Director</div>
+              <div class="text-xs" style="color:var(--text-secondary);">Founder & Creative Director</div>
             </div>
           </div>
-          <div class="flex items-center gap-5">
+          <div class="flex flex-wrap items-center justify-center gap-5">
             <div class="flex items-center gap-1.5 text-xs" style="color:var(--text-secondary);">
               <i class="fa-regular fa-calendar text-accent"></i> April 10, 2025
             </div>
@@ -340,41 +317,39 @@
       <div class="grid lg:grid-cols-3 gap-12 items-start">
 
         <!-- ARTICLE -->
-        <article class="lg:col-span-2 article-body slide-up">
+        <article class="lg:col-span-2 article-body">
 
-          <div class="relative w-full mb-8 overflow-hidden rounded-lg shadow-2xl">
+          <div class="relative w-full aspect-video mb-8 overflow-hidden rounded-lg shadow-2xl">
             <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1200&q=90"
               onerror="this.src='https://placehold.co/1200x675/160B10/F5F0F2?text=Photography+Pricing+Guide'"
               alt="Professional Photography Studio Pricing Guide"
-              class="w-full h-auto max-h-[500px] object-cover hover:scale-[1.02] transition-transform duration-700" />
+              class="absolute inset-0 w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700" />
             <div
               class="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/40 to-transparent pointer-events-none">
             </div>
           </div>
 
-          <h2>Why Most Photographers Are Leaving Money on the Table</h2>
-          <p>The photography industry generates over $12 billion annually in the United States alone - yet the median
-            full-time photographer earns just $41,000 a year. The gap between market size and individual earnings isn't
-            a talent problem. It's a pricing problem.</p>
-          <p>After hosting 5,200+ sessions at HEPS and surveying 800 photographers at every career level, we identified
-            three universal pricing mistakes: undercharging for experience, ignoring the true cost of time, and offering
-            no tiered structure.</p>
+          <p>In the world of high-end editorial and commercial advertising, resolution is only half the battle. The true 
+            challenge lies in maintaining color integrity and data throughput when shooting at 150MP. Whether you're 
+            utilizing the Phase One IQ4 or the latest GFX 100II, your digital workflow is the bottleneck between a 
+            good image and a global campaign standard.</p>
+          <p>After hosting 5,200+ high-resolution sessions at HEPS, we've identified the three pillars of a stable 
+            professional workflow: Hardware Synchronization, Color Management, and Tethered Optimization.</p>
 
           <blockquote>"Your price is a signal. When you charge $50 for a session, you're telling the market you're worth
             $50 - regardless of your actual skill." - Marcus Ellison, HEPS Founder</blockquote>
 
-          <h2>Step 1: Calculate Your True Cost of Doing Business (CODB)</h2>
-          <p>Before setting any price, you need to know the minimum you must earn per year to sustain your business.
-            This is called your Cost of Doing Business (CODB).</p>
+          <h2>Pillar 1: Tethered Optimization & Data Throughput</h2>
+          <p>When each RAW file exceeds 200MB, traditional USB protocols often fail. To maintain 150MP standards, 
+            HEPS utilizes dedicated 10Gbps fiber bridges between the studio floor and the DIT station.</p>
           <ul>
-            <li><strong>Fixed costs:</strong> Studio rental, insurance, software subscriptions, website hosting</li>
-            <li><strong>Variable costs:</strong> Props, travel, gear maintenance, outsourced editing</li>
-            <li><strong>Personal salary target:</strong> What you need for your lifestyle</li>
-            <li><strong>Tax provision:</strong> Typically 25-30% of net income for self-employed photographers</li>
+            <li><strong>Thunderbolt 4 Bridging:</strong> Eliminating the lag between shutter release and screen preview</li>
+            <li><strong>Capture One 23 Live:</strong> Real-time client review across localized fiber networks</li>
+            <li><strong>SSD RAID Arrays:</strong> Redundant, high-speed writing to prevent data corruption</li>
+            <li><strong>UPS Power Backup:</strong> Ensuring the tether never breaks during critical power fluctuations</li>
           </ul>
-          <p>Add these up, divide by your number of billable shoot days per year, and you have your floor price - the
-            minimum per-day rate that keeps you solvent. Most photographers never do this calculation, which is why they
-            end up undercharging by 40-60%.</p>
+          <p>Optimizing your tethered connection isn't just about speed; it's about production reliability. A single 
+            dropped connection during a celebrity session can cost thousands in lost crew time.</p>
 
           <h2>Step 2: Build a Three-Tier Price Architecture</h2>
           <p>Offering a single price package is one of the biggest pricing mistakes photographers make. Clients have
@@ -443,7 +418,7 @@
         </article>
 
         <!-- SIDEBAR -->
-        <aside class="space-y-8 slide-right">
+        <aside class="space-y-8">
 
           <!-- Author Box -->
           <div class="glass-card p-6">

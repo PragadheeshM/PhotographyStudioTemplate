@@ -39,38 +39,18 @@
               Home <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
             </a>
             <div class="dropdown-menu">
-              <a href="index.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 1</a>
-              <a href="index2.html" class="dropdown-item"><i class="fa-regular fa-circle-dot mr-2 text-accent"></i>Home 2</a>
+              <a href="index.html" class="dropdown-item">Home 1</a>
+              <a href="index2.html" class="dropdown-item">Home 2</a>
             </div>
           </div>
 
           <a href="about.html" class="nav-link">About</a>
 
-          <!-- Services dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1" style="color:var(--accent);">
-              Services <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="services.html" class="dropdown-item"><i class="fa-solid fa-camera mr-2 text-accent"></i>All
-                Services</a>
-              <a href="service-details.html" class="dropdown-item"><i
-                  class="fa-solid fa-circle-info mr-2 text-accent"></i>Service Details</a>
-            </div>
-          </div>
+          <a href="services.html" class="nav-link" style="color:var(--accent);">Services</a>
 
           <a href="pricing.html" class="nav-link">Pricing</a>
 
-          <!-- Blog dropdown -->
-          <div class="dropdown">
-            <a href="#" class="nav-link flex items-center gap-1">
-              Blog <i class="fa-solid fa-chevron-down text-xs opacity-60"></i>
-            </a>
-            <div class="dropdown-menu">
-              <a href="blog.html" class="dropdown-item">Blog Listing</a>
-              <a href="blog-details.html" class="dropdown-item">Blog Post</a>
-            </div>
-          </div>
+          <a href="blog.html" class="nav-link">Blog</a>
 
           <a href="contact.html" class="nav-link">Contact</a>
 
@@ -86,9 +66,9 @@
           </div>
         </div>
 
-        <!-- Toggles & Auth buttons -->
-        <div class="flex items-center gap-3">
-          <!-- Toggles: Always visible -->
+        <!-- Toggles & Auth buttons - Desktop Only -->
+        <div class="hidden xl:flex items-center gap-3">
+          <!-- Toggles: Desktop only -->
           <div class="flex items-center gap-2">
             <button class="theme-toggle" data-theme-toggle data-theme-icon title="Toggle theme">
               <i class="fa-solid fa-sun"></i>
@@ -98,19 +78,20 @@
             </button>
           </div>
 
-          <!-- Auth: Hidden on small screens -->
-          <div class="hidden sm:flex items-center gap-3">
+          <!-- Auth: Desktop only -->
+          <div class="flex items-center gap-3">
             <a href="login.html" class="btn-ghost text-sm">Login</a>
             <a href="register.html" class="btn-primary text-sm">Book Studio</a>
           </div>
-
-          <!-- Hamburger: Visible on medium/small screens -->
-          <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-6 h-0.5 bg-current"></span>
-            <span class="block w-4 h-0.5 bg-current"></span>
-          </button>
         </div>
+
+        <!-- Hamburger: Visible until XL -->
+        <button id="hamburger" class="xl:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-6 h-0.5 bg-current"></span>
+          <span class="block w-4 h-0.5 bg-current"></span>
+        </button>
+      </div>
       </div>
     </div>
   </nav>
@@ -143,29 +124,13 @@
       <a href="about.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">About</a>
 
       <!-- Services Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-accent flex items-center justify-between py-2 transition-colors">
-          Services <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="services.html" class="text-sm text-accent hover:text-accent transition-colors">All Services</a>
-          <a href="service-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Service Details</a>
-        </div>
-      </div>
+      <a href="services.html" class="text-lg font-semibold text-accent hover:text-accent transition-colors py-2">Services</a>
 
       <!-- Pricing -->
       <a href="pricing.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Pricing</a>
 
       <!-- Blog Section -->
-      <div class="mobile-dropdown">
-        <a href="#" class="mobile-dropdown-trigger text-lg font-semibold text-[var(--text-primary)] hover:text-accent flex items-center justify-between py-2 transition-colors">
-          Blog <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
-        </a>
-        <div class="mobile-dropdown-content hidden flex flex-col gap-3 pl-4 pt-2 pb-4">
-          <a href="blog.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Listing</a>
-          <a href="blog-details.html" class="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors">Blog Post</a>
-        </div>
-      </div>
+      <a href="blog.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Blog</a>
 
       <!-- Contact -->
       <a href="contact.html" class="text-lg font-semibold text-[var(--text-primary)] hover:text-accent transition-colors py-2">Contact</a>
@@ -181,10 +146,22 @@
         </div>
       </div>
 
-      <!-- Auth Links (Mobile only) -->
-      <div class="sm:hidden mt-6 pt-8 border-t border-[var(--glass-border)] flex flex-col gap-4">
-        <a href="login.html" class="btn-outline flex justify-center text-sm py-3 text-[var(--text-primary)] hover:text-[var(--text-primary)]">Login</a>
-        <a href="register.html" class="btn-primary flex justify-center text-sm py-3">Book Studio</a>
+      <!-- Mobile Menu Actions (Theme, RTL, Auth) -->
+      <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-6">
+        <div class="flex items-center justify-between px-2">
+          <span class="text-sm font-semibold uppercase tracking-widest text-[var(--text-muted)]">Preferences</span>
+          <div class="flex items-center gap-3">
+            <button class="theme-toggle w-10 h-10" data-theme-toggle data-theme-icon title="Toggle theme">
+              <i class="fa-solid fa-sun"></i>
+            </button>
+            <button class="rtl-toggle px-4 h-10" data-rtl-toggle title="Toggle RTL/LTR">RTL</button>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-3 px-2">
+          <a href="login.html" class="btn-outline flex justify-center py-4 text-base">Login</a>
+          <a href="register.html" class="btn-primary flex justify-center py-4 text-base">Book Studio</a>
+        </div>
       </div>
     </div>
   </div>
@@ -192,15 +169,15 @@
   <!-- HERO -->
   <section class="hero-section pt-32 lg:pt-40" style="min-height:55vh; background:#080808;">
     <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1920&q=85" alt="Our Studios"
-        class="w-full h-full object-cover opacity-40" />
+      <img src="https://images.unsplash.com/photo-1505330622279-bf7d7fc918f4?w=1920&q=90" alt="Our Studios"
+        class="w-full h-full object-cover opacity-60" />
       <div class="hero-overlay"></div>
     </div>
     <div class="parallax-shape w-72 h-72 bg-accent" style="top:-5%;left:70%;"></div>
     <div class="hero-content container text-center">
       <div class="section-label mx-auto w-fit fade-in"><i class="fa-solid fa-camera"></i> Our Studios</div>
       <h1 class="slide-up mt-4 mb-4">Every Studio, <span class="gradient-text">Your Vision</span></h1>
-      <p class="slide-up delay-100 text-xl max-w-2xl mx-auto" style="color:var(--text-secondary);">Six purpose-built
+      <p class="slide-up delay-100 text-xl max-w-2xl mx-auto text-white/70">Six purpose-built
         studio environments. Unlimited creative possibilities.</p>
     </div>
   </section>
@@ -216,124 +193,159 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Portrait -->
         <div class="relative rounded-2xl overflow-hidden hover-float slide-up group flex flex-col">
-          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=700&q=80" alt="Portrait Studio"
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=90" alt="Portrait Studio"
             class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="p-6 themed-card-footer">
-            <div class="service-icon mb-4"><i class="fa-solid fa-camera-retro"></i></div>
-            <h3 class="mb-3">Portrait Studio</h3>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">2,000 sq ft , 6 Profoto B10 heads , 12ft
-              white cyc , V-flat library , 4K tethering , Makeup room</p>
-            <ul class="space-y-2 mb-5">
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> 12ft seamless ceiling height</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> 6 x Profoto B10 Plus flash heads</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Full V-flat & modifier collection</li>
+            <div class="flex items-center justify-between mb-4">
+              <div class="service-icon"><i class="fa-solid fa-camera-retro"></i></div>
+              <span class="text-[10px] uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/10 rounded-full">Ideal for: Luxury Headshots</span>
+            </div>
+            <h3 class="mb-3">Portrait Studio A</h3>
+            <p class="text-sm mb-6" style="color:var(--text-secondary);">A curated environment for high-end headshots and intimate editorial sessions, featuring precision lighting control.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> 12ft white cyc with seamless transition</li>
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> 6 x Profoto B10 Plus (500Ws)</li>
             </ul>
-            <a href="service-details.html" class="btn-primary text-sm">Book This Studio</a>
+            <a href="service-details.html" class="btn-primary">Book This Studio</a>
           </div>
         </div>
         <!-- Commercial -->
         <div class="relative rounded-2xl overflow-hidden hover-float slide-up delay-100 group flex flex-col">
-          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=700&q=80" alt="Commercial Studio"
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=90" alt="Commercial Studio"
             class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="p-6 themed-card-footer">
-            <div class="service-icon mb-4"><i class="fa-solid fa-clapperboard"></i></div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="service-icon"><i class="fa-solid fa-clapperboard"></i></div>
+              <span class="text-[10px] uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/10 rounded-full">Ideal for: Global Campaigns</span>
+            </div>
             <h3 class="mb-3">Commercial Studio</h3>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">5,000 sq ft , 24ft ceiling , Green-screen ,
-              Car turntable , Movi Pro gimbal , Grip truck access</p>
-            <ul class="space-y-2 mb-5">
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> 24ft interior ceiling clearance</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Full chroma key green-screen</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Vehicle access drive-in bay</li>
+            <p class="text-sm mb-6" style="color:var(--text-secondary);">An expansive industrial-grade stage designed for large-scale automotive, fashion, and commercial productions.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> 24ft interior ceiling clearance</li>
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> Full chroma key & vehicle turntable</li>
             </ul>
-            <a href="service-details.html" class="btn-primary text-sm">Book This Studio</a>
+            <a href="service-details.html" class="btn-primary">Book This Studio</a>
           </div>
         </div>
         <!-- Film Stage -->
         <div class="relative rounded-2xl overflow-hidden hover-float slide-up delay-200 group flex flex-col">
-          <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=700&q=80" alt="Film Stage"
+          <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=90" alt="Film Stage"
             class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="p-6 themed-card-footer">
-            <div class="service-icon mb-4"><i class="fa-solid fa-film"></i></div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="service-icon"><i class="fa-solid fa-film"></i></div>
+              <span class="text-[10px] uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/10 rounded-full">Ideal for: Narrative Motion</span>
+            </div>
             <h3 class="mb-3">Film & Video Stage</h3>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">Soundproofed , Arri Skypanel kit , LED grid
-              ceiling , 3-point tracking , DIT workstation</p>
-            <ul class="space-y-2 mb-5">
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> STC 70 soundproofing rating</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> 12 x Arri Skypanel S30-C</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Motorized 3-axis camera track</li>
+            <p class="text-sm mb-6" style="color:var(--text-secondary);">A sound-dampened environment optimized for synchronized motion and high-fidelity cinematic capture.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> STC 70 soundproofing rating</li>
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> Motorized 3-axis camera track</li>
             </ul>
-            <a href="service-details.html" class="btn-primary text-sm">Book This Studio</a>
+            <a href="service-details.html" class="btn-primary">Book This Studio</a>
           </div>
         </div>
         <!-- Creative Loft -->
         <div class="relative rounded-2xl overflow-hidden hover-float slide-up delay-300 group flex flex-col">
-          <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?w=700&q=80" alt="Creative Loft"
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=90" alt="Creative Loft"
             class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="p-6 themed-card-footer">
-            <div class="service-icon mb-4"><i class="fa-solid fa-palette"></i></div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <span class="text-[10px] uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/10 rounded-full">Ideal for: Editorial Lifestyle</span>
+            </div>
             <h3 class="mb-3">Creative Loft</h3>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">3,200 sq ft , Exposed brick ,
-              Floor-to-ceiling windows , Boho prop collection , Streaming rig</p>
-            <ul class="space-y-2 mb-5">
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Natural north-facing skylight</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> 200-piece curated prop collection</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> 4K multi-cam streaming setup</li>
+            <p class="text-sm mb-6" style="color:var(--text-secondary);">A sun-drenched, open-plan loft featuring 100-year-old exposed brick and massive south-facing windows.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> 3,200 sq ft open floor plan</li>
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> Motorized floor-to-ceiling silk diffusion</li>
             </ul>
-            <a href="service-details.html" class="btn-primary text-sm">Book This Studio</a>
+            <a href="service-details.html" class="btn-primary">Book This Studio</a>
           </div>
         </div>
         <!-- Food & Product -->
         <div class="relative rounded-2xl overflow-hidden hover-float slide-up delay-400 group flex flex-col">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=80" alt="Food Studio"
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=90" alt="Food & Product"
             class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="p-6 themed-card-footer">
-            <div class="service-icon mb-4"><i class="fa-solid fa-mug-hot"></i></div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+              <span class="text-[10px] uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/10 rounded-full">Ideal for: Culinary Content</span>
+            </div>
             <h3 class="mb-3">Food & Product Studio</h3>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">Full kitchen , Foba column stands , Macro
-              rail , Capture One tethering , Flat lay sweep table</p>
-            <ul class="space-y-2 mb-5">
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Professional kitchen with 6-burner range</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Foba studio column system</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Macro/flat lay sweep station</li>
+            <p class="text-sm mb-6" style="color:var(--text-secondary);">A specialized laboratory featuring a full commercial kitchen and high-precision macro lighting rigs.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> 6-burner range & convection oven</li>
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> Overhead mirror & camera rig system</li>
             </ul>
-            <a href="service-details.html" class="btn-primary text-sm">Book This Studio</a>
+            <a href="service-details.html" class="btn-primary">Book This Studio</a>
           </div>
         </div>
         <!-- Workshops -->
         <div class="relative rounded-2xl overflow-hidden hover-float slide-up delay-500 group flex flex-col">
-          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=700&q=80" alt="Workshops"
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=90" alt="Workshops"
             class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="p-6 themed-card-footer">
-            <div class="service-icon mb-4"><i class="fa-solid fa-graduation-cap"></i></div>
-            <h3 class="mb-3">Photography Workshops</h3>
-            <p class="text-sm mb-4" style="color:var(--text-secondary);">Lighting , Retouching , Composition ,
-              Business of photography , Advanced masterclasses</p>
-            <ul class="space-y-2 mb-5">
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Taught by international photographers</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Max 8 students per session</li>
-              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i
-                  class="fa-solid fa-check text-accent text-xs"></i> Certificate of completion</li>
+            <div class="flex items-center justify-between mb-4">
+              <div class="service-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+              <span class="text-[10px] uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/10 rounded-full">Ideal for: Creative Education</span>
+            </div>
+            <h3 class="mb-3">Workshop Suite</h3>
+            <p class="text-sm mb-6" style="color:var(--text-secondary);">A versatile space designed for creative seminars, masterclasses, and corporate team building.</p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> Seating for 30 with 4K projection</li>
+              <li class="flex items-center gap-2 text-sm" style="color:var(--text-secondary);"><i class="fa-solid fa-check text-accent text-xs"></i> Integrated PA & recording system</li>
             </ul>
-            <a href="service-details.html" class="btn-primary text-sm">Enroll Now</a>
+            <a href="service-details.html" class="btn-primary">Book This Studio</a>
           </div>
         </div>
+      </div>
+
+      <!-- STUDIO COMPARISON (NEW) -->
+      <div class="mt-20 pt-20 border-t border-white/5">
+        <div class="text-center mb-12">
+          <div class="section-label mx-auto w-fit mb-3">Technical Guide</div>
+          <h3 class="text-3xl">Studio <span class="gradient-text">Selection Matrix</span></h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse glass-card rounded-2xl">
+            <thead>
+              <tr class="border-b border-white/10">
+                <th class="p-5 text-xs uppercase tracking-widest text-white/40">Specification</th>
+                <th class="p-5 text-xs uppercase tracking-widest text-white/40">Portrait A</th>
+                <th class="p-5 text-xs uppercase tracking-widest text-white/40">Commercial</th>
+                <th class="p-5 text-xs uppercase tracking-widest text-white/40">Film Stage</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <td class="p-5 font-semibold">Square Footage</td>
+                <td class="p-5">2,000 sq ft</td>
+                <td class="p-5">5,000 sq ft</td>
+                <td class="p-5">3,500 sq ft</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <td class="p-5 font-semibold">Ceiling Height</td>
+                <td class="p-5">12 ft</td>
+                <td class="p-5">24 ft</td>
+                <td class="p-5">18 ft</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <td class="p-5 font-semibold">Max Power</td>
+                <td class="p-5">100A 3-Phase</td>
+                <td class="p-5">400A 3-Phase</td>
+                <td class="p-5">200A 3-Phase</td>
+              </tr>
+              <tr class="hover:bg-white/5 transition-colors">
+                <td class="p-5 font-semibold">Acoustics</td>
+                <td class="p-5">Standard</td>
+                <td class="p-5">Industrial</td>
+                <td class="p-5">STC 70 Rated</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -394,8 +406,8 @@
           </div>
         </div>
         <div class="slide-right">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=85" alt="Studio Features"
-            class="rounded-2xl w-full h-[350px] md:h-[520px] object-cover shadow-premium" />
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=1000&q=90" alt="Equipment"
+            class="rounded-2xl w-full object-cover h-[500px] shadow-premium" />
         </div>
       </div>
     </div>
@@ -412,16 +424,14 @@
         </div>
         <div class="space-y-3">
           <div class="accordion-item">
-            <button class="accordion-trigger"><span>Can I bring my own lighting equipment?</span><i
+            <button class="accordion-trigger"><span>Do you support 8K live tethering?</span><i
                 class="fa-solid fa-chevron-down accordion-icon"></i></button>
-            <div class="accordion-body">Absolutely. You're welcome to supplement our in-house lighting with your own
-              gear. Our technicians will assist with rigging and integration at no extra charge.</div>
+            <div class="accordion-body">Yes. All studios are hardwired with Cat8 10Gbps fiber. We provide dedicated DIT workstations and support real-time remote monitoring for global clients.</div>
           </div>
           <div class="accordion-item">
-            <button class="accordion-trigger"><span>What's the minimum booking duration?</span><i
+            <button class="accordion-trigger"><span>What's the power capacity per studio?</span><i
                 class="fa-solid fa-chevron-down accordion-icon"></i></button>
-            <div class="accordion-body">Studios can be booked in 2-hour minimum increments. Full-day rentals (8 hours)
-              and half-day (4 hours) packages offer the best value and include setup/breakdown time.</div>
+            <div class="accordion-body">Our Portrait studios offer 100A 3-Phase power, while the Commercial and Cinematic stages feature up to 400A 3-Phase distribution with cam-lok connectivity.</div>
           </div>
           <div class="accordion-item">
             <button class="accordion-trigger"><span>Are backdrops included in the rental?</span><i

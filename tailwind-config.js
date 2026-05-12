@@ -47,6 +47,11 @@ tailwind.config = {
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         body:    ['"Inter"', 'system-ui', 'sans-serif'],
       },
+      fontWeight: {
+        'bold': '600',
+        'extrabold': '600',
+        'black': '600',
+      },
       backdropBlur: {
         xs: '2px',
       },
