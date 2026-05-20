@@ -181,10 +181,13 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo flex items-center justify-between">
       <a href="index.html" class="nav-logo text-lg flex items-center gap-2">
         <img src="logo.svg" alt="HEPS" class="h-6 w-auto"> HEPS
       </a>
+      <button class="sidebar-toggle-btn desktop-toggle theme-toggle w-9 h-9 items-center justify-center">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
 
     <div class="sidebar-section-label sidebar-label">Main</div>
@@ -232,7 +235,7 @@
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 w-full">
       <div class="flex items-center gap-4">
-        <button id="sidebar-toggle" class="theme-toggle w-9 h-9"><i class="fa-solid fa-bars"></i></button>
+        <button class="sidebar-toggle-btn mobile-toggle theme-toggle w-9 h-9"><i class="fa-solid fa-bars"></i></button>
         <div>
           <h3 class="text-xl font-semibold mb-4">My Profile</h3>
           <p class="text-sm" style="color:var(--text-muted);">Manage your personal details and preferences</p>

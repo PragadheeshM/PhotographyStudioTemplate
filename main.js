@@ -376,7 +376,7 @@ function initForms() {
    ══════════════════════════════════════════════════════════════ */
 function initDashboardSidebar() {
   const sidebar       = document.getElementById('sidebar');
-  const sidebarToggle  = document.getElementById('sidebar-toggle');
+  const sidebarToggles = document.querySelectorAll('.sidebar-toggle-btn, #sidebar-toggle');
   const overlay       = document.getElementById('sidebar-overlay');
 
   if (!sidebar) return;
@@ -390,8 +390,8 @@ function initDashboardSidebar() {
   }
 
   // Toggle behavior
-  if (sidebarToggle) {
-    sidebarToggle.addEventListener('click', () => {
+  sidebarToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
       if (window.innerWidth > 1024) {
         // Desktop: Toggle collapsed state
         sidebar.classList.toggle('collapsed');
@@ -403,7 +403,7 @@ function initDashboardSidebar() {
         if (overlay) overlay.classList.toggle('active');
       }
     });
-  }
+  });
 
   if (overlay) {
     overlay.addEventListener('click', () => {

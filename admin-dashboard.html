@@ -73,9 +73,12 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo flex items-center justify-between">
       <a href="index.html" class="nav-logo text-lg flex items-center gap-2"><img src="logo.svg" alt="HEPS"
           class="h-6 w-auto"> HEPS</a>
+      <button class="sidebar-toggle-btn desktop-toggle theme-toggle w-9 h-9 items-center justify-center">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </div>
 
     <!-- Admin Badge -->
@@ -159,7 +162,7 @@
     <!-- Header -->
     <div class="dashboard-header flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div class="flex items-center gap-4">
-        <button id="sidebar-toggle" class="theme-toggle w-9 h-9">
+        <button class="sidebar-toggle-btn mobile-toggle theme-toggle w-9 h-9">
           <i class="fa-solid fa-bars"></i>
         </button>
         <div>
